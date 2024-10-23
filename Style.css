@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+header nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header nav ul li {
+  position: relative;
+}
+
+header nav ul li a {
+  display: inline-block;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* Slightly darker on hover */
+}
+
+header nav ul li a img {
+  width: 24px;
+  height: 24px;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.overlay h1 {
+  font-size: 72px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.overlay p {
+  font-size: 20px;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .overlay h1 {
+    font-size: 48px;
+  }
+
+  .overlay p {
+    font-size: 16px;
+  }
+}
