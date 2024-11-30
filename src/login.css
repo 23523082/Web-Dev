@@ -1,0 +1,152 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1c1f26; /* Dark navy for a luxurious look */
+  color: white; /* Change text color to white for better contrast */
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.facebook-btn {
+  background-color: #1877f2;
+}
+
+.facebook-btn:hover {
+  background-color: #145dbf;
+}
+
+.google-btn {
+  background-color: #db4437;
+}
+
+.google-btn:hover {
+  background-color: #a8352c;
+}
+
+.login-btn i {
+  font-size: 20px;
+}
+
+.divider {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #555;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+input[type="email"] {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #555;
+  border-radius: 5px;
+  background-color: #2a2f38;
+  color: white;
+  transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus {
+  border-color: #999;
+  outline: none;
+}
+
+button[type="submit"] {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #777;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+}
+
+.sign-in-link {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.sign-in-link:hover {
+  text-decoration: underline;
+}
