@@ -6,9 +6,9 @@
 
 body {
   font-family: "Georgia", serif;
-  height: 100vh;
+  min-height: 100vh; /* Ganti height menjadi min-height */
   color: white;
-  overflow: hidden;
+  overflow: auto; /* Pastikan konten dapat di-scroll */
 }
 
 .navbar {
@@ -124,4 +124,191 @@ body {
   background-color: #ddd;
   color: black;
   transform: scale(1.05);
+}
+
+.categories {
+  padding: 50px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #333;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Membesarkan card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan lebih besar saat hover */
+  border-bottom: 2px solid #ddd;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #333;
+}
+
+.gifts {
+  padding: 50px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.gifts .section-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.gifts .cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.gifts .card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex: 1 1 calc(48% - 20px); /* Lebih besar dari kategori, space kecil di tengah */
+  max-width: calc(48% - 20px);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gifts .card:hover {
+  transform: scale(1.05); /* Membesarkan card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan lebih besar saat hover */
+  border-bottom: 2px solid #ddd;
+}
+
+.gifts .card img {
+  width: 100%;
+  height: auto;
+}
+
+.gifts .card h3 {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #333;
+}
+
+.featured {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-wrapper {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+.featured-card {
+  flex: 1;
+  max-width: 45%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #ddd;
+}
+
+.featured-card img {
+  width: 100%;
+  height: auto;
+}
+
+.featured-card h3 {
+  font-size: 24px;
+  margin: 20px 0;
+  color: #333;
+}
+
+.featured-content {
+  flex: 1;
+  max-width: 55%;
+}
+
+.featured-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.featured-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .featured-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featured-card,
+  .featured-content {
+    max-width: 100%;
+  }
 }
