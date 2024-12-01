@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", serif;
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 60px;
+  z-index: 10;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-btn {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.nav-btn:hover {
+  color: #ddd;
+}
+
+.menu-wrapper .menu-btn {
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  z-index: 20;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+}
+
+.dropdown-menu a:hover {
+  color: #ddd;
+}
+
+.hero {
+  height: 100vh;
+  background: url("https://media.gucci.com/dynamic/b3c8/mI3cdghMzKBqD6aOR64JXR99cMpe8RzN1q18xtq11Fm9HmwR0HngTJkH9khu1RLOpMNAGZw1ZSpeJWXm5GD+PLem1lZg4sYxSTkAoDpTrIHPkpSbX0d2QWHg8i46k0VLzYkdhkjokyfmudLHDYbcIKZTQGkwKzA4Jt0afUU_jpAoYGvITslibsohBqcuD+wSopoBzqkMJcSBu5AWLBmMb+Zyzszb3YMP7V4vjn7ilfxtKMRl3KYy9IAHPVnqbRn8X+kJsMbcl2W55sncauPebqp0wjfvNuKQKlrQT2LD9RfzBqXT4pzkEIL3QN+AtfUJBVNeUSBWsv9FQVu6LVsF8GFFxfSwVu1a7aiI7isZOu7R95Mj5Q+B2Q+DzJS0s9GC/HP_Hero-FullBleed-Desktop_Gucci-GiftGiving-Nov24-ASE-240720-0036-6378_001_Default.png")
+    center/cover no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.hero-title {
+  font-size: 190px;
+  font-weight: bold;
+  font-family: "Bodoni Moda", serif;
+  margin-bottom: 0;
+}
+
+.hero-content-wrapper {
+  margin-top: auto;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Times New Roman", serif;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  padding: 10px 30px;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 50px;
+  border-radius: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.cta-btn:hover {
+  background-color: #ddd;
+  color: black;
+  transform: scale(1.05);
+}
