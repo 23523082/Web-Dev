@@ -94,7 +94,8 @@ form {
   width: 300px;
 }
 
-input[type="email"] {
+input[type="email"],
+input[type="password"] {
   padding: 12px;
   font-size: 16px;
   border: 2px solid #555;
@@ -104,7 +105,8 @@ input[type="email"] {
   transition: border-color 0.3s ease;
 }
 
-input[type="email"]:focus {
+input[type="email"]:focus,
+input[type="password"]:focus {
   border-color: #999;
   outline: none;
 }
@@ -149,4 +151,11 @@ button[type="submit"]:hover {
 
 .sign-in-link:hover {
   text-decoration: underline;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
 }

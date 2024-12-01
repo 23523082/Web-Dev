@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Baju Bekas</title>
 
-    <!-- Link Font Awesome untuk ikon -->
+    <!-- Link Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- Link ke file CSS -->
+    <!-- Link to your CSS -->
     <link rel="stylesheet" href="login.css" />
   </head>
   <body>
@@ -21,14 +21,23 @@
 
     <div class="divider">OR</div>
 
-    <form>
-      <input type="email" placeholder="Enter your email" required />
-      <button type="submit">Continue</button>
+    <!-- Login Form -->
+    <form action="loginscript.php" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <input type="password" name="password" placeholder="Enter your password" required />
+      <button type="submit">Login</button>
     </form>
+
+    <!-- Error message display -->
+    <?php if (isset($error_message)) { ?>
+    <div class="error-message">
+      <?php echo $error_message; ?>
+    </div>
+    <?php } ?>
 
     <div class="footer">
       Don't have an account?
-      <a href="signIn.html" class="sign-in-link">Sign In</a>
+      <a href="index.php" class="sign-in-link">Sign Up</a>
     </div>
   </body>
 </html>
