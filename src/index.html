@@ -11,8 +11,10 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar">
-      <div class="navbar-buttons">
+      <div class="navbar-left">
         <a href="aboutUs.html" class="nav-btn">About Us</a>
+      </div>
+      <div class="navbar-right">
         <a href="#" class="nav-btn">Shop</a>
         <a href="#" class="nav-btn">Profile</a>
         <a href="#" class="nav-btn">Search</a>
@@ -35,14 +37,13 @@
       <h1 class="hero-title">BAJU BEKAS</h1>
       <div class="hero-content-wrapper">
         <p class="hero-subtitle">BAJU BEKAS by Three Musketeers</p>
-        <button class="cta-btn">Discover More</button>
+        <button class="cta-btn" onclick="scrollToCategories()">Discover More</button>
       </div>
     </div>
 
     <script>
-      function toggleMenu() {
-        const dropdown = document.getElementById("dropdown");
-        dropdown.classList.toggle("show");
+      function scrollToCategories() {
+        document.querySelector(".categories").scrollIntoView({ behavior: "smooth" });
       }
     </script>
     <!-- Hero Section -->
@@ -166,5 +167,27 @@
       </div>
     </footer>
     <!-- Footer -->
+
+    <!-- JavaScript -->
+    <script>
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+          navbar.classList.remove("transparent");
+        } else {
+          navbar.classList.remove("scrolled");
+          navbar.classList.add("transparent");
+        }
+      });
+
+      // Set initial state
+      document.addEventListener("DOMContentLoaded", function () {
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.add("transparent");
+      });
+    </script>
+
+    <!-- JavaScript -->
   </body>
 </html>
