@@ -1,0 +1,209 @@
+body {
+  font-family: "Georgia", serif;
+  min-height: 100vh;
+  color: white;
+  overflow: auto;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10; /* Tambahan untuk memastikan navbar di atas */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex: 1; /* Membuat logo berada di bagian kiri */
+  text-align: center; /* Logo ditengah */
+}
+
+.logo a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex: 2;
+  justify-content: flex-end; /* Tombol tetap di sisi kanan */
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Tepat di bawah link Menu */
+  right: 0; /* Supaya sejajar dengan tombol "Menu" */
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  border-radius: 4px;
+  z-index: 999; /* Tambahan untuk memastikan dropdown terlihat */
+}
+
+.dropdown-menu li {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Tampilkan dropdown saat hover */
+}
+
+.baju-cowok {
+  padding: 2rem;
+  background-color: #f4f4f4;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 card per baris */
+  gap: 0; /* Tidak ada jarak antar-card */
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Border tipis */
+  padding: 1rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px; /* Opsional: sudut melengkung */
+}
+
+.footer {
+  background-color: #141414;
+  color: white;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.footer-logo h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: "Georgia", serif;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+.footer-column h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column a:hover {
+  color: #ddd;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-social a img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-social a {
+  display: inline-block;
+}
+
+.about-us {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.about-us-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.about-us-image img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.about-us-description {
+  max-width: 600px;
+  color: black;
+  margin-top: 80px;
+}
