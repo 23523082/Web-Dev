@@ -12,6 +12,44 @@ body {
 }
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar-left {
+  flex: 1;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn {
+  margin-right: 20px;
+}
+
+.menu-wrapper {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menu-btn:hover + .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+
+.navbar {
   position: absolute;
   top: 0;
   left: 0;
@@ -24,7 +62,12 @@ body {
 
 .navbar-buttons {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.right-buttons {
+  display: flex;
 }
 
 .nav-btn {
@@ -35,6 +78,7 @@ body {
   background: none;
   border: none;
   padding: 0;
+  margin-right: 20px;
 }
 
 .nav-btn:hover {
@@ -46,19 +90,20 @@ body {
   cursor: pointer;
   font-size: 18px;
   color: white;
+  position: relative;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 40px;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  z-index: 20;
+  top: 100%;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.dropdown-menu.show {
+.menu-btn:hover + .dropdown-menu,
+.dropdown-menu:hover {
   display: block;
 }
 
@@ -384,4 +429,21 @@ body {
 
 .footer-social a {
   display: inline-block;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.navbar.transparent {
+  background-color: transparent;
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.9); /* Warna solid */
 }
