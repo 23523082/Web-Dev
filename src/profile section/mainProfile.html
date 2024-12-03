@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="mainProfile.css" />
+    <title>Baju Bekas - Profile</title>
+  </head>
+  <body>
+    <!-- header section -->
+    <header>
+      <nav class="navbar">
+        <div class="navbar-container">
+          <!-- Shop Icon -->
+          <div class="shop-icon">
+            <img src="img_profile/shop_icon.png" alt="Shop Icon" />
+          </div>
+          <!-- Logo -->
+          <div class="logo">
+            <img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" />
+          </div>
+          <!-- Navigation Icons -->
+          <div class="nav-icons">
+            <div class="search-icon">
+              <img src="img_profile/icon_search.png" alt="Search Icon" />
+            </div>
+            <div class="profile-icon">
+              <img src="img_profile/icon_profile.png" alt="Profile Icon" />
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+              <img src="img_profile/icon_menu.png" alt="Menu Icon" />
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="user-header">
+      <div class="user-background">
+        <div class="overlay"></div>
+        <img
+          src="img_profile/WhatsApp Image 2024-11-22 at 04.26.10.jpeg"
+          alt="User Background"
+        />
+      </div>
+      <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
+    </div>
+
+    <!-- Main Section -->
+    <main class="main-section">
+      <div class="main-content">
+        <!-- Wishlist Section -->
+        <div
+          class="card"
+          id="wishlist"
+          onclick="window.location.href='#wishlist-page';"
+        >
+          <img src="img_profile/model_pria.jpg" alt="Wishlist" />
+          <button class="card-button">WISHLIST</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Order History Section -->
+        <div
+          class="card"
+          id="order-history"
+          onclick="window.location.href='#order-history-page';"
+        >
+          <img src="img_profile/model_wanita.jpg" alt="Order History" />
+          <button class="card-button">ORDER HISTORY</button>
+        </div>
+      </div>
+
+      <!-- More Personal Details Button -->
+      <div class="more-details" id="moreDetailsContainer">
+        <button
+          class="more-details-button"
+          id="moreDetailsButton"
+          onclick="toggleDropdown()"
+        >
+          More Personal Details
+          <img
+            src="img_profile/icon_dropdown.png"
+            alt="Dropdown Icon"
+            class="dropdown-icon"
+          />
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <button
+            class="dropdown-item"
+            onclick="window.location.href='#personal-details';"
+          >
+            Personal Details
+            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+          </button>
+          <button
+            class="dropdown-item"
+            onclick="window.location.href='#user-details';"
+          >
+            User Details
+            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+          </button>
+          <button
+            class="dropdown-item"
+            onclick="window.location.href='#addresses';"
+          >
+            Addresses
+            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+          </button>
+          <button
+            class="dropdown-item"
+            onclick="window.location.href='#recommendation';"
+          >
+            Recommendation
+            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <!-- Logo Section -->
+          <div class="footer-logo">
+            <img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" />
+          </div>
+          <!-- Social Media Icons -->
+          <div class="social-icons">
+            <img src="img_profile/instagram_icon.png" alt="Instagram Icon" />
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Products</h4>
+            <ul>
+              <li>Sand Stone</li>
+              <li>Stone</li>
+              <li>Cement</li>
+              <li>Soft Stone</li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li>Measurement Service</li>
+              <li>Product Advice</li>
+              <li>Interior Design</li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contact Information</h4>
+            <address>
+              3181 Al Imam Saud Ibn Abdul Aziz Branch Rd,<br />
+              An Nuzhah, Riyadh 12474,<br />
+              Saudi Arabia
+            </address>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">Copyright © 2022 | All Rights Reserved.</p>
+        <p class="footer-created">Created with love by Five_Mushketeer</p>
+      </div>
+    </footer>
+
+    <script src="mainProfile.js"></script>
+  </body>
+</html>

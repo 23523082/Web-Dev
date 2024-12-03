@@ -1,0 +1,582 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 0; /* Remove padding */
+  height: 72px; /* Set navbar height to 72px */
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%; /* Make navbar-container height same as navbar */
+}
+
+.shop-icon,
+.logo,
+.nav-icons div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.shop-icon {
+  flex: 1; /* Ensure shop icon takes up equal space */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  flex: 1; /* Ensure icons take up equal space on the right */
+  justify-content: flex-end; /* Align icons to the right */
+}
+
+.logo {
+  flex: 2; /* Make logo take up twice the space for centering */
+  display: flex;
+  justify-content: center; /* Center the logo horizontally */
+}
+
+.shop-icon img,
+.nav-icons img {
+  width: 42px; /* Set width to 42px */
+  height: 42px; /* Set height to 42px */
+  cursor: pointer;
+}
+
+.logo img {
+  width: 240px; /* Adjust logo width */
+}
+
+.user-header {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  margin-top: -5px;
+}
+
+.user-background {
+  position: relative;
+  width: 100%;
+  height: 370px; /* Set height as per the desired crop */
+  overflow: hidden; /* Hide parts of image that are not within the container */
+}
+
+.user-background-inner {
+  position: absolute;
+  width: 100%;
+  height: calc(
+    100% + 100px
+  ); /* Increase or decrease this value to crop more or less from the top and bottom */
+  top: -50px; /* Adjust this value to move the image up or down for top cropping */
+  overflow: hidden; /* Make sure extra parts are hidden */
+}
+
+.user-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 16%; /* Adjusted object position to match the reference image */
+  /* To adjust the cropping, modify the value of 'object-position' percentage here */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* Adding dimming effect similar to reference */
+}
+
+.user-name {
+  position: absolute;
+  bottom: 0px; /* Adjusted positioning for better visibility */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px; /* Adjusted font size for single line text */
+  font-family: "Lato", sans-serif; /* Changed font to Lato for a thinner, elegant style */
+  font-weight: 300; /* Use lighter font weight for a thinner look */
+  letter-spacing: 2px;
+  white-space: nowrap; /* Ensure the text stays in one line */
+}
+
+/* Main Section Styling */
+.main-section {
+  text-align: center;
+  margin-top: 40px;
+  font-family: "Lato", sans-serif;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Align items to the center vertically */
+  gap: 40px;
+  margin: 40px 0;
+}
+
+.card {
+  position: relative;
+  width: 500px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* General transition for all properties */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slight zoom-in effect on hover */
+}
+
+.card img {
+  width: 500px;
+  height: 700px;
+  object-fit: cover;
+  object-position: top;
+  transition: all 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+.card-button {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  background-color: transparent;
+  border: 2px solid #333;
+  padding: 10px 20px;
+  width: 500px; /* Match button width to image width */
+  transition: all 0.3s ease;
+  pointer-events: none; /* Disable pointer events to ensure the card click works */
+}
+
+.card:hover .card-button {
+  background-color: #333;
+  color: #fff;
+}
+
+.divider {
+  height: 350px; /* Set fixed height of the divider */
+  width: 1px;
+  background-color: #000;
+  align-self: center; /* Center the divider vertically between the two cards */
+}
+
+/* More Personal Details Button Styling */
+.more-details {
+  margin-top: 60px;
+  margin-bottom: 60px; /* Menambahkan jarak 20px dengan footer */
+  text-align: center; /* Awalnya di tengah */
+  width: 1100px; /* Lebar sesuai dengan total lebar gambar model pria dan wanita */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.more-details-button {
+  position: relative;
+  font-size: 32px; /* Ukuran font awal */
+  font-weight: 200; /* Extra light untuk Poppins */
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 45%; /* Pastikan tombol memenuhi lebar container */
+}
+
+.more-details-button::before,
+.more-details-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: calc(100% - 20px); /* Awalnya sesuai dengan lebar teks */
+  background: #000;
+  transition: width 0.4s ease;
+}
+
+.more-details-button::before {
+  top: 0; /* Garis atas */
+}
+
+.more-details-button::after {
+  bottom: 0; /* Garis bawah */
+}
+
+.more-details-button:hover::before,
+.more-details-button:hover::after {
+  width: calc(100% + 100px); /* Tambah lebar pada hover */
+}
+
+.more-details-button:hover {
+  color: #555; /* Ubah warna teks saat hover */
+  font-size: 42px; /* Perbesar ukuran font saat hover */
+}
+
+/* Styling when the button is in open state */
+.more-details-button.open {
+  text-align: left; /* Ubah teks menjadi rata kiri */
+  font-size: 42px; /* Ukuran font lebih besar */
+  color: #333;
+  margin-left: 0; /* Hilangkan margin kiri untuk pindah ke posisi kiri */
+  margin-right: auto;
+  padding-left: 0; /* Ratakan dengan elemen di atas */
+  width: 100%; /* Lebar penuh sesuai elemen di atas */
+}
+
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  text-align: left; /* Rata kiri untuk konten dropdown */
+  width: 100%; /* Lebar penuh sesuai elemen di atas */
+  margin-left: auto;
+  margin-right: auto; /* Posisikan dropdown di tengah */
+  padding-left: 0; /* Ratakan dengan elemen di atas */
+}
+
+/* Dropdown Icon Styling */
+.dropdown-icon {
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+  display: none; /* Awalnya tersembunyi */
+}
+
+/* Menampilkan ikon dropdown saat tombol dibuka */
+.more-details-button.open .dropdown-icon {
+  display: inline-block; /* Munculkan ikon dropdown */
+}
+
+/* Menu dropdown ketika terbuka */
+.more-details.open {
+  text-align: left; /* Ratakan lebih ke kiri saat terbuka */
+  width: 100%; /* Lebar tetap sama dengan elemen di atasnya */
+}
+
+/* Elemen dalam dropdown */
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 300;
+  color: #333;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  color: #555;
+}
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Footer Styling */
+.footer-section {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* White text color */
+  padding: 40px 0; /* Spacing for top and bottom */
+}
+
+.footer-container {
+  max-width: 1200px; /* Maximum width for the footer container */
+  margin: 0 auto; /* Center the container */
+  display: flex;
+  justify-content: space-between; /* Spread out content evenly */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  align-items: center; /* Align all elements to center at the same Y position */
+}
+
+.footer-brand {
+  flex: 1;
+  text-align: left; /* Align to the left */
+  display: flex;
+  flex-direction: column; /* Stack logo and social icons vertically */
+  justify-content: center; /* Align vertically within footer container */
+}
+
+.footer-logo img {
+  width: 300px; /* Adjust logo size */
+  margin-bottom: 0px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 75px; /* Space from logo */
+  margin-bottom: 0; /* Set margin-bottom to 0 */
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #bbb; /* Light gray for copyright text */
+  margin-bottom: 15px;
+}
+
+.footer-links {
+  flex: 2;
+  display: flex;
+  justify-content: space-between; /* Space evenly across columns */
+  gap: 40px; /* Gap between link columns */
+}
+
+.footer-column {
+  flex: 1;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-column address {
+  font-style: normal;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Footer Bottom Styling */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0 auto; /* Center the footer bottom */
+  display: flex;
+  justify-content: space-between; /* Align copyright and created by in a line */
+  align-items: center; /* Align items vertically */
+  padding: 0 20px; /* Add padding for horizontal space */
+}
+
+.footer-copyright,
+.footer-created {
+  font-size: 14px;
+  color: #bbb; /* Light gray for the text */
+  margin: 0; /* Remove default margin */
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    text-align: center;
+    align-items: center; /* Align all items to center */
+  }
+  .footer-links {
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer-bottom {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center; /* Center text on smaller screens */
+    margin-top: 20px;
+  }
+}
+
+/* Responsive Styling */
+
+/* General settings for smaller devices (less than 768px) */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px; /* Decrease font size for better readability */
+  }
+
+  /* Navbar Section */
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo img {
+    width: 180px; /* Reduce logo width */
+  }
+
+  .nav-icons {
+    gap: 10px; /* Reduce gap between icons */
+  }
+
+  /* User Header Section */
+  .user-background {
+    height: 200px; /* Reduce header height */
+  }
+
+  .user-name {
+    font-size: 28px; /* Reduce font size for better fit */
+  }
+
+  /* Main Section */
+  .main-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    width: 90%; /* Adjust card width to take the available screen space */
+  }
+
+  .card img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .card-button {
+    width: 100%; /* Match button width to card width */
+  }
+
+  .divider {
+    display: none; /* Hide divider for small screens */
+  }
+
+  /* More Personal Details Section */
+  .more-details-button {
+    font-size: 24px; /* Adjust font size */
+    width: 90%; /* Reduce button width */
+  }
+
+  .dropdown-menu {
+    width: 90%; /* Adjust dropdown width to fit mobile screen */
+  }
+
+  /* Footer Section */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px; /* Space between each column */
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+/* Medium-sized devices (tablets, between 768px and 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbar-container {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .logo img {
+    width: 200px; /* Adjust logo size */
+  }
+
+  .user-background {
+    height: 280px; /* Moderate height for header section */
+  }
+
+  .user-name {
+    font-size: 36px; /* Moderate font size */
+  }
+
+  .main-content {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .card {
+    width: 45%; /* Adjust card width to fit two columns */
+  }
+
+  .card-button {
+    width: 100%;
+  }
+
+  /* More Personal Details Button */
+  .more-details-button {
+    width: 60%;
+  }
+
+  .dropdown-menu {
+    width: 60%;
+  }
+
+  /* Footer Section */
+  .footer-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-column {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Larger devices (desktop, more than 1024px) */
+@media screen and (min-width: 1024px) {
+  .navbar-container {
+    width: 90%;
+    max-width: 1200px;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+  }
+
+  .footer-links {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
