@@ -194,7 +194,7 @@ body {
 .produk-container {
   display: flex;
   justify-content: space-between;
-  width: 80%; /* Atur lebar sesuai kebutuhan */
+  width: 80%;
   background-color: #fff;
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -202,7 +202,7 @@ body {
 }
 
 .card {
-  flex: 1; /* Bagian kiri (gambar produk) akan mengambil 1 bagian dari total lebar */
+  flex: 1; /* Bagian kiri (gambar produk) */
   text-align: center;
 }
 
@@ -213,8 +213,12 @@ body {
 }
 
 .produk-info {
-  flex: 1.5; /* Bagian kanan (deskripsi dan button) mengambil lebih banyak ruang */
+  flex: 1.5; /* Bagian kanan lebih besar */
   padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
 }
 
 .produk-info h2 {
@@ -225,19 +229,32 @@ body {
 
 .produk-info .deskripsi {
   font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.detail-produk {
+  list-style: none;
+  padding-left: 0;
   margin-bottom: 1.5rem;
 }
 
+.detail-produk li {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
 .produk-info .harga {
-  font-size: 1.2rem;
-  color: #007bff;
+  font-size: 1.5rem;
+  color: #0000001f;
+  font-weight: bold;
   margin-bottom: 2rem;
 }
 
 .btn-purchase {
   display: inline-block;
   padding: 1rem 2rem;
-  background-color: #007bff;
+  background-color: #1c2833;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -247,5 +264,5 @@ body {
 }
 
 .btn-purchase:hover {
-  background-color: #0056b3;
+  background-color: #566573;
 }
