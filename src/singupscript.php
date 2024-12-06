@@ -13,19 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect form data
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $firstName = $_POST['first-name'];
-    $lastName = $_POST['last-name'];
-    $dob = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'];
+    $FirstName = $_POST['first-name'];
+    $LastName = $_POST['last-name'];
+    $DOB = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'];
 
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Debugging: Check if form data is received
-    echo "Received data: Email: $email, Password: $hashedPassword, Name: $firstName $lastName, DOB: $dob<br>";
+    echo "Received data: Email: $email, Password: $hashedPassword, Name: $FirstName, $LastName, DOB: $dob<br>";
 
     try {
         // Create a connection
-        $conn = new mysqli($servername, $username, null, $dbname);
+        $conn = new mysqli($servername, $username,  null,$dbname);
 
         // Check connection
         if ($conn->connect_error) {
@@ -39,12 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare the SQL statement
         if ($stmt = $conn->prepare($sql)) {
             // Bind the form data to the SQL statement
-            $stmt->bind_param("sssss", $email, $hashedPassword, $firstName, $lastName, $dob);
+            $stmt->bind_param("sssss", $email, $hashedPassword, $FirstName, $LastName, $DOB);
 
             // Execute the statement
             if ($stmt->execute()) {
                 // Success message
-                echo "<script>alert('Sign-up successful! Welcome, $firstName!');</script>";
+                echo "<script>alert('Sign-up successful! Welcome, $FirstName!');</script>";
             } else {
                 // Output SQL error if execution fails
                 echo "Error executing query: " . $stmt->error;
