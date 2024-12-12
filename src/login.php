@@ -1,3 +1,9 @@
+<? session_start();
+
+
+require 'dbconnections.php' ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,12 +34,7 @@
       <button type="submit">Login</button>
     </form>
 
-    <!-- Error message display -->
-    <?php if (isset($error_message)) { ?>
-    <div class="error-message">
-      <?php echo $error_message; ?>
-    </div>
-    <?php } ?>
+
 
     <div class="footer">
       Don't have an account?

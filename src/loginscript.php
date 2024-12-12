@@ -1,47 +1,48 @@
 <?php
-// Start session
 session_start();
 
-// Include the DB connection file
 require 'dbconnections.php';
 
-// Initialize error message variable
-$error_message = '';
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get email and password from POST data
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
-    // Prepare SQL query to check if the email exists in the database
-    $sql = "SELECT * FROM user WHERE email = ?";
-    $stmt = $conn->prepare($sql);
+    // Prepare and execute the query using parameterized queries
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // If email exists, verify the password
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
+
+       
         if (password_verify($password, $user['password'])) {
-            // Password is correct, redirect to a different page (e.g., dashboard)
-            $_SESSION['user_id'] = $user['id']; // Store user info in session
-            header("Location: main.php");
-            exit(); // Make sure to stop execution after redirection
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['type'] = $user['type'];
+            $_SESSION['FirstName'] = $user['firstName'];
+            $_SESSION['LastName'] = $user['lastName'];
+
+            if ($user['type'] === 'admin') {
+                header("Location: admin.php");
+            } else {
+                header("Location: index.php");
+            }
+            exit;
         } else {
-            // Password is incorrect
-            $error_message = "Incorrect password.";
+            // Handle incorrect password
+            echo "Invalid password";
         }
     } else {
-        // Email not found
-        $error_message = "No account found with that email address.";
+        // Handle user not found
+        echo "User not found";
     }
 
-    // Close the statement
     $stmt->close();
 }
-
-// Close the database connection
-$conn->close();
 ?>

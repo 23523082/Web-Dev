@@ -1,10 +1,19 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+  header("Location: login.php");
+  exit;
+}
+require 'dbconnections.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baju Bekas</title>
-
     
     <link rel="stylesheet" href="indexstyle.css" />
   </head>
@@ -18,6 +27,8 @@
         <a href="#" class="nav-btn">Shop</a>
         <a href="profile section/mainProfile.html" class="nav-btn">Profile</a>
         <a href="#" class="nav-btn">Search</a>
+        <a href="addcatalog.html" class="nav-btn">Add</a>
+        <a href ="Logout.php" class="nav-btn">Logout</a>
         <div class="menu-wrapper">
           <button class="nav-btn menu-btn" onclick="toggleMenu()">Menu</button>
           <div class="dropdown-menu" id="dropdown">
@@ -206,7 +217,9 @@
           /></a>
           <a href="#"
             ><img
-              src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png"
+              src
+
+="https://img.icons8.com/ios-filled/50/ffffff/twitter.png"
               alt="Twitter"
           /></a>
           <a href="#"
@@ -214,7 +227,9 @@
               src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"
               alt="Instagram"
           /></a>
-        </div>
+        </
+
+div>
       </div>
     </footer>
     <!-- Footer -->
@@ -229,7 +244,9 @@
         } else {
           navbar.classList.remove("scrolled");
           navbar.classList.add("transparent");
-        }
+       
+
+ }
       });
 
       // Set initial state

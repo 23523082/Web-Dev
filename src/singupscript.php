@@ -2,66 +2,77 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection parameters
-    $servername = "localhost";
-    $username = "Vibe";
-    $password = null;
-    $dbname = "bajubekas";
+require 'dbconnections.php'; // Ensure this file sets up $conn for the connection
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    echo "Form submitted.<br>";
 
     // Collect form data
-    $email = $_POST['email'];
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
-    $FirstName = $_POST['first-name'];
-    $LastName = $_POST['last-name'];
+    $FirstName = trim($_POST['first-name']);
+    $LastName = trim($_POST['last-name']);
     $DOB = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'];
+    $type = $_POST['user-type'];
 
-    // Hash the password
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    // Debugging: Check if form data is received
-    echo "Received data: Email: $email, Password: $hashedPassword, Name: $FirstName, $LastName, DOB: $dob<br>";
+    // Validate input
+    if (empty($email) || empty($password) || empty($FirstName) || empty($LastName) || empty($DOB) || empty($type)) {
+        echo "<script>alert('All fields are required. Please fill out the form completely.');</script>";
+        exit;
+    }
 
     try {
-        // Create a connection
-        $conn = new mysqli($servername, $username,  null,$dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
+        // Debugging: Confirm database connection
+        if (!$conn) {
             die("Connection failed: " . $conn->connect_error);
         }
+        echo "Database connection successful.<br>";
 
-        // SQL query to insert data into the user table
-        $sql = "INSERT INTO user (email, password, FirstName, LastName, DOB, type)
-                VALUES (?, ?, ?, ?, ?, 'customer')";
+        // Check if email exists
+        $checkEmailSQL = "SELECT email FROM users WHERE email = ?";
+        if ($checkStmt = $conn->prepare($checkEmailSQL)) {
+            echo "Email check query prepared successfully.<br>";
+            $checkStmt->bind_param("s", $email);
+            $checkStmt->execute();
+            $checkStmt->store_result();
 
-        // Prepare the SQL statement
-        if ($stmt = $conn->prepare($sql)) {
-            // Bind the form data to the SQL statement
-            $stmt->bind_param("sssss", $email, $hashedPassword, $FirstName, $LastName, $DOB);
-
-            // Execute the statement
-            if ($stmt->execute()) {
-                // Success message
-                echo "<script>alert('Sign-up successful! Welcome, $FirstName!');</script>";
-            } else {
-                // Output SQL error if execution fails
-                echo "Error executing query: " . $stmt->error;
+            if ($checkStmt->num_rows > 0) {
+                echo "<script>alert('This email is already registered.');</script>";
+                $checkStmt->close();
+                exit;
             }
-
-            // Close the statement
-            $stmt->close();
+            echo "Email is not registered. Proceeding.<br>";
+            $checkStmt->close();
         } else {
-            // Output error if prepare fails
-            echo "Error preparing query: " . $conn->error;
+            die("Error preparing email check query: " . $conn->error);
         }
 
-        // Close the connection
-        $conn->close();
+        // Hash the password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        echo "Password hashed successfully.<br>";
+
+        // Insert into database
+        $sql = "INSERT INTO users  (email, password, FirstName, LastName, DOB, type)
+                VALUES (?, ?, ?, ?, ?, ?)";
+        if ($stmt = $conn->prepare($sql)) {
+            echo "Insert query prepared successfully.<br>";
+            $stmt->bind_param("ssssss", $email, $hashedPassword, $FirstName, $LastName, $DOB, $type);
+
+            if ($stmt->execute()) {
+                echo "<script>
+                        alert('Sign-up successful! Welcome, $FirstName!');
+                        window.location.href = 'login.php'; // Redirect to home page
+                      </script>";
+                exit;
+            } else {
+                die("Error executing insert query: " . $stmt->error);
+            }
+            $stmt->close();
+        } else {
+            die("Error preparing insert query: " . $conn->error);
+        }
     } catch (Exception $e) {
-        // Display any exceptions that occur
-        echo "Error: " . $e->getMessage();
+        die("Error: " . $e->getMessage());
     }
 }
 ?>

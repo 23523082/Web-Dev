@@ -6,9 +6,9 @@
 
 body {
   font-family: "Georgia", serif;
-  min-height: 100vh; /* Ganti height menjadi min-height */
+  min-height: 100vh;
   color: white;
-  overflow: auto; /* Pastikan konten dapat di-scroll */
+  overflow: auto; 
 }
 
 .navbar {
