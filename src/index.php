@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
-  header("Location: login.php");
+  header("Location: account-section/login.php");
   exit;
 }
 require 'dbconnections.php';
@@ -14,13 +14,8 @@ require 'dbconnections.php';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baju Bekas</title>
-<<<<<<< HEAD:src/index.php
-    
-    <link rel="stylesheet" href="indexstyle.css" />
-=======
 
     <link rel="stylesheet" href="styles.css" />
->>>>>>> 69feacf64969d359aa334e6945d7e497ef31fc2f:src/index.html
   </head>
   <body>
     <!-- Navbar -->

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require 'dbconnections.php';
+require '../dbconnections.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['LastName'] = $user['lastName'];
 
             if ($user['type'] === 'admin') {
-                header("Location: admin.php");
+                header("Location: ../admin.php");
             } else {
-                header("Location: index.php");
+                header("Location: ../index.php");
             }
             exit;
         } else {
