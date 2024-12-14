@@ -1,0 +1,705 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 0; /* Remove padding */
+  height: 72px; /* Set navbar height to 72px */
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%; /* Make navbar-container height same as navbar */
+}
+
+.shop-icon,
+.logo,
+.nav-icons div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.shop-icon {
+  flex: 1; /* Ensure shop icon takes up equal space */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  flex: 1; /* Ensure icons take up equal space on the right */
+  justify-content: flex-end; /* Align icons to the right */
+}
+
+.logo {
+  flex: 2; /* Make logo take up twice the space for centering */
+  display: flex;
+  justify-content: center; /* Center the logo horizontally */
+}
+
+.shop-icon img,
+.nav-icons img {
+  width: 42px; /* Set width to 42px */
+  height: 42px; /* Set height to 42px */
+  cursor: pointer;
+}
+
+.logo img {
+  width: 240px; /* Adjust logo width */
+}
+
+/* Menu Bar Styling */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px; /* Set menu width */
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* Hide menu by default */
+}
+
+/* Close Menu Button */
+.close-menu {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Menu List Styling */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-list li {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.menu-list li:hover {
+  color: #555;
+}
+
+/* Show Menu Bar */
+.menu-bar.show {
+  transform: translateX(0); /* Slide in when shown */
+}
+
+/* Hide Menu Bar */
+.menu-bar.hidden {
+  transform: translateX(100%); /* Slide out when hidden */
+}
+
+/* Overlay Styling */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+  backdrop-filter: blur(10px); /* Add blur effect */
+  z-index: 999; /* Place above content but below the menu */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* Show Overlay */
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction when hidden */
+}
+
+.user-header {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  margin-top: -5px;
+}
+
+.user-background {
+  position: relative;
+  width: 100%;
+  height: 370px; /* Set height as per the desired crop */
+  overflow: hidden; /* Hide parts of image that are not within the container */
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.5);
+}
+
+.user-background-inner {
+  position: absolute;
+  width: 100%;
+  height: calc(
+    100% + 100px
+  ); /* Increase or decrease this value to crop more or less from the top and bottom */
+  top: -50px; /* Adjust this value to move the image up or down for top cropping */
+  overflow: hidden; /* Make sure extra parts are hidden */
+}
+
+.user-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 16%; /* Adjusted object position to match the reference image */
+  /* To adjust the cropping, modify the value of 'object-position' percentage here */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* Adding dimming effect similar to reference */
+}
+
+.user-name {
+  position: absolute;
+  bottom: 0px; /* Adjusted positioning for better visibility */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px; /* Adjusted font size for single line text */
+  font-family: "Lato", sans-serif; /* Changed font to Lato for a thinner, elegant style */
+  font-weight: 300; /* Use lighter font weight for a thinner look */
+  letter-spacing: 2px;
+  white-space: nowrap; /* Ensure the text stays in one line */
+}
+
+/* Main Section */
+.sidebar {
+  flex: 1;
+  padding: 10px;
+  margin-top: 6%;
+  background: none;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.sidebar-menu li a {
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #333;
+  display: block;
+  padding: 5px 36px;
+}
+
+.sidebar-menu li a::after {
+  content: "";
+  display: block;
+  width: 250px;
+  height: 1px;
+  background-color: #333;
+  margin-top: 5px;
+  transition: width 0.3s ease;
+}
+
+.sidebar-menu li a.active::after,
+.sidebar-menu li a:hover::after {
+  width: 200px;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-menu li a.active {
+  font-weight: 400;
+  color: #000;
+}
+
+/* Font Style */
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Main Section Layout */
+.Addresses-section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+/* Title Section */
+.title-section {
+  text-align: right; /* Align text to the right */
+  margin-bottom: 20px;
+  padding-right: 20px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-family: "Lato", sans-serif;
+  color: #000000;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.Addresses-contents {
+  background: #fff;
+  padding: 40px; /* Tambahkan padding */
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow lembut */
+  width: 89%; /* Atur lebar menjadi 80% dari container */
+  max-width: 1000px; /* Batas maksimum agar tidak terlalu lebar */
+  margin: 0 auto; /* Pusatkan konten */
+  border: 1px solid #000;
+  margin-bottom: 50px;
+}
+
+.form-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 30px; /* Spasi antar kelompok form */
+}
+
+.form-title label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid #000;
+  height: 50px;
+  gap: 10px;
+  width: 100%; /* Sama dengan .form-row */
+  box-sizing: border-box; /* Pastikan padding tidak menambah width */
+}
+
+.title-container select {
+  flex: 1;
+  border: none;
+  font-size: 22px;
+  padding-left: 10px;
+  font-family: "Lato", sans-serif;
+  outline: none;
+  background: none;
+  z-index: 1; /* Supaya dropdown di atas readonly text */
+  font-weight: 1000;
+}
+
+.title-container .readonly-name {
+  position: absolute;
+  left: 65px; /* Geser lebih ke kanan */
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  color: #333;
+  pointer-events: none; /* Supaya teks tidak bisa diklik */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 0; /* Tetap di bawah dropdown */
+}
+
+.title-container:hover .readonly-name {
+  color: #666; /* Hover effect jika diperlukan */
+}
+
+.input-container input[readonly] {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: not-allowed;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.input-container input,
+.input-container select {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px; /* Ukuran font lebih besar */
+  border: 1px solid #000; /* Border hitam 1px */
+  outline: none;
+}
+
+.form-name {
+  margin-bottom: 30px; /* Spasi antar kelompok form */
+}
+
+.form-name label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.form-row {
+  display: flex; /* Gunakan flexbox untuk sejajarkan elemen */
+  gap: 40px; /* Jarak antar elemen */
+  width: 100%; /* Sesuaikan dengan lebar parent container */
+  box-sizing: border-box; /* Pastikan padding masuk ke total width */
+}
+
+.form-row .form-name {
+  flex: 1; /* Membuat elemen berbagi lebar secara proporsional */
+}
+
+.form-row input {
+  width: 100%; /* Lebar penuh untuk form */
+  padding: 16px; /* Padding yang konsisten */
+  font-size: 20px;
+  border: 1px solid #000;
+  outline: none;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+.form-row select {
+  width: 100%; /* Lebar penuh untuk form */
+  padding: 16px; /* Padding yang konsisten */
+  font-size: 20px;
+  border: 1px solid #000;
+  outline: none;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+.form-country {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 30px; /* Spasi antar kelompok form */
+}
+
+.form-country label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.form-country input {
+  width: 100%; /* Lebar penuh untuk form */
+  padding: 16px; /* Padding yang konsisten */
+  font-size: 20px;
+  border: 1px solid #000;
+  outline: none;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+.form-country select {
+  width: 100%; /* Lebar penuh untuk form */
+  padding: 16px; /* Padding yang konsisten */
+  font-size: 20px;
+  border: 1px solid #000;
+  outline: none;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+.form-prefix {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 30px; /* Spasi antar kelompok form */
+}
+
+/* Form Prefix and Number Styling */
+.form-prefix {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara elemen prefix dan number */
+  width: 100%; /* Sesuaikan lebar sesuai parent */
+  box-sizing: border-box;
+}
+
+.prefix-country,
+.form-number {
+  flex: none; /* Hapus pembagian lebar otomatis */
+}
+
+.prefix-country {
+  width: 150px; /* Tambahkan width untuk memastikan */
+  max-width: 150px; /* Tetap batasi lebar maksimal */
+  flex-shrink: 0; /* Hindari menyusut */
+}
+
+.form-number {
+  flex: 1; /* Sisa ruang diberikan ke elemen form-number */
+}
+
+.prefix-country select,
+.form-number input {
+  width: 100%; /* Lebar penuh untuk elemen */
+  height: 50px; /* Tinggi elemen sesuai dengan referensi */
+  padding: 10px; /* Padding untuk ruang dalam */
+  font-size: 16px; /* Ukuran font */
+  font-family: "Lato", sans-serif; /* Konsistensi font */
+  border: 1px solid #000; /* Border hitam */
+  outline: none; /* Hapus garis fokus default */
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+  margin-top: 8px; /* Jarak atas agar sesuai desain */
+  background-color: #fff; /* Latar belakang putih */
+}
+
+.prefix-country select {
+  appearance: none; /* Hilangkan panah dropdown default */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("img_profile/icon_dropdown.png") no-repeat right 10px center; /* Tambahkan ikon dropdown */
+  background-size: 16px 16px; /* Sesuaikan ukuran ikon */
+}
+
+.prefix-country select::-ms-expand {
+  display: none; /* Hilangkan panah di browser IE */
+}
+
+.prefix-country label,
+.form-number label {
+  font-size: 14px; /* Ukuran teks label */
+  font-weight: bold; /* Tebal teks label */
+  color: #333; /* Warna teks label */
+  margin-bottom: 8px; /* Jarak antara label dan input */
+  display: block; /* Buat label dalam baris baru */
+}
+
+.form-address {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 30px; /* Spasi antar kelompok form */
+}
+
+.form-address label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.form-address textarea {
+  width: 100%; /* Lebar penuh untuk form */
+  padding: 16px; /* Padding yang konsisten */
+  font-size: 16px;
+  border: 1px solid #000;
+  outline: none;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+  resize: vertical; /* Biarkan textarea dapat diresize secara vertikal */
+}
+
+.form-address select {
+  width: 100%; /* Lebar penuh untuk form */
+  padding: 16px; /* Padding yang konsisten */
+  font-size: 20px;
+  border: 1px solid #000;
+  outline: none;
+  box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+.save-button {
+  display: block;
+  width: 100%; /* Lebar tombol mengikuti konten */
+  padding: 10px; /* Tambahkan padding pada tombol */
+  font-size: 28px; /* Perbesar ukuran teks tombol */
+  font-weight: 600;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Perbesar shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 5px;
+}
+
+.save-button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+/* Footer Section */
+.footer-section {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-brand {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-logo img {
+  width: 300px;
+  margin-bottom: 0px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 75px;
+  margin-bottom: 0;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 15px;
+}
+
+.footer-links {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column {
+  flex: 1;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-column address {
+  font-style: normal;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.footer-copyright,
+.footer-created {
+  font-size: 14px;
+  color: #bbb;
+  margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .personal-details-form {
+    max-width: 90%;
+  }
+
+  .form-row {
+    flex-direction: column; /* Elemen sejajar secara vertikal pada layar kecil */
+  }
+}

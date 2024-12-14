@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="mainProfile.css" />
+    <link rel="stylesheet" href="wishlistProfile.css" />
     <title>Baju Bekas - Profile</title>
   </head>
   <body>
@@ -19,7 +19,7 @@
           </div>
           <!-- Logo -->
           <div class="logo">
-            <a href="../index.php"
+            <a href="../index.html"
               ><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo"
             /></a>
           </div>
@@ -69,80 +69,40 @@
       </div>
       <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
     </div>
-
-    <!-- Main Section -->
-    <main class="main-section">
-      <div class="main-content">
-        <!-- Wishlist Section -->
-        <div
-          class="card"
-          id="wishlist"
-          onclick="window.location.href='wishlistProfile.html';"
-        >
-          <img src="img_profile/model_pria.jpg" alt="Wishlist" />
-          <button class="card-button">WISHLIST</button>
+    <!-- main section -->
+    <main>
+      <section class="wishlist-section">
+        <aside class="sidebar">
+          <ul class="sidebar-menu">
+            <li><a href="wishlistProfile.html">Wishlist</a></li>
+            <li><a href="orderHistory.html">Order History</a></li>
+            <li><a href="personalDetails.html">Personal Details</a></li>
+            <li><a href="userDetails.html">User Details</a></li>
+            <li><a href="addresses.html">Addresses</a></li>
+            <li><a href="recommendation.html">Recommendation</a></li>
+          </ul>
+        </aside>
+        <div class="wishlist-content">
+          <!-- Title and Subtitle -->
+          <div class="title-section">
+            <h2 class="section-title">YOUR WISHLIST</h2>
+            <p class="section-subtitle">
+              MR. BUDIONO SIREGAR, HERE YOU WILL FIND YOUR PRODUCTS THAT YOU
+              SAVE IN WISHLIST.
+            </p>
+          </div>
+          <!-- Content -->
+          <div class="wishlist-card">
+            <h3 class="wishlist-empty">EMPTY WISHLIST</h3>
+            <p class="wishlist-message">
+              Mr. Budiono Siregar, right now you do not have any products in
+              your wishlist.
+            </p>
+            <button class="find-product-button">FIND PRODUCT NOW</button>
+          </div>
         </div>
-
-        <div class="divider"></div>
-
-        <!-- Order History Section -->
-        <div
-          class="card"
-          id="order-history"
-          onclick="window.location.href='orderHistory.html';"
-        >
-          <img src="img_profile/model_wanita.jpg" alt="Order History" />
-          <button class="card-button">ORDER HISTORY</button>
-        </div>
-      </div>
-
-      <!-- More Personal Details Button -->
-      <div class="more-details" id="moreDetailsContainer">
-        <button
-          class="more-details-button"
-          id="moreDetailsButton"
-          onclick="toggleDropdown()"
-        >
-          More Personal Details
-          <img
-            src="img_profile/icon_dropdown.png"
-            alt="Dropdown Icon"
-            class="dropdown-icon"
-          />
-        </button>
-        <div class="dropdown-menu" id="dropdownMenu">
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='personalDetails.html';"
-          >
-            Personal Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='userDetails.html';"
-          >
-            User Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='addresses.html';"
-          >
-            Addresses
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='recommendation.html';"
-          >
-            Recommendation
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-        </div>
-      </div>
+      </section>
     </main>
-
     <!-- Footer Section -->
     <footer class="footer-section">
       <div class="footer-container">
@@ -189,7 +149,6 @@
         <p class="footer-created">Created with love by Five_Mushketeer</p>
       </div>
     </footer>
-
-    <script src="mainProfile.js"></script>
+    <script src="wishlistProfile.js"></script>
   </body>
 </html>

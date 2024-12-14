@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="mainProfile.css" />
+    <link rel="stylesheet" href="userDetails.css" />
     <title>Baju Bekas - Profile</title>
   </head>
   <body>
@@ -19,7 +19,7 @@
           </div>
           <!-- Logo -->
           <div class="logo">
-            <a href="../index.php"
+            <a href="../index.html"
               ><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo"
             /></a>
           </div>
@@ -69,80 +69,62 @@
       </div>
       <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
     </div>
-
-    <!-- Main Section -->
-    <main class="main-section">
-      <div class="main-content">
-        <!-- Wishlist Section -->
-        <div
-          class="card"
-          id="wishlist"
-          onclick="window.location.href='wishlistProfile.html';"
-        >
-          <img src="img_profile/model_pria.jpg" alt="Wishlist" />
-          <button class="card-button">WISHLIST</button>
+    <!--main section-->
+    <main>
+      <section class="userDetails-section">
+        <aside class="sidebar">
+          <ul class="sidebar-menu">
+            <li><a href="wishlistProfile.html">Wishlist</a></li>
+            <li><a href="orderHistory.html">Order History</a></li>
+            <li><a href="personalDetails.html">Personal Details</a></li>
+            <li><a href="userDetails.html">User Details</a></li>
+            <li><a href="addresses.html">Addresses</a></li>
+            <li><a href="recommendation.html">Recommendation</a></li>
+          </ul>
+        </aside>
+        <div class="main-content">
+          <!-- Title and Subtitle -->
+          <div class="title-section">
+            <h2 class="section-title">USER DETAILS</h2>
+            <p class="section-subtitle">
+              MR. BUDIONO SIREGAR YOUR LOGIN DETAILS ARE AS FOLLOWS.
+            </p>
+          </div>
+          <!-- isi Content of UserDetails -->
+          <div class="User-Detail-contents">
+            <h2 class="change-email">Change Email :</h2>
+            <form>
+              <div class="form-current-email">
+                <label for="current-email-title">Your current Email :</label>
+                <div class="container-current">
+                  <span class="readonly-name">kontolodon1234@gmail.com</span>
+                </div>
+              </div>
+              <div class="form-new-email">
+                <label for="first-name">New email :</label>
+                <input
+                  type="text"
+                  id="new-email"
+                  name="new-email"
+                  placeholder="Enter your new email"
+                />
+              </div>
+              <div class="form-new-password">
+                <label for="first-name">New password :</label>
+                <input
+                  type="password"
+                  id="new-password"
+                  name="new-password"
+                  placeholder="Enter your new password"
+                />
+              </div>
+              <button type="submit" class="save-button">SAVE</button>
+            </form>
+          </div>
         </div>
-
-        <div class="divider"></div>
-
-        <!-- Order History Section -->
-        <div
-          class="card"
-          id="order-history"
-          onclick="window.location.href='orderHistory.html';"
-        >
-          <img src="img_profile/model_wanita.jpg" alt="Order History" />
-          <button class="card-button">ORDER HISTORY</button>
-        </div>
-      </div>
-
-      <!-- More Personal Details Button -->
-      <div class="more-details" id="moreDetailsContainer">
-        <button
-          class="more-details-button"
-          id="moreDetailsButton"
-          onclick="toggleDropdown()"
-        >
-          More Personal Details
-          <img
-            src="img_profile/icon_dropdown.png"
-            alt="Dropdown Icon"
-            class="dropdown-icon"
-          />
-        </button>
-        <div class="dropdown-menu" id="dropdownMenu">
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='personalDetails.html';"
-          >
-            Personal Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='userDetails.html';"
-          >
-            User Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='addresses.html';"
-          >
-            Addresses
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='recommendation.html';"
-          >
-            Recommendation
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-        </div>
-      </div>
+      </section>
     </main>
-
+    <!--footer section-->
     <!-- Footer Section -->
     <footer class="footer-section">
       <div class="footer-container">
@@ -189,7 +171,6 @@
         <p class="footer-created">Created with love by Five_Mushketeer</p>
       </div>
     </footer>
-
-    <script src="mainProfile.js"></script>
+    <script src="userDetails.js"></script>
   </body>
 </html>

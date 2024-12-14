@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 0; /* Remove padding */
+  height: 72px; /* Set navbar height to 72px */
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%; /* Make navbar-container height same as navbar */
+}
+
+.shop-icon,
+.logo,
+.nav-icons div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.shop-icon {
+  flex: 1; /* Ensure shop icon takes up equal space */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  flex: 1; /* Ensure icons take up equal space on the right */
+  justify-content: flex-end; /* Align icons to the right */
+}
+
+.logo {
+  flex: 2; /* Make logo take up twice the space for centering */
+  display: flex;
+  justify-content: center; /* Center the logo horizontally */
+}
+
+.shop-icon img,
+.nav-icons img {
+  width: 42px; /* Set width to 42px */
+  height: 42px; /* Set height to 42px */
+  cursor: pointer;
+}
+
+.logo img {
+  width: 240px; /* Adjust logo width */
+}
+
+/* Menu Bar Styling */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px; /* Set menu width */
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* Hide menu by default */
+}
+
+/* Close Menu Button */
+.close-menu {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Menu List Styling */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-list li {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.menu-list li:hover {
+  color: #555;
+}
+
+/* Show Menu Bar */
+.menu-bar.show {
+  transform: translateX(0); /* Slide in when shown */
+}
+
+/* Hide Menu Bar */
+.menu-bar.hidden {
+  transform: translateX(100%); /* Slide out when hidden */
+}
+
+/* Overlay Styling */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+  backdrop-filter: blur(10px); /* Add blur effect */
+  z-index: 999; /* Place above content but below the menu */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* Show Overlay */
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction when hidden */
+}
+
+/* main section */
+
+.user-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  height: 670px;
+  text-align: center;
+}
+
+.user-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 9px 10px rgba(0, 0, 0, 0.5);
+}
+
+.user-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 29%; /* Adjusted object position to match the reference image */
+  /* To adjust the cropping, modify the value of 'object-position' percentage here */
+}
+
+.user-background .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 1); /* Adding dimming effect similar to reference */
+}
+
+.main-content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between; /* Keeps sidebar and content apart */
+  align-items: flex-end;
+  gap: 20px; /* Adds spacing between sidebar and content */
+}
+
+.sidebar {
+  text-align: start;
+  flex: 0 0 25%;
+  padding: 10px;
+  margin-top: 6%;
+  background: none;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.sidebar-menu li a {
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  display: block;
+  padding: 5px 36px;
+}
+
+.sidebar-menu li a::after {
+  content: "";
+  display: block;
+  width: 250px;
+  height: 3px;
+  background-color: #ffffff;
+  margin-top: 5px;
+  transition: width 0.3s ease;
+}
+
+.sidebar-menu li a.active::after,
+.sidebar-menu li a:hover::after {
+  width: 200px;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  box-shadow: 0 9px 10px rgb(44, 244, 255);
+}
+
+.sidebar-menu li a.active {
+  font-weight: 400;
+  color: #000;
+}
+
+/* Font Style */
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.recommendation-content {
+  text-align: right; /* Align text to the right */
+  color: #fff;
+  position: relative; /* Relative to the parent */
+  padding: 35px 20px; /* Padding for spacing */
+  flex: 1; /* Allows content to adjust dynamically */
+  display: flex;
+  flex-direction: column; /* Align content vertically */
+  justify-content: center; /* Centers content vertically */
+  align-items: flex-end; /* Align content to the right */
+  gap: 10px; /* Space between title and user name */
+}
+
+.recommendation-content .title {
+  font-size: 36px;
+  font-weight: 400; /* Set font weight for title */
+  margin: 0; /* Remove extra margin */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.recommendation-content .user-name {
+  font-size: 28px;
+  font-weight: 600; /* Slightly lighter font for user name */
+  margin: 0; /* Remove extra margin */
+  letter-spacing: 1px;
+}
+.discover-button {
+  margin-top: 20px; /* Tambahkan margin atas pada tombol */
+  display: block;
+  width: 100%; /* Lebar tombol mengikuti konten */
+  padding: 10px; /* Tambahkan padding pada tombol */
+  font-size: 28px; /* Perbesar ukuran teks tombol */
+  font-weight: 600;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Perbesar shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 5px;
+}
+
+.discover-button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="mainProfile.css" />
+    <link rel="stylesheet" href="orderHistory.css" />
     <title>Baju Bekas - Profile</title>
   </head>
   <body>
@@ -19,7 +19,7 @@
           </div>
           <!-- Logo -->
           <div class="logo">
-            <a href="../index.php"
+            <a href="../index.html"
               ><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo"
             /></a>
           </div>
@@ -69,80 +69,60 @@
       </div>
       <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
     </div>
-
-    <!-- Main Section -->
-    <main class="main-section">
-      <div class="main-content">
-        <!-- Wishlist Section -->
-        <div
-          class="card"
-          id="wishlist"
-          onclick="window.location.href='wishlistProfile.html';"
-        >
-          <img src="img_profile/model_pria.jpg" alt="Wishlist" />
-          <button class="card-button">WISHLIST</button>
+    <!-- main section -->
+    <main>
+      <section class="orderHistory-section">
+        <aside class="sidebar">
+          <ul class="sidebar-menu">
+            <li><a href="wishlistProfile.html">Wishlist</a></li>
+            <li><a href="orderHistory.html">Order History</a></li>
+            <li><a href="personalDetails.html">Personal Details</a></li>
+            <li><a href="userDetails.html">User Details</a></li>
+            <li><a href="addresses.html">Addresses</a></li>
+            <li><a href="recommendation.html">Recommendation</a></li>
+          </ul>
+        </aside>
+        <div class="main-content">
+          <!-- Title and Subtitle -->
+          <div class="title-section">
+            <h2 class="section-title">ORDER HISTORY</h2>
+            <p class="section-subtitle">
+              MR. BUDIONO SIREGAR HERE YOU WILL FOUND YOUR PRODUCT HISTORY FROM
+              YOUR CHECKOUT
+            </p>
+          </div>
+          <!-- Content -->
+          <div class="order-history-content">
+            <div class="filters">
+              <select
+                class="filter"
+                name="filter-days"
+                onclick="toggleFilterMenu('days')"
+              >
+                <option value="">FILTER DAYS</option>
+                <option value="7">Last 7 Days</option>
+                <option value="30">Last 30 Days</option>
+                <option value="365">Last Year</option>
+              </select>
+              <select
+                class="filter"
+                name="filter-orders"
+                onclick="toggleFilterMenu('orders')"
+              >
+                <option value="">FILTER ORDERS</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div class="history-status">
+              <p>YOUR HISTORY STILL EMPTY</p>
+            </div>
+            <button class="find-product-btn">FIND PRODUCT NOW</button>
+          </div>
         </div>
-
-        <div class="divider"></div>
-
-        <!-- Order History Section -->
-        <div
-          class="card"
-          id="order-history"
-          onclick="window.location.href='orderHistory.html';"
-        >
-          <img src="img_profile/model_wanita.jpg" alt="Order History" />
-          <button class="card-button">ORDER HISTORY</button>
-        </div>
-      </div>
-
-      <!-- More Personal Details Button -->
-      <div class="more-details" id="moreDetailsContainer">
-        <button
-          class="more-details-button"
-          id="moreDetailsButton"
-          onclick="toggleDropdown()"
-        >
-          More Personal Details
-          <img
-            src="img_profile/icon_dropdown.png"
-            alt="Dropdown Icon"
-            class="dropdown-icon"
-          />
-        </button>
-        <div class="dropdown-menu" id="dropdownMenu">
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='personalDetails.html';"
-          >
-            Personal Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='userDetails.html';"
-          >
-            User Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='addresses.html';"
-          >
-            Addresses
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-          <button
-            class="dropdown-item"
-            onclick="window.location.href='recommendation.html';"
-          >
-            Recommendation
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
-          </button>
-        </div>
-      </div>
+      </section>
     </main>
-
     <!-- Footer Section -->
     <footer class="footer-section">
       <div class="footer-container">
@@ -189,7 +169,6 @@
         <p class="footer-created">Created with love by Five_Mushketeer</p>
       </div>
     </footer>
-
-    <script src="mainProfile.js"></script>
+    <script src="orderHistory.js"></script>
   </body>
 </html>
