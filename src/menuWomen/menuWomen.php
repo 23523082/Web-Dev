@@ -29,35 +29,29 @@
         </ul>
       </nav>
     </header>
-    <!-- Navbar -->
+    <?php
+      require '../dbconnections.php';
 
-    <!-- Baju Cewek -->
-    <section class="baju-cowok">
-      <div class="cards-container">
-        <a href="payWomen.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1730313159/808884_ZAQW0_1179_001_100_0000_Light-Embroidered-wool-and-silk-hooded-jacket.jpg" alt="Baju Cowok 1" />
-        </a>
-        <a href="halaman2.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1730313152/808798_Z8BWP_1000_001_100_0000_Light-Heavy-viscose-sable-jumpsuit.jpg" alt="Baju Cowok 2" />
-        </a>
-        <a href="halaman3.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1726763414/805754_XKEDI_9237_001_100_0000_Light-Wool-and-lam-check-jacquard-cardigan.jpg" alt="Baju Cowok 3" />
-        </a>
-        <a href="halaman4.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1731456042/813313_ZANRP_2237_001_100_0000_Light-Printed-silk-twill-shirt.jpg" alt="Baju Cowok 4" />
-        </a>
-        <a href="halaman5.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1729060301/808799_Z8BWO_9003_001_100_0000_Light-Wool-boucl-jumpsuit.jpg" alt="Baju Cowok 5" />
-        </a>
-        <a href="halaman6.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1731348073/815898_Z7AH5_1000_001_100_0000_Light-Silk-chiffon-shirt.jpg" alt="Baju Cowok 6" />
-        </a>
-        <a href="halaman7.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1731348115/819424_Z7AI4_1226_001_100_0000_Light-Printed-silk-chiffon-shirt.jpg" alt="Baju Cowok 7" />
-        </a>
-        <a href="halaman8.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1727777723/817067_Z7AHS_1189_001_100_0000_Light-Mid-length-cotton-canvas-delav-skirt.jpg" alt="Baju Cowok 8" />
-        </a>
+      $sql = "SELECT title, image FROM catalog WHERE type = 'women'";
+      $result = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+          // output data of each row
+          while($row = mysqli_fetch_assoc($result)) {
+              echo '<section class="baju-cowok">
+              <div class="cards-container">
+                  <a href="payMen1.html" target="_blank" class="card">
+                       <img src="../uploads/' . $row["image"] . '" alt="' . $row["title"] . ' - Baju Cowok" />
+                  </a>
+              </div>
+          </section>';
+          }
+      } else {
+          echo "No results";
+      }
+
+      mysqli_close($conn);
+  ?>
       </div>
     </section>
     <!-- Baju Cewek -->

@@ -1,7 +1,7 @@
-<? session_start();
+<?php session_start();
 
 
-require 'dbconnections.php' ?>
+require '../dbconnections.php' ?>
 
 
 <!DOCTYPE html>
