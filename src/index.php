@@ -73,20 +73,20 @@ $kidImage = getRandomImageByType('kid');
       <h2 class="section-title">Explore Our Categories</h2>
       <div class="cards-wrapper">
         <div class="card">
-          <a href="HTML-TOBE-USED/menuMan.html">
-            <img src="<?php getRandomImageByType('men'); ?>" alt="Men's Clothing" />
+          <a href="menuMan/menuMan.php">
+            <img src=https://i.pinimg.com/736x/6e/2c/5b/6e2c5b6a332bf8111f78264e1e489d61.jpg alt="Men's Clothing" />
             <h3>Men</h3>
           </a>
         </div>
         <div class="card">
-          <a href="HTML-TOBE-USED/menuWomen.html">
-            <img src="<?php  getRandomImageByType('women'); ?>" alt="Women's Clothing" />
+          <a href="menuWomen/menuWomen.php">
+            <img src="https://images.unsplash.com/photo-1580651214613-f4692d6d138f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D" alt="Women's Clothing" />
             <h3>Women</h3>
           </a>
         </div>  
         <div class="card">
-          <a href="HTML-TOBE-USED/menuChild.html">
-            <img src="<?php  getRandomImageByType('kid'); ?>" alt="Children's Clothing" />
+          <a href="menuKid/menuChild.php">
+            <img src="https://i.pinimg.com/736x/6a/ed/44/6aed444d727047b153a901b8130ac1ea.jpg" alt="Children's Clothing" />
             <h3>Children</h3>
           </a>
         </div>

@@ -12,7 +12,7 @@
     <header>
       <nav class="navbar fixed-navbar">
         <div class="logo">
-          <a href="index.html">BAJU BEKAS</a>
+          <a href="../index.php">BAJU BEKAS</a>
         </div>
         <ul class="nav-links">
           <li><a href="#">Shop</a></li>
@@ -29,35 +29,29 @@
         </ul>
       </nav>
     </header>
-    <!-- Navbar -->
+    <?php
+      require '../dbconnections.php';
 
-    <!-- Baju Anak -->
-    <section class="baju-cowok">
-      <div class="cards-container">
-        <a href="payChild.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1728456377/800378_XKECK_1043_001_100_0000_Light-Childrens-embroidered-wool-dress.jpg" alt="Baju Cowok 1" />
-        </a>
-        <a href="halaman2.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1709145053/791210_XWA10_4560_001_100_0000_Light-Childrens-nylon-hooded-jacket.jpg" alt="Baju Cowok 2" />
-        </a>
-        <a href="halaman3.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1708619405/711682_XJGJE_3157_001_100_0000_Light-Childrens-printed-cotton-sweatshirt.jpg" alt="Baju Cowok 3" />
-        </a>
-        <a href="halaman4.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1714409253/782708_FADLO_9777_002_085_0000_Light-Childrens-printed-GG-backpack.jpg" alt="Baju Cowok 4" />
-        </a>
-        <a href="halaman5.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1695394842/755894_UPG20_2866_002_100_0000_Light-Childrens-leather-platform-sneaker.jpg" alt="Baju Cowok 5" />
-        </a>
-        <a href="halaman6.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1711355460/750775_4K026_1166_002_100_0000_Light-Childrens-Web-rib-stitch-cotton-socks.jpg" alt="Baju Cowok 6" />
-        </a>
-        <a href="halaman7.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1728492363/798459_4K206_6000_001_100_0000_Light-Childrens-wool-hat.jpg" alt="Baju Cowok 7" />
-        </a>
-        <a href="halaman8.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1708619405/711682_XJGJE_3157_001_100_0000_Light-Childrens-printed-cotton-sweatshirt.jpg" alt="Baju Cowok 8" />
-        </a>
+      $sql = "SELECT title, image FROM catalog WHERE type = 'kid'";
+      $result = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+          // output data of each row
+          while($row = mysqli_fetch_assoc($result)) {
+              echo '<section class="baju-cowok">
+              <div class="cards-container">
+                  <a href="payMen1.html" target="_blank" class="card">
+                       <img src="../uploads/' . $row["image"] . '" alt="' . $row["title"] . ' - Baju Cowok" />
+                  </a>
+              </div>
+          </section>';
+          }
+      } else {
+          echo "No results";
+      }
+
+      mysqli_close($conn);
+  ?>
       </div>
     </section>
     <!-- Baju Anak-->
