@@ -6,6 +6,15 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
   exit;
 }
 require 'dbconnections.php';
+require 'indexscript.php';
+// Get a random men's image
+$menImage = getRandomImageByType('men');
+
+// Get a random women's image
+$womenImage = getRandomImageByType('women');
+
+// Get a random kid's image
+$kidImage = getRandomImageByType('kid');
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +30,13 @@ require 'dbconnections.php';
     <!-- Navbar -->
     <nav class="navbar">
       <div class="navbar-left">
-        <a href="HTML-TOBE-USED/aboutUs.html" class="nav-btn">About Us</a>
+        <a href="aboutUs/aboutUs.html" class="nav-btn">About Us</a>
       </div>
       <div class="navbar-right">
         <a href="#" class="nav-btn">Shop</a>
         <a href="profile section/mainProfile.html" class="nav-btn">Profile</a>
         <a href="#" class="nav-btn">Search</a>
-        <a href="addcatalog.html" class="nav-btn">Add</a>
+        <a href="addcatalog/addcatalog.php" class="nav-btn">Add</a>
         <a href ="Logout.php" class="nav-btn">Logout</a>
         <div class="menu-wrapper">
           <button class="nav-btn menu-btn" onclick="toggleMenu()">Menu</button>
@@ -65,19 +74,19 @@ require 'dbconnections.php';
       <div class="cards-wrapper">
         <div class="card">
           <a href="HTML-TOBE-USED/menuMan.html">
-            <img src="https://i.pinimg.com/736x/6e/2c/5b/6e2c5b6a332bf8111f78264e1e489d61.jpg" alt="Men's Clothing" />
+            <img src="<?php getRandomImageByType('men'); ?>" alt="Men's Clothing" />
             <h3>Men</h3>
           </a>
         </div>
         <div class="card">
           <a href="HTML-TOBE-USED/menuWomen.html">
-            <img src="https://images.unsplash.com/photo-1580651214613-f4692d6d138f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D" alt="Women's Clothing" />
+            <img src="<?php  getRandomImageByType('women'); ?>" alt="Women's Clothing" />
             <h3>Women</h3>
           </a>
-        </div>
+        </div>  
         <div class="card">
           <a href="HTML-TOBE-USED/menuChild.html">
-            <img src="https://i.pinimg.com/736x/6a/ed/44/6aed444d727047b153a901b8130ac1ea.jpg" alt="Children's Clothing" />
+            <img src="<?php  getRandomImageByType('kid'); ?>" alt="Children's Clothing" />
             <h3>Children</h3>
           </a>
         </div>
