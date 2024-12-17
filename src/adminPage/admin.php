@@ -107,7 +107,7 @@
             echo "<td>" . $row_catalog["id"] . "</td>";
             echo "<td>" . $row_catalog["sellerid"] . "</td>";
             echo "<td>" . $row_catalog["title"] . "</td>";
-            echo "<td>" . $row_catalog["image"] . "</td>"; // Display image name
+            echo "<td> <img src='../uploads/".$row_catalog["image"]."' width='100'></td>"; // Display image name
             echo "<td>" . $row_catalog["description"] . "</td>";
             echo "<td>" . $row_catalog["material"] . "</td>";
             echo "<td>" . $row_catalog["color"] . "</td>";

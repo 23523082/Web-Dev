@@ -76,7 +76,7 @@ if ($result_querycatalog->num_rows > 0) {
         echo "<td>" . $row_querycatalog["id"] . "</td>";
         echo "<td>" . $row_querycatalog["sellerid"] . "</td>";
         echo "<td>" . $row_querycatalog["title"] . "</td>";
-        echo "<td>" . $row_querycatalog["image"] . "</td>"; // Display image name
+        echo "<img src='uploads/".$row["image"]."' width='100'></td>"; // Display image name
         echo "<td>" . $row_querycatalog["description"] . "</td>";
         echo "<td>" . $row_querycatalog["material"] . "</td>";
         echo "<td>" . $row_querycatalog["color"] . "</td>";
