@@ -5,16 +5,6 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
   header("Location: account-section/login.php");
   exit;
 }
-require 'dbconnections.php';
-require 'indexscript.php';
-// Get a random men's image
-$menImage = getRandomImageByType('men');
-
-// Get a random women's image
-$womenImage = getRandomImageByType('women');
-
-// Get a random kid's image
-$kidImage = getRandomImageByType('kid');
 ?>
 
 <!DOCTYPE html>
@@ -85,13 +75,13 @@ $kidImage = getRandomImageByType('kid');
           </a>
         </div>  
         <div class="card">
-          <a href="menuKid/menuChild.php">
+          <a href="menuChild/menuChild.php">
             <img src="https://i.pinimg.com/736x/6a/ed/44/6aed444d727047b153a901b8130ac1ea.jpg" alt="Children's Clothing" />
             <h3>Children</h3>
           </a>
         </div>
         <div class="card">
-          <a href="HTML-TOBE-USED/handBags.html">
+          <a href="menuBag/handBags.php">
             <img src="https://i.pinimg.com/736x/d9/24/fd/d924fd272cbffa292f50774ee1b53ea5.jpg" alt="Handbags" />
             <h3>Handbags</h3>
           </a>

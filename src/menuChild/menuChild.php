@@ -1,10 +1,23 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+  header("Location: account-section/login.php");
+  exit;
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar Dropdown</title>
-    <link rel="stylesheet" href="handBags.css" />
+    <link rel="stylesheet" href="menuChild.css" />
   </head>
 
   <body>
@@ -12,7 +25,7 @@
     <header>
       <nav class="navbar fixed-navbar">
         <div class="logo">
-          <a href="index.html">BAJU BEKAS</a>
+          <a href="../index.php">BAJU BEKAS</a>
         </div>
         <ul class="nav-links">
           <li><a href="#">Shop</a></li>
@@ -21,46 +34,40 @@
           <li class="dropdown">
             <a href="#" class="menu-link">Menu</a>
             <ul class="dropdown-menu">
-              <li><a href="menuMan.html">Men</a></li>
-              <li><a href="menuWomen.html">Women</a></li>
-              <li><a href="menuChild.html">Children</a></li>
+              <li><a href="../menuWomen/menuWomen.php">Women</a></li>
+              <li><a href="../menuChild/menuChild.php">Children</a></li>
+              <li><a href="../menuBag/handBags.php">Handbags</a></li>
             </ul>
           </li>
         </ul>
       </nav>
     </header>
-    <!-- Navbar -->
+    <?php
+      require '../dbconnections.php';
 
-    <!-- Tas -->
-    <section class="baju-cowok">
-      <div class="cards-container">
-        <a href="payHandBag.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1686759348/760243_96IWT_8745_001_100_0023_Light-Ophidia-pouch.jpg" alt="Baju Cowok 1" />
-        </a>
-        <a href="halaman2.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1722359718/801569_AAD7U_1060_001_093_0000_Light-Medium-duffle-bag.jpg" alt="Baju Cowok 2" />
-        </a>
-        <a href="halaman3.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1721146558/802172_FADUZ_1066_001_100_0000_Light-Large-tote-bag-with-Gucci-logo.jpg" alt="Baju Cowok 3" />
-        </a>
-        <a href="halaman4.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1718385418/795816_FADM3_8843_001_100_0000_Light-Large-GG-tote-bag.jpg" alt="Baju Cowok 4" />
-        </a>
-        <a href="halaman5.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1716915692/802094_FADUJ_9859_001_097_0000_Light-Large-GG-duffle-bag.jpg" alt="Baju Cowok 5" />
-        </a>
-        <a href="halaman6.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1713543353/795457_FADJK_1000_001_095_0000_Light-GG-large-duffle-bag.jpg" alt="Baju Cowok 6" />
-        </a>
-        <a href="halaman7.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1679699822/725282_AABY7_1000_001_090_0000_Light-Small-jumbo-GG-duffle-bag.jpg" alt="Baju Cowok 7" />
-        </a>
-        <a href="halaman8.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1685436490/760152_FACK7_9768_001_100_0000_Light-Large-duffle-bag-with-Web.jpg" alt="Baju Cowok 8" />
-        </a>
+      $sql = "SELECT id, title, image FROM catalog WHERE type = 'kid'";
+      $result = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+          // output data of each row
+          while($row = mysqli_fetch_assoc($result)) {
+              echo '<section class="baju-cowok">
+              <div class="cards-container">
+                   <a href="../viewcatalog/payMen1.php?id=' . htmlspecialchars($row['id']) . '" target="_blank" class="card">
+                       <img src="../uploads/' . $row["image"] . '" alt="' . $row["title"] . ' - Baju Cowok" />
+                  </a>
+              </div>
+          </section>';
+          }
+      } else {
+          echo "No results";
+      }
+
+      mysqli_close($conn);
+  ?>
       </div>
     </section>
-    <!-- Tas-->
+    <!-- Baju Anak-->
 
     <!-- Footer -->
     <footer class="footer">

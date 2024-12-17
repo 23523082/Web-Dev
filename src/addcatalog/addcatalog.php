@@ -40,6 +40,7 @@
                 <option value="men">Men</option>
                 <option value="women">Women</option>
                 <option value="kid">Kid</option>
+                <option value="bag">bag</option>
             </select>
 
             <button type="submit">Add to Catalog</button>

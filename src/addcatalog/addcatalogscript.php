@@ -20,7 +20,7 @@ $size = $_POST['size'];
 $design = $_POST['design'];
 $type = $_POST['type'];
 // Prepare and bind the SQL statement
-$sql = "INSERT INTO catalog (sellerid, title, image, description, material, color, size, design, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO querycatalog (sellerid, title, image, description, material, color, size, design, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("issssssss",$_SESSION['id'],$title, $image, $description, $material, $color, $size, $design, $type);
 
@@ -58,7 +58,7 @@ if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
 
 $stmt->execute();
 
-echo "New record created successfully";
+echo "New record created successfully,please wait for it to be accpeted by adminstrator.";
 
 $stmt->close();
 $conn->close();

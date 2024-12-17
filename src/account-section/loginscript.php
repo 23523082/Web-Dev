@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['LastName'] = $user['lastName'];
 
             if ($user['type'] === 'admin') {
-                header("Location: ../admin.php");
+                header("Location: ../adminPage/admin.php");
             } else {
                 header("Location: ../index.php");
             }

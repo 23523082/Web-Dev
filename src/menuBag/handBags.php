@@ -1,10 +1,21 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+  header("Location: account-section/login.php");
+  exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar Dropdown</title>
-    <link rel="stylesheet" href="menuChild.css" />
+    <link rel="stylesheet" href="handBags.css" />
   </head>
 
   <body>
@@ -12,7 +23,7 @@
     <header>
       <nav class="navbar fixed-navbar">
         <div class="logo">
-          <a href="../index.php">BAJU BEKAS</a>
+          <a href="index.html">BAJU BEKAS</a>
         </div>
         <ul class="nav-links">
           <li><a href="#">Shop</a></li>
@@ -21,9 +32,9 @@
           <li class="dropdown">
             <a href="#" class="menu-link">Menu</a>
             <ul class="dropdown-menu">
-              <li><a href="menuMan.html">Men</a></li>
-              <li><a href="menuWomen.html">Women</a></li>
-              <li><a href="handBags.html">Handbags</a></li>
+              <li><a href="../menuWomen/menuWomen.php">Women</a></li>
+              <li><a href="../menuChild/menuChild.php">Children</a></li>
+              <li><a href="../menuBag/handBags.php">Handbags</a></li>
             </ul>
           </li>
         </ul>
@@ -32,7 +43,7 @@
     <?php
       require '../dbconnections.php';
 
-      $sql = "SELECT title, image FROM catalog WHERE type = 'kid'";
+      $sql = "SELECT id, title, image FROM catalog WHERE type = 'bag'";
       $result = mysqli_query($conn, $sql);
 
       if (mysqli_num_rows($result) > 0) {
@@ -40,7 +51,7 @@
           while($row = mysqli_fetch_assoc($result)) {
               echo '<section class="baju-cowok">
               <div class="cards-container">
-                  <a href="payMen1.html" target="_blank" class="card">
+                  <a href="../viewcatalog/payMen1.php?id=' . htmlspecialchars($row['id']) . '" target="_blank" class="card">
                        <img src="../uploads/' . $row["image"] . '" alt="' . $row["title"] . ' - Baju Cowok" />
                   </a>
               </div>
@@ -54,7 +65,7 @@
   ?>
       </div>
     </section>
-    <!-- Baju Anak-->
+    <!-- Tas-->
 
     <!-- Footer -->
     <footer class="footer">
