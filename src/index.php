@@ -25,7 +25,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
       <div class="navbar-right">
         <a href="#" class="nav-btn">Shop</a>
         <a href="profile section/mainProfile.html" class="nav-btn">Profile</a>
-        <a href="#" class="nav-btn">Search</a>
+        <a class="nav-btn" href="search/search.html">Search</a>
         <a href="addcatalog/addcatalog.php" class="nav-btn">Add</a>
         <a href ="Logout.php" class="nav-btn">Logout</a>
         <div class="menu-wrapper">
@@ -170,33 +170,10 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
           </div>
         </div>
         <div class="footer-social">
-<<<<<<< HEAD:src/index.php
-          <a href="#"
-            ><img
-              src="https://img.icons8.com/ios-filled/50/ffffff/facebook--v1.png"
-              alt="Facebook"
-          /></a>
-          <a href="#"
-            ><img
-              src
-
-="https://img.icons8.com/ios-filled/50/ffffff/twitter.png"
-              alt="Twitter"
-          /></a>
-          <a href="#"
-            ><img
-              src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"
-              alt="Instagram"
-          /></a>
-        </
-
-div>
-=======
           <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook--v1.png" alt="Facebook" /></a>
           <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter" /></a>
           <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" /></a>
         </div>
->>>>>>> 69feacf64969d359aa334e6945d7e497ef31fc2f:src/index.html
       </div>
     </footer>
     <!-- Footer -->

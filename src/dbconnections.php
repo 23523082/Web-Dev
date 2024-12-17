@@ -1,7 +1,7 @@
 <?php
 // Check if user is logged i
 $servername = 'localhost';
-$username = 'Vibe';
+$username = 'root';
 $password = null; // Make sure to secure this file
 $dbname = 'bajubekas';
 
