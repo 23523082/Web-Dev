@@ -1,10 +1,6 @@
 <?php
 
-session_start();
-if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || $_SESSION['type'] !== 'seller') {
-      header("Location: ../index.php");
-       exit;
-      }
+
 require '../dbconnections.php';
 
 

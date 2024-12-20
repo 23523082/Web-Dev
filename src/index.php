@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || !isset($_SESSION['type'])) {
   header("Location: account-section/login.php");
   exit;
 }
+require 'dbconnections.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,27 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
 
     <link rel="stylesheet" href="styles.css" />
   </head>
+  <script>
+    function toggleMenu() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("show");
+    }
+
+    const user = {
+      type: "<?php echo $_SESSION['type']; ?>" // Correctly echo the session variable
+};
+
+    function checkUsertype() {
+        const addButton = document.getElementById('addButton');
+        
+        if (user.type !== 'seller') {
+            addButton.style.display = 'none'; // Hide the Add button
+        }
+    }
+
+    // Call the function on page load 
+    window.onload = checkUsertype;
+</script>
   <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -26,7 +48,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
         <a href="#" class="nav-btn">Shop</a>
         <a href="profile section/mainProfile.html" class="nav-btn">Profile</a>
         <a class="nav-btn" href="search/search.html">Search</a>
-        <a href="addcatalog/addcatalog.php" class="nav-btn">Add</a>
+        <a id="addButton" href="addcatalog/addcatalog.php" class="nav-btn">Add</a>
         <a href ="Logout.php" class="nav-btn">Logout</a>
         <div class="menu-wrapper">
           <button class="nav-btn menu-btn" onclick="toggleMenu()">Menu</button>
@@ -93,7 +115,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
     <!-- New In -->
     <section class="featured">
       <div class="featured-wrapper">
-        <a href="HTML-TOBE-USED/newIn.html" class="featured-card">
+        <a href="newIn/newIn.php" class="featured-card">
           <img src="https://i.pinimg.com/736x/a4/5f/b3/a45fb37b0f1ae35b4eabc1b613f38b1a.jpg" alt="Featured Item" />
         </a>
         <div class="featured-content">
