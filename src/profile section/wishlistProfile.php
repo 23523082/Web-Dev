@@ -1,3 +1,13 @@
+<?php 
+session_start();
+if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+  header("Location: account-section/login.php");
+  exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -74,12 +84,12 @@
       <section class="wishlist-section">
         <aside class="sidebar">
           <ul class="sidebar-menu">
-            <li><a href="wishlistProfile.html">Wishlist</a></li>
-            <li><a href="orderHistory.html">Order History</a></li>
-            <li><a href="personalDetails.html">Personal Details</a></li>
-            <li><a href="userDetails.html">User Details</a></li>
-            <li><a href="addresses.html">Addresses</a></li>
-            <li><a href="recommendation.html">Recommendation</a></li>
+            <li><a href="wishlistProfile.php">Wishlist</a></li>
+            <li><a href="orderHistory.php">Order History</a></li>
+            <li><a href="personalDetails.php?id=<?php echo $_SESSION['id']; ?>">Personal Details</a></li>
+            <li><a href="userDetails.php">User Details</a></li>
+            <li><a href="addresses.php?id=<?php echo $_SESSION['id']; ?>">Addresses</a></li>
+            <li><a href="recommendation.php">Recommendation</a></li>
           </ul>
         </aside>
         <div class="wishlist-content">

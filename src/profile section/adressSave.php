@@ -12,7 +12,6 @@ $userId = $_SESSION['id'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Fetch POST data
     $country = $_POST['country'] ?? null;
-    $prefix = $_POST['prefix'] ?? null;
     $address = $_POST['address'] ?? null;
     $post_code = $_POST['post-code'] ?? null;
     $city = $_POST['city'] ?? null;
@@ -30,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($checkResult->num_rows > 0) {
         // Update existing address
-        $updateQuery = $conn->prepare("UPDATE addresses SET country = ?, prefix = ?, address = ?, post_code = ?, city = ? WHERE user_id = ?");
-        $updateQuery->bind_param("sssssi", $country, $prefix, $address, $post_code, $city, $userId);
+        $updateQuery = $conn->prepare("UPDATE addresses SET country = ?, address = ?, post_code = ?, city = ? WHERE user_id = ?");
+        $updateQuery->bind_param("ssssi", $country, $address, $post_code, $city, $userId);
         $updateQuery->execute();
         $updateQuery->close();
     } else {
         // Insert new address
-        $insertQuery = $conn->prepare("INSERT INTO addresses (user_id, country, prefix, address, post_code, city) VALUES (?, ?, ?, ?, ?, ?)");
-        $insertQuery->bind_param("isssss", $userId, $country, $prefix, $address, $post_code, $city);
+        $insertQuery = $conn->prepare("INSERT INTO addresses (user_id, country,  address, post_code, city) VALUES (?, ?, ?, ?, ?)");
+        $insertQuery->bind_param("issss", $userId, $country,$address, $post_code, $city);
         $insertQuery->execute();
         $insertQuery->close();
     }

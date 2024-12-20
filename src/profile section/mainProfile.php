@@ -115,7 +115,7 @@ if ($result->num_rows > 0) {
         <div
           class="card"
           id="order-history"
-          onclick="window.location.href='orderHistory.html';"
+          onclick="window.location.href='orderHistory.php?id=<?php echo $_SESSION['id']; ?>';"
         >
           <img src="img_profile/model_wanita.jpg" alt="Order History" />
           <button class="card-button">ORDER HISTORY</button>
@@ -139,28 +139,28 @@ if ($result->num_rows > 0) {
         <div class="dropdown-menu" id="dropdownMenu">
           <button
             class="dropdown-item"
-            onclick="window.location.href='personalDetails.html';"
+            onclick="window.location.href='personalDetails.php?id=<?php echo $_SESSION['id']; ?>'"
           >
             Personal Details
             <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
           </button>
           <button
             class="dropdown-item"
-            onclick="window.location.href='userDetails.html';"
+            onclick="window.location.href='userDetails.php?id=<?php echo $_SESSION['id']; ?>';"
           >
             User Details
             <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
           </button>
           <button
             class="dropdown-item"
-            onclick="window.location.href='addresses.php'"
+            onclick="window.location.href='addresses.php?id=<?php echo $_SESSION['id']; ?>'"
           >
             Addresses
             <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
           </button>
           <button
             class="dropdown-item"
-            onclick="window.location.href='recommendation.html';"
+            onclick="window.location.href='recommendation.php?id=<?php echo $_SESSION['id']; ?>';"
           >
             Recommendation
             <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
