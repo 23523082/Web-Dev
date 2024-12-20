@@ -17,7 +17,7 @@
 
     // Get current admin's information
     $email = $_SESSION['email'];
-    $sql_admin = "SELECT email, password, FirstName, LastName, type FROM users WHERE email = '$email'";
+    $sql_admin = "SELECT email, FirstName, LastName, type FROM users WHERE email = '$email'";
     $result_admin = $conn->query($sql_admin);
 
     if ($result_admin->num_rows > 0) {
@@ -48,12 +48,12 @@
     <p>Welcome, <?php echo $row_admin['FirstName'] . ' ' . $row_admin['LastName']; ?></p>
     <a href="../Logout.php">Logout</a>
     <a href="catalogadmin.php">catalog-tobe-accepted</a>
+    <link rel="stylesheet"  href= "adminstyle.css" />
 
     <h3>User List</h3>
     <table border="1">
     <tr>
         <th>Email</th>
-        <th>Password</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Type</th>
@@ -68,7 +68,6 @@
         while($row_user = $result_users->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . $row_user["email"] . "</td>";
-            echo "<td>" . $row_user["password"] . "</td>"; // Displaying password for demonstration, hash in production
             echo "<td>" . $row_user["FirstName"] . "</td>";
             echo "<td>" . $row_user["LastName"] . "</td>";
             echo "<td>" . $row_user["type"] . "</td>";

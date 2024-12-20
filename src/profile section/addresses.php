@@ -1,45 +1,60 @@
+<?php 
+session_start();
+require '../dbconnections.php';
+
+// Check if user is logged in
+if (!isset($_SESSION['id']) || !isset($_SESSION['email'])) {
+    die("Error: User is not logged in.");
+}
+
+// Fetch user's first name and last name
+$userQuery = $conn->prepare("SELECT FirstName, LastName FROM users WHERE id = ?");
+$userQuery->bind_param("i", $_SESSION['id']);
+$userQuery->execute();
+$userResult = $userQuery->get_result()->fetch_assoc();
+$userQuery->close();
+
+// Fetch user's address details
+$addressQuery = $conn->prepare("SELECT country, address, post_code, city FROM addresses WHERE user_id = ?");
+$addressQuery->bind_param("i", $_SESSION['id']);
+$addressQuery->execute();
+$addressResult = $addressQuery->get_result()->fetch_assoc();
+$addressQuery->close();
+
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="addresses.css" />
-    <title>Baju Bekas - Profile</title>
+    <title>Baju Bekas - Addresses</title>
   </head>
   <body>
     <!-- header section -->
     <header>
       <nav class="navbar">
         <div class="navbar-container">
-          <!-- Shop Icon -->
           <div class="shop-icon">
-            <a href="#"
-              ><img src="img_profile/shop_icon.png" alt="Shop Icon"
-            /></a>
+            <a href="#"><img src="img_profile/shop_icon.png" alt="Shop Icon" /></a>
           </div>
-          <!-- Logo -->
           <div class="logo">
-            <a href="../index.html"
-              ><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo"
-            /></a>
+            <a href="../index.php"><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" /></a>
           </div>
-          <!-- Navigation Icons -->
           <div class="nav-icons">
             <div class="search-icon">
-              <a href="#"
-                ><img src="img_profile/icon_search.png" alt="Search Icon"
-              /></a>
+              <a href="#"><img src="img_profile/icon_search.png" alt="Search Icon" /></a>
             </div>
             <div class="profile-icon">
-              <a href="mainProfile.html"
-                ><img src="img_profile/icon_profile.png" alt="Profile Icon"
-              /></a>
+              <a href="mainProfile.html"><img src="img_profile/icon_profile.png" alt="Profile Icon" /></a>
             </div>
             <div class="menu-icon" onclick="toggleMenu()">
               <img src="img_profile/icon_menu.png" alt="Menu Icon" />
             </div>
           </div>
-          <!-- Add this after the <div class="nav-icons"> -->
           <div id="menuBar" class="menu-bar hidden">
             <button class="close-menu" onclick="toggleMenu()">X</button>
             <ul class="menu-list">
@@ -54,7 +69,6 @@
               <li>About Us</li>
             </ul>
           </div>
-          <!-- Add this overlay element just inside the <body> -->
           <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
         </div>
       </nav>
@@ -62,12 +76,9 @@
     <div class="user-header">
       <div class="user-background">
         <div class="overlay"></div>
-        <img
-          src="img_profile/WhatsApp Image 2024-11-22 at 04.26.10.jpeg"
-          alt="User Background"
-        />
+        <img src="img_profile/WhatsApp Image 2024-11-22 at 04.26.10.jpeg" alt="User Background" />
       </div>
-      <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
+      <h1 class="user-name">WELCOME <?php echo htmlspecialchars($userResult['FirstName'] . ' ' . $userResult['LastName']); ?></h1>
     </div>
     <!-- main section -->
     <main>
@@ -83,48 +94,25 @@
           </ul>
         </aside>
         <div class="main-content">
-          <!-- Title and Subtitle -->
           <div class="title-section">
             <h2 class="section-title">ADDRESSES</h2>
             <p class="section-subtitle">
-              Mr. BUDIONO SIREGAR HERE YOU WILL ADD YOUR ADDRESS IN YOUR ACCOUNT
+              <?php echo htmlspecialchars($userResult['FirstName'] . ' ' . $userResult['LastName']); ?>, HERE YOU WILL ADD YOUR ADDRESS IN YOUR ACCOUNT
             </p>
           </div>
-          <!-- Content addresses -->
           <div class="Addresses-contents">
-            <form>
+            <form method="post" action="adressSave.php">
               <div class="form-title">
                 <label for="title">TITLE :</label>
                 <div class="title-container">
                   <select id="title-dropdown" name="title">
-                    <option value="Mr.">Mr.</option>
+                    <option value="Mr." selected>Mr.</option>
                     <option value="Mrs.">Mrs.</option>
                     <option value="Ms.">Ms.</option>
                   </select>
-                  <span id="readonly-name" class="readonly-name"
-                    >BUDIONO SIREGAR</span
-                  >
-                </div>
-              </div>
-              <!-- first name and last name -->
-              <div class="form-row">
-                <div class="form-name">
-                  <label for="first-name">FIRST NAME :</label>
-                  <input
-                    type="text"
-                    id="first-name"
-                    name="first-name"
-                    value="BUDIONO"
-                  />
-                </div>
-                <div class="form-name">
-                  <label for="last-name">LAST NAME :</label>
-                  <input
-                    type="text"
-                    id="last-name"
-                    name="last-name"
-                    value="SIREGAR"
-                  />
+                  <span id="readonly-name" class="readonly-name">
+                    <?php echo htmlspecialchars($userResult['FirstName'] . ' ' . $userResult['LastName']); ?>
+                  </span>
                 </div>
               </div>
               <!-- Country -->
@@ -132,67 +120,26 @@
                 <label for="country">COUNTRY :</label>
                 <select id="country" name="country">
                   <option value="">Select a country</option>
-                  <option value="Indonesia">Indonesia</option>
-                  <option value="Malaysia">Malaysia</option>
-                  <option value="Singapore">Singapore</option>
-                  <option value="Thailand">Thailand</option>
-                  <option value="Vietnam">Vietnam</option>
-                  <option value="Philippines">Philippines</option>
-                  <option value="Myanmar">Myanmar</option>
-                  <option value="Cambodia">Cambodia</option>
-                  <option value="Laos">Laos</option>
-                  <option value="Brunei">Brunei</option>
-                  <option value="China">China</option>
-                  <option value="Japan">Japan</option>
-                  <option value="United_States">United States</option>
+                  <option value="Indonesia" <?php echo ($addressResult['country'] === "Indonesia") ? "selected" : ""; ?>>Indonesia</option>
+                  <option value="Malaysia" <?php echo ($addressResult['country'] === "Malaysia") ? "selected" : ""; ?>>Malaysia</option>
+                  <option value="Singapore" <?php echo ($addressResult['country'] === "Singapore") ? "selected" : ""; ?>>Singapore</option>
+                  <!-- Add other countries as needed -->
                 </select>
               </div>
-              <!-- prefix -->
-              <div class="form-prefix">
-                <div class="prefix-country">
-                  <label for="prefix-country">PREFIX :</label>
-                  <select id="prefix" name="prefix" size="1">
-                    <option value="">select...</option>
-                  </select>
-                </div>
-                <div class="form-number">
-                  <label for="number">NUMBER :</label>
-                  <input
-                    type="text"
-                    id="number"
-                    name="number"
-                    placeholder="enter your number"
-                  />
-                </div>
-              </div>
-              <!-- text area Address -->
+              <!-- Address -->
               <div class="form-address">
                 <label for="address">ADDRESS :</label>
-                <textarea
-                  id="address"
-                  name="address"
-                  placeholder="enter your address"
-                  rows="4"
-                  cols="50"
-                ></textarea>
+                <textarea id="address" name="address" rows="4" cols="50"><?php echo htmlspecialchars($addressResult['address']); ?></textarea>
               </div>
-              <!-- post code -->
+              <!-- Post code and city -->
               <div class="form-row">
                 <div class="form-name">
                   <label for="post-code">POST CODE :</label>
-                  <input
-                    type="text"
-                    id="post-code"
-                    name="post-code"
-                    placeholder="enter your post code"
-                  />
+                  <input type="text" id="post-code" name="post-code" value="<?php echo htmlspecialchars($addressResult['post_code']); ?>" />
                 </div>
-                <!-- city -->
                 <div class="form-name">
                   <label for="city">CITY :</label>
-                  <select id="city" name="city" size="1">
-                    <option value="">Select a city from your region</option>
-                  </select>
+                  <input type="text" id="city" name="city" value="<?php echo htmlspecialchars($addressResult['city']); ?>" />
                 </div>
               </div>
               <button type="submit" class="save-button">SAVE</button>
@@ -205,11 +152,9 @@
     <footer class="footer-section">
       <div class="footer-container">
         <div class="footer-brand">
-          <!-- Logo Section -->
           <div class="footer-logo">
             <img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" />
           </div>
-          <!-- Social Media Icons -->
           <div class="social-icons">
             <img src="img_profile/instagram_icon.png" alt="Instagram Icon" />
           </div>
@@ -247,6 +192,5 @@
         <p class="footer-created">Created with love by Five_Mushketeer</p>
       </div>
     </footer>
-    <script src="addresses.js"></script>
   </body>
 </html>

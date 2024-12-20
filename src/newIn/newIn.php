@@ -1,116 +1,110 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
-  header("Location: account-section/login.php");
-  exit;
-}
-
-?>
+    <?php
+    session_start();
+    if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+        header("Location: account-section/login.php");
+        exit;
+    }
 
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar Dropdown</title>
-    <link rel="stylesheet" href="newIn.css" />
-  </head>
+    require '../dbconnections.php';
 
-  <body>
-    <!-- Navbar -->
-    <header>
-      <nav class="navbar fixed-navbar">
-        <div class="logo">
-          <a href="../index.php">BAJU BEKAS</a>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Search</a></li>
-          <li class="dropdown">
-            <a href="#" class="menu-link">Menu</a>
-            <ul class="dropdown-menu">
-              <li><a href="../menuMan/menuMan.php">Men</a></li>
-              <li><a href="../menuWomen/menuWomen.php">Women</a></li>
-              <li><a href="../menuChild/menuChild.php">Children</a></li>
-              <li><a href="../menuBag/handBags.php">Handbags</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <!-- Navbar -->
 
-    <!-- New In -->
-    <section class="baju-cowok">
-      <div class="cards-container">
-        <a href="payNewIn.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1729060308/809379_Z8BXE_6207_001_100_0000_Light-Wool-silk-cady-jacket-with-martingale.jpg" alt="Baju Cowok 1" />
-        </a>
-        <a href="halaman2.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1729269088/813843_XKEI2_9257_001_100_0000_Light-Wool-and-cashmere-sweater-with-Web.jpg" alt="Baju Cowok 2" />
-        </a>
-        <a href="halaman3.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1731348003/786815_XDC87_1000_001_100_0000_Light-Denim-pant-with-Gucci-label.jpg" alt="Baju Cowok 3" />
-        </a>
-        <a href="halaman4.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1720028975/815178_FAD6M_8759_001_072_0000_Light-Gucci-Horsebit-1955-small-shoulder-bag.jpg" alt="Baju Cowok 4" />
-        </a>
-        <a href="halaman5.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1727370085/817455_4HBDS_1100_001_100_0000_Light-Cotton-embroidered-baseball-hat.jpg" alt="Baju Cowok 5" />
-        </a>
-        <a href="halaman6.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1731348055/815007_XKEK4_1078_001_100_0000_Light-Embroidered-wool-cashmere-sweater.jpg" alt="Baju Cowok 6" />
-        </a>
-        <a href="halaman7.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1729680343/802749_99999_0099_001_100_0000_Light-Gucci-Guilty-Pour-Homme-gift-set.jpg" alt="Baju Cowok 7" />
-        </a>
-        <a href="halaman8.html" target="_blank" class="card">
-          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1727455565/811358_XJG37_1056_002_100_0000_Light-Embroidered-jersey-hooded-sweatshirt.jpg" alt="Baju Cowok 8" />
-        </a>
-      </div>
-    </section>
-    <!-- New In -->
+    // Query to fetch catalog data
+    $sql = "SELECT id, title, image FROM catalog ORDER BY id DESC";
+    $result = $conn->query($sql);
+    ?>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-logo">
-          <h2>BAJU BEKAS</h2>
-        </div>
-        <div class="footer-links">
-          <div class="footer-column">
-            <h3>Our Main Products</h3>
-            <ul>
-              <li><a href="menuMan.html">Men Fashion Product</a></li>
-              <li><a href="menuWomen.html">Women Fashion Product</a></li>
-              <li><a href="menuChild.html">Children Fashion Product</a></li>
-              <li><a href="handBags.html">Handbags Fashion Product</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Services</h3>
-            <ul>
-              <li><a href="menuMan.html">Selling Fashion for Men</a></li>
-              <li><a href="menuWomen.html"></a>Selling Fashion for Women</li>
-              <li><a href="menuChild.css">Selling Fashion for Children</a></li>
-              <li><a href="handBags.html">Selling Handbags</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Contact Information</h3>
-            <p>Kaliurang St No.Km. 14,5, Krawitan, Umbulmartani, Ngemplak, Sleman Regency, Special Region of Yogyakarta 55584</p>
-          </div>
-        </div>
-        <div class="footer-social">
-          <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook--v1.png" alt="Facebook" /></a>
-          <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter" /></a>
-          <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" /></a>
-        </div>
-      </div>
-    </footer>
-    <!-- Footer -->
-  </body>
-</html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Navbar Dropdown</title>
+        <link rel="stylesheet" href="newIn.css" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <header>
+            <nav class="navbar fixed-navbar">
+                <div class="logo">
+                    <a href="../index.php">BAJU BEKAS</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Search</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-link">Menu</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../menuMan/menuMan.php">Men</a></li>
+                            <li><a href="../menuWomen/menuWomen.php">Women</a></li>
+                            <li><a href="../menuChild/menuChild.php">Children</a></li>
+                            <li><a href="../menuBag/handBags.php">Handbags</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Navbar -->
+
+        <!-- New In -->
+        <section class="baju-cowok">
+            <div class="cards-container">
+                <?php if ($result && $result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <a href="../viewcatalog/payMen1.php?id=<?php echo $row['id']; ?>" target="_blank" class="card">
+                            <img src="../uploads/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" />
+                            <p><?php echo htmlspecialchars($row['title']); ?></p>
+                        </a>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <p>No catalog items found.</p>
+                <?php endif; ?>
+            </div>
+        </section>
+        <!-- New In -->
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h2>BAJU BEKAS</h2>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Our Main Products</h3>
+                        <ul>
+                            <li><a href="menuMan.html">Men Fashion Product</a></li>
+                            <li><a href="menuWomen.html">Women Fashion Product</a></li>
+                            <li><a href="menuChild.html">Children Fashion Product</a></li>
+                            <li><a href="handBags.html">Handbags Fashion Product</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="menuMan.html">Selling Fashion for Men</a></li>
+                            <li><a href="menuWomen.html">Selling Fashion for Women</a></li>
+                            <li><a href="menuChild.css">Selling Fashion for Children</a></li>
+                            <li><a href="handBags.html">Selling Handbags</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact Information</h3>
+                        <p>Kaliurang St No.Km. 14,5, Krawitan, Umbulmartani, Ngemplak, Sleman Regency, Special Region of Yogyakarta 55584</p>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook--v1.png" alt="Facebook" /></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter" /></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" /></a>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer -->
+    </body>
+    </html>
+
+    <?php
+    $conn->close();
+    ?>

@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+  header("Location: account-section/login.php");
+  exit;
+
+
+
+}
+require '../dbconnections.php';
+  $userId = $_SESSION['id'];
+
+// Fetch user's first name and last name
+  $query = $conn->prepare("SELECT FirstName, LastName FROM users WHERE id = ?");
+  $query->bind_param("i", $userId);
+  $query->execute();
+  $result = $query->get_result();
+
+if ($result->num_rows > 0) {
+    $userResult = $result->fetch_assoc(); // Fetch user data
+} else {
+    die("Error: User not found.");
+}?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,7 +93,7 @@
           alt="User Background"
         />
       </div>
-      <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
+      <h1 class="user-name">WELCOME <?php echo htmlspecialchars($userResult['FirstName'] . ' ' . $userResult['LastName']); ?></h1>
     </div>
 
     <!-- Main Section -->
@@ -77,7 +103,7 @@
         <div
           class="card"
           id="wishlist"
-          onclick="window.location.href='wishlistProfile.html';"
+         onclick="window.location.href='addresses.php?id=<?php echo $_SESSION['id']; ?>'"
         >
           <img src="img_profile/model_pria.jpg" alt="Wishlist" />
           <button class="card-button">WISHLIST</button>
@@ -127,7 +153,7 @@
           </button>
           <button
             class="dropdown-item"
-            onclick="window.location.href='addresses.html';"
+            onclick="window.location.href='addresses.php'"
           >
             Addresses
             <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
