@@ -1,3 +1,13 @@
+<?php
+session_start();
+    if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+        header("Location: account-section/login.php");
+        exit;
+    }
+
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +37,10 @@
         <p>Discover fashion that fits your style. Start your search now!</p>
     </div>
     <div class="search-wrapper">
-        <input type="text" id="searchInput" placeholder="Search for products..." onclick="showDropdown()">
-        <button>🔍</button>
+        <form method="GET" action="searchResult.php">
+            <input type="text" id="searchInput" name="query" placeholder="Search for products..." onclick="showDropdown()">
+            <button type="submit">🔍</button>
+        </form>
         <div class="category-dropdown" id="categoryDropdown">
             <a href="../menuMan/menuMan.php">Men's Fashion</a>
             <a href="../menuWomen/menuWomen.php">Women's Fashion</a>

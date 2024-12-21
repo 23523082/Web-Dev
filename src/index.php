@@ -47,7 +47,7 @@ require 'dbconnections.php';
       <div class="navbar-right">
         <a href="#" class="nav-btn">Shop</a>
         <a href="profile section/mainProfile.php" class="nav-btn">Profile</a>
-        <a class="nav-btn" href="search/search.html">Search</a>
+        <a class="nav-btn" href="search/search.php">Search</a>
         <a id="addButton" href="addcatalog/addcatalog.php" class="nav-btn">Add</a>
         <a href ="Logout.php" class="nav-btn">Logout</a>
         <div class="menu-wrapper">
