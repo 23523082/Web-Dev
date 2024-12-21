@@ -3,6 +3,30 @@ session_start();
 if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
   header("Location: account-section/login.php");
   exit;
+
+  }
+  require '../dbconnections.php';
+
+  if (isset($_SESSION['update_success'])) {
+    echo "<script>alert('" . $_SESSION['update_success'] . "');</script>";
+    unset($_SESSION['update_success']); // Clear the message after displaying
+  }
+
+  if (isset($_SESSION['update_error'])) {
+    echo "<script>alert('" . $_SESSION['update_error'] . "');</script>";
+    unset($_SESSION['update_error']); // Clear the message after displaying
+  }
+  $userId = $_SESSION['id'];
+
+// Fetch user's first name and last name
+  $query = $conn->prepare("SELECT FirstName, LastName FROM users WHERE id = ?");
+  $query->bind_param("i", $userId);
+  $query->execute();
+  $result = $query->get_result();
+  if ($result->num_rows > 0) {
+    $userResult = $result->fetch_assoc(); // Fetch user data
+} else {
+    die("Error: User not found.");
 }
 ?>
 
@@ -77,7 +101,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
           alt="User Background"
         />
       </div>
-      <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
+      <h1 class="user-name">WELCOME WELCOME <?php echo htmlspecialchars($userResult['FirstName'] . ' ' . $userResult['LastName']); ?></h1>
     </div>
     <!--main section-->
     <main>
@@ -103,33 +127,36 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
           <!-- isi Content of UserDetails -->
           <div class="User-Detail-contents">
             <h2 class="change-email">Change Email :</h2>
-            <form>
-              <div class="form-current-email">
-                <label for="current-email-title">Your current Email :</label>
-                <div class="container-current">
-                  <span class="readonly-name">kontolodon1234@gmail.com</span>
-                </div>
-              </div>
-              <div class="form-new-email">
-                <label for="first-name">New email :</label>
-                <input
-                  type="text"
-                  id="new-email"
-                  name="new-email"
-                  placeholder="Enter your new email"
-                />
-              </div>
-              <div class="form-new-password">
-                <label for="first-name">New password :</label>
-                <input
-                  type="password"
-                  id="new-password"
-                  name="new-password"
-                  placeholder="Enter your new password"
-                />
-              </div>
-              <button type="submit" class="save-button">SAVE</button>
-            </form>
+            <form method="POST" action="userDetailSave.php">
+  <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>" />
+  <div class="form-current-email">
+    <label for="current-email-title">Your current Email :</label>
+    <div class="container-current">
+      <span class="readonly-name"><?php echo $_SESSION['email']; ?></span>
+    </div>
+  </div>
+  <div class="form-new-email">
+    <label for="new-email">New email :</label>
+    <input
+      type="text"
+      id="new-email"
+      name="new-email"
+      placeholder="Enter your new email"
+      required
+    />
+   </div>
+     <div class="form-new-password">
+       <label for="new-password">New password :</label>
+       <input
+        type="password"
+        id="new-password"
+        name="new-password"
+        placeholder="Enter your new password"
+       required
+        />
+        </div>
+     <button type="submit" class="save-button">SAVE</button>
+    </form>
           </div>
         </div>
       </section>
