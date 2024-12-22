@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+    header("Location: ../account-section/login.php");
+    exit;
+}
+require '../dbconnections.php';
+
+// Fetch orders for the logged-in user
+$userId = $_SESSION['id'];
+$query = "SELECT * FROM orders WHERE orderby = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$orders = $result->fetch_all(MYSQLI_ASSOC);
+$stmt->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,27 +82,29 @@
       <section class="cart-section">
         <!-- List of selected products -->
         <div class="cart-items">
-          <!-- Cart Item 1 -->
+          <?php if (count($orders) > 0): ?>
+          <?php foreach ($orders as $order): ?>
           <div class="cart-item">
             <input
               type="checkbox"
               class="select-item"
-              data-name="Bomber Jacket"
-              data-price="2318"
+              data-name="<?php echo htmlspecialchars($order['title']); ?>"
+              data-price="<?php echo htmlspecialchars($order['price']); ?>"
+              data-basePrice="<?php echo htmlspecialchars($order['price']); ?>"
               checked
             />
-            <img src="img/bomber-jacket.jpg" alt="Bomber Jacket" />
+            <img src="../uploads/<?php echo htmlspecialchars($order['image']); ?>" alt="catalog picture" />
             <div class="item-details">
-              <h3>BOMBER JACKET</h3>
-              <p class="price"><s>$2,728</s> $2,318</p>
+              <h3><?php echo htmlspecialchars($order['title']); ?></h3>
+              <p class="price">Rp <?php echo htmlspecialchars($order['price']); ?></p>
               <div class="item-options">
                 <div class="color">
                   <label>Color:</label>
-                  <span>Black</span>
+                  <span><?php echo htmlspecialchars($order['color']); ?></span>
                 </div>
                 <div class="size">
                   <label>Size:</label>
-                  <span>46</span>
+                  <span><?php echo htmlspecialchars($order['size']); ?></span>
                 </div>
                 <div class="quantity">
                   <label>Quantity:</label>
@@ -93,48 +114,16 @@
                 </div>
               </div>
             </div>
-            <button class="remove-item">X</button>
-          </div>
-
-          <!-- Cart Item 2 -->
-          <div class="cart-item">
-            <input
-              type="checkbox"
-              class="select-item"
-              data-name="Tailored Jacket"
-              data-price="2728"
-              checked
-            />
-            <img src="img/tailored-jacket.jpg" alt="Tailored Jacket" />
-            <div class="item-details">
-              <h3>TAILORED JACKET</h3>
-              <p class="price">$2,728</p>
-              <div class="item-options">
-                <div class="color">
-                  <label>Color:</label>
-                  <span>Gray</span>
-                </div>
-                <div class="size">
-                  <label>Size:</label>
-                  <span>48</span>
-                </div>
-                <div class="quantity">
-                  <label>Quantity:</label>
-                  <button>-</button>
-                  <span>1</span>
-                  <button>+</button>
-                </div>
-              </div>
+            <button 
+               class="remove-item" 
+                onclick="if(confirm('Are you sure you want to delete this item?')) { window.location.href = 'remove_order.php?id=<?php echo htmlspecialchars($order['id']); ?>'; }">
+               X 
+            </button>
             </div>
-            <button class="remove-item">X</button>
-          </div>
-          <!-- Tombol Tambah Produk -->
-          <div class="add-more-products">
-            <button onclick="redirectToProducts()">Add More Products</button>
-          </div>
-        </div>
-
-        <!-- Order Summary Section -->
+            <?php endforeach; ?>
+  <?php else: ?>
+    <p>No items in your cart.</p>
+  <?php endif; ?>
         <div class="order-summary">
           <h3>Order Summary</h3>
           <ul id="summary-list">
@@ -149,7 +138,7 @@
             <p><strong>SHIPPING</strong> <span>Free</span></p>
             <div class="divider"></div>
             <p>
-              <strong>TOTAL <span id="total-price">$0</span></strong>
+              <strong>TOTAL <span id="total-price">Rp0</span></strong>
             </p>
           </div>
           <button class="checkout-btn">PROCEED TO CHECKOUT</button>
@@ -203,5 +192,6 @@
       </div>
     </footer>
     <script src="maincart.js"></script>
+    
   </body>
 </html>

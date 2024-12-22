@@ -200,7 +200,7 @@ body {
 }
 
 .item-details .price {
-  color: red;
+  color: black;
   font-weight: bold;
   margin: 5px 0;
 }

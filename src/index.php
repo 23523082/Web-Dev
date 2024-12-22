@@ -45,6 +45,7 @@ require 'dbconnections.php';
         <a href="aboutUs/aboutUs.html" class="nav-btn">About Us</a>
       </div>
       <div class="navbar-right">
+        <a href="cart-section/maincart.php" class="nav-btn">cart</a>
         <a href="#" class="nav-btn">Shop</a>
         <a href="profile section/mainProfile.php" class="nav-btn">Profile</a>
         <a class="nav-btn" href="search/search.php">Search</a>

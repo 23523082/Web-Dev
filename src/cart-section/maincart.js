@@ -1,100 +1,80 @@
-function toggleMenu() {
-  const menuBar = document.getElementById("menuBar");
-  const overlay = document.getElementById("overlay");
-
-  if (menuBar.classList.contains("hidden")) {
-    // Show menu bar and overlay
-    menuBar.classList.remove("hidden");
-    menuBar.classList.add("show");
-    overlay.classList.remove("hidden");
-    overlay.classList.add("show");
-  } else {
-    // Hide menu bar and overlay
-    menuBar.classList.remove("show");
-    menuBar.classList.add("hidden");
-    overlay.classList.remove("show");
-    overlay.classList.add("hidden");
-  }
-}
-
-// Function to update the order summary
-function updateOrderSummary() {
-  const selectedItems = document.querySelectorAll(".select-item:checked");
+// Function to update the order summary dynamically from the backend
+function fetchAndUpdateOrderSummary() {
   const summaryList = document.getElementById("summary-list");
   const totalPriceElement = document.getElementById("total-price");
 
-  summaryList.innerHTML = ""; // Clear the current summary
-  let totalPrice = 0;
+  fetch("fetch_order_summary.php")
+    .then((response) => response.json())
+    .then((data) => {
+      // Debug the data to check the entire response
+      console.log(data);
 
-  selectedItems.forEach((checkbox) => {
-    const name = checkbox.dataset.name;
-    const price = parseFloat(checkbox.dataset.price);
+      if (data.success) {
+        // Clear the current summary
+        summaryList.innerHTML = "";
 
-    // Create a list item for each selected product
-    const listItem = document.createElement("li");
-    listItem.textContent = `${name} `;
-    const priceSpan = document.createElement("span");
-    priceSpan.textContent = `$${price}`;
-    listItem.appendChild(priceSpan);
-    summaryList.appendChild(listItem);
+        let items = data.data.items;
+        let grandTotal = data.data.grandTotal;
 
-    // Add to total price
-    totalPrice += price;
-  });
+        // Add items to the summary list
+        items.forEach((item) => {
+          const listItem = document.createElement("li");
 
-  // Update the total price
-  totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+          // Ensure price is valid and show it correctly
+          if (item.price !== undefined) {
+            listItem.textContent = `${item.title} - Rp${item.price.toFixed(2)}`;
+          } else {
+            listItem.textContent = `${item.title} - Price not available`;
+          }
+
+          summaryList.appendChild(listItem);
+        });
+
+        // Update the total price (grand total including VAT)
+        totalPriceElement.textContent = `Rp${grandTotal.toFixed(2)}`;
+      } else {
+        console.error(data.error || "Failed to fetch order summary.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching order summary:", error);
+    });
 }
-
-// Add event listeners to checkboxes
-document.querySelectorAll(".select-item").forEach((checkbox) => {
-  checkbox.addEventListener("change", updateOrderSummary);
-});
-
-// Initialize the summary on page load
-updateOrderSummary();
 
 // Function to handle quantity update and item removal
 function updateQuantity(button, action) {
   const quantityElement = button.parentElement.querySelector("span");
   const cartItem = button.closest(".cart-item");
   const checkbox = cartItem.querySelector(".select-item");
-  const price = parseFloat(checkbox.dataset.price);
-
+  const basePrice = parseFloat(checkbox.dataset.basePrice); // Use a base price for quantity calculation
   let quantity = parseInt(quantityElement.textContent);
 
-  // Update quantity based on action
   if (action === "increase") {
     quantity += 1;
   } else if (action === "decrease" && quantity > 0) {
     quantity -= 1;
   }
 
-  // Update quantity element
   quantityElement.textContent = quantity;
 
-  // Remove item if quantity reaches 0
   if (quantity === 0) {
     cartItem.remove();
     checkbox.checked = false; // Uncheck the item
   }
 
-  // Update the price in the checkbox dataset
-  checkbox.dataset.price = (price * quantity).toFixed(2);
-
-  // Update the order summary
+  checkbox.dataset.price = (basePrice * quantity).toFixed(2);
   updateOrderSummary();
 }
 
-// Add event listeners to the buttons
-document.querySelectorAll(".quantity button").forEach((button) => {
-  button.addEventListener("click", (event) => {
+// Delegate event listeners to the parent container (using event delegation)
+document.addEventListener("click", function(event) {
+  if (event.target.closest(".quantity")) {
     const action = event.target.textContent === "+" ? "increase" : "decrease";
     updateQuantity(event.target, action);
-  });
+  }
 });
 
-// Function to update the order summary
+// Function to update the order summary (front-end only, for real-time updates)
 function updateOrderSummary() {
   const selectedItems = document.querySelectorAll(".select-item:checked");
   const summaryList = document.getElementById("summary-list");
@@ -111,7 +91,7 @@ function updateOrderSummary() {
     const listItem = document.createElement("li");
     listItem.textContent = `${name} `;
     const priceSpan = document.createElement("span");
-    priceSpan.textContent = `$${price.toFixed(2)}`;
+    priceSpan.textContent = `Rp${price.toFixed(2)}`;
     listItem.appendChild(priceSpan);
     summaryList.appendChild(listItem);
 
@@ -124,33 +104,10 @@ function updateOrderSummary() {
 
   // Update the total price (subtotal + tax)
   const total = subtotal + salesTax;
-  totalPriceElement.textContent = `$${total.toFixed(2)}`;
+  totalPriceElement.textContent = `Rp${total.toFixed(2)}`;
 }
 
-// Initialize the summary on page load
-updateOrderSummary();
-
-// Function to discard an item
-function discardItem(button) {
-  const cartItem = button.closest(".cart-item");
-  const checkbox = cartItem.querySelector(".select-item");
-
-  // Uncheck the item to ensure it's removed from the summary
-  checkbox.checked = false;
-
-  // Remove the item from the cart
-  cartItem.remove();
-
-  // Update the order summary
-  updateOrderSummary();
-}
-
-// Add event listeners to the discard buttons
-document.querySelectorAll(".remove-item").forEach((button) => {
-  button.addEventListener("click", () => discardItem(button));
+// Fetch the backend data to update summary on page load
+document.addEventListener("DOMContentLoaded", function() {
+  fetchAndUpdateOrderSummary();
 });
-
-function redirectToProducts() {
-  // Ganti URL di bawah dengan URL halaman katalog produk
-  window.location.href = "products.html";
-}

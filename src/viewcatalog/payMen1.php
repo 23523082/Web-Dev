@@ -66,7 +66,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
           </ul>
 
           <!-- Purchase Button -->
-          <a href="pay.php?id=<?php echo $product['id']; ?>" class="btn-purchase">Rp 500.000 - Add</a>
+          <a href="catalogAdd.php?id=<?php echo $product['id']; ?>" class="btn-purchase">Rp <?php echo $product['price']; ?> - Add</a>
         </div>
       </div>
     </section>

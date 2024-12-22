@@ -37,17 +37,15 @@ session_start();
         <p>Discover fashion that fits your style. Start your search now!</p>
     </div>
     <div class="search-wrapper">
-        <form method="GET" action="searchResult.php">
-            <input type="text" id="searchInput" name="query" placeholder="Search for products..." onclick="showDropdown()">
-            <button type="submit">🔍</button>
-        </form>
-        <div class="category-dropdown" id="categoryDropdown">
-            <a href="../menuMan/menuMan.php">Men's Fashion</a>
-            <a href="../menuWomen/menuWomen.php">Women's Fashion</a>
-            <a href="../menuChild/menuChild.php">Children's Fashion</a>
-            <a href="../menuBag/handBags.php">Handbags</a>
-        </div>
+    <input type="text" id="searchInput" name="query" placeholder="Search for products..." onclick="showDropdown()">
+    <button type="submit">🔍</button>
+    <div class="category-dropdown" id="categoryDropdown">
+        <a href="../menuMan/menuMan.php">Men's Fashion</a>
+        <a href="../menuWomen/menuWomen.php">Women's Fashion</a>
+        <a href="../menuChild/menuChild.php">Children's Fashion</a>
+        <a href="../menuBag/handBags.php">Handbags</a>
     </div>
+</div>
 </div>
 
 <footer>
