@@ -1,0 +1,341 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 0; /* Remove padding */
+  height: 72px; /* Set navbar height to 72px */
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%; /* Make navbar-container height same as navbar */
+}
+
+.shop-icon,
+.logo,
+.nav-icons div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.shop-icon {
+  flex: 1; /* Ensure shop icon takes up equal space */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  flex: 1; /* Ensure icons take up equal space on the right */
+  justify-content: flex-end; /* Align icons to the right */
+}
+
+.logo {
+  flex: 2; /* Make logo take up twice the space for centering */
+  display: flex;
+  justify-content: center; /* Center the logo horizontally */
+}
+
+.shop-icon img,
+.nav-icons img {
+  width: 42px; /* Set width to 42px */
+  height: 42px; /* Set height to 42px */
+  cursor: pointer;
+}
+
+.logo img {
+  width: 240px; /* Adjust logo width */
+}
+
+/* Menu Bar Styling */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px; /* Set menu width */
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* Hide menu by default */
+}
+
+/* Close Menu Button */
+.close-menu {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Menu List Styling */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-list li {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.menu-list li:hover {
+  color: #555;
+}
+
+/* Show Menu Bar */
+.menu-bar.show {
+  transform: translateX(0); /* Slide in when shown */
+}
+
+/* Hide Menu Bar */
+.menu-bar.hidden {
+  transform: translateX(100%); /* Slide out when hidden */
+}
+
+/* Overlay Styling */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+  backdrop-filter: blur(10px); /* Add blur effect */
+  z-index: 999; /* Place above content but below the menu */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* Show Overlay */
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction when hidden */
+}
+
+/* Main Section Styling */
+.cart-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+.cart-items {
+  flex: 3;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+  width: 120px;
+  height: auto;
+}
+
+.item-details {
+  flex: 2;
+}
+
+.select-item {
+  margin-right: 10px;
+  transform: scale(1.2); /* Untuk memperbesar ukuran */
+  cursor: pointer;
+}
+
+.item-details h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.item-details .price {
+  color: red;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.item-options {
+  display: flex;
+  gap: 20px;
+}
+
+.item-options div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.remove-item {
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.order-summary {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.order-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-summary ul li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.total p strong {
+  font-size: 18px;
+}
+
+.order-summary .total p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 16px; /* Konsistensi ukuran font */
+  font-family: "Arial", sans-serif; /* Konsistensi font */
+  color: #333; /* Warna teks */
+}
+
+.order-summary .total p strong {
+  font-weight: bold;
+}
+
+.order-summary .total p span {
+  color: #555; /* Warna teks deskripsi */
+  font-size: 16px; /* Konsistensi ukuran font */
+}
+
+.checkout-btn {
+  display: block;
+
+  width: 100%; /* Lebar tombol mengikuti konten */
+  padding: 10px; /* Tambahkan padding pada tombol */
+  font-size: 19px; /* Perbesar ukuran teks tombol */
+  font-weight: 600;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Perbesar shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 5px;
+}
+
+.checkout-btn:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+.add-more-products {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.add-more-products button {
+  display: block;
+  width: 100%; /* Lebar tombol mengikuti konten */
+  padding: 10px; /* Tambahkan padding pada tombol */
+  font-size: 28px; /* Perbesar ukuran teks tombol */
+  font-weight: 600;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Perbesar shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 5px;
+}
+
+.add-more-products button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+.order-summary .divider {
+  border-top: 1px solid black; /* Garis hitam solid */
+  margin: 15px 0; /* Memberi jarak vertikal */
+}
