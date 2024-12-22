@@ -1,6 +1,6 @@
 <?php
 // Check if user is logged i
-$servername = 'localhost';
+$servername = 'localhost:3307';
 $username = 'root';
 $password = null; // Make sure to secure this file
 $dbname = 'bajubekas';
