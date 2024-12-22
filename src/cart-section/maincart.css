@@ -339,3 +339,101 @@ body {
   border-top: 1px solid black; /* Garis hitam solid */
   margin: 15px 0; /* Memberi jarak vertikal */
 }
+
+/* Footer Section */
+.footer-section {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-brand {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-logo img {
+  width: 300px;
+  margin-bottom: 0px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 75px;
+  margin-bottom: 0;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 15px;
+}
+
+.footer-links {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column {
+  flex: 1;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-column address {
+  font-style: normal;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.footer-copyright,
+.footer-created {
+  font-size: 14px;
+  color: #bbb;
+  margin: 0;
+}
