@@ -15,10 +15,11 @@ $color = $_POST['color'];
 $size = $_POST['size'];
 $design = $_POST['design'];
 $type = $_POST['type'];
+$price = $_POST['price'];
 // Prepare and bind the SQL statement
-$sql = "INSERT INTO querycatalog (sellerid, title, image, description, material, color, size, design, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO querycatalog (sellerid, title, image, description, material, color, size, design, type, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("issssssss",$_SESSION['id'],$title, $image, $description, $material, $color, $size, $design, $type);
+$stmt->bind_param("isssssssss",$_SESSION['id'],$title, $image, $description, $material, $color, $size, $design, $type, $price);
 
 
 $target_dir = "../uploads/";

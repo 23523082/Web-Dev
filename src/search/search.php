@@ -26,7 +26,7 @@ session_start();
         <a href="../aboutUs/aboutUs.html">About</a>
     </nav>
     <div class="icons">
-        <a href="../profile section/mainProfile.html">&#128100;</a>
+        <a href="../profile section/mainProfile.php">&#128100;</a>
         <a href="#">&#128722;</a>
     </div>
 </header>

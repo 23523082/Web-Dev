@@ -25,15 +25,16 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
           <a href="../index.php">BAJU BEKAS</a>
         </div>
         <ul class="nav-links">
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Search</a></li>
+          <li><a href="../index.php">Shop</a></li>
+          <li><a href="../profile section/mainProfile.php">Profile</a></li>
+          <li><a href="../search/search.php">Search</a></li>
           <li class="dropdown">
             <a href="#" class="menu-link">Menu</a>
             <ul class="dropdown-menu">
-              <li><a href="../menuWomen/menuWomen.php">Women</a></li>
-              <li><a href="../menuChild/menuChild.php">Children</a></li>
-              <li><a href="../menuBag/handBags.php">Handbags</a></li>
+              <li><a href="../menuWomen/menuWomen.php">Women</a></li>
+              <li><a href="../menuChild/menuChild.php">Children</a></li>
+              <li><a href="../menuBag/handBags.php">Handbags</a></li>
+              <li><a href="../menuMan/menuMan.php"></a>Man</li>
             </ul>
           </li>
         </ul>

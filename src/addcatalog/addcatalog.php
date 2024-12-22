@@ -43,6 +43,9 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || $_SESSION['type'] !
             <label for="design">DESIGN *</label>
             <input type="text" id="design" name="design" placeholder="Enter Design Details" required />
 
+            <label for="price">PRICE *</label>
+            <input type="text" id="price" name="price" placeholder="Name your Price" required />
+
             <label for="type">TYPE *</label>
             <select id="type" name="type" required>
                 <option value="men">Men</option>

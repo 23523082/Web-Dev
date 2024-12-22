@@ -55,6 +55,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
         <!-- Product Description -->
         <div class="produk-info">
           <h2><?php echo htmlspecialchars($product['title']); ?></h2>
+          <h3>Seller : <?php echo htmlspecialchars($product['FirstName'] . ' ' . $product['LastName']); ?></h3>
           <p class="deskripsi"><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
 
           <ul class="detail-produk">

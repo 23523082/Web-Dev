@@ -47,25 +47,25 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
         <div class="navbar-container">
           <!-- Shop Icon -->
           <div class="shop-icon">
-            <a href="#"
+            <a href="../index.php"
               ><img src="../img-source/shop_icon.png" alt="Shop Icon"
             /></a>
           </div>
           <!-- Logo -->
           <div class="logo">
-            <a href="../index.html"
+            <a href="../index.php"
               ><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo"
             /></a>
           </div>
           <!-- Navigation Icons -->
           <div class="nav-icons">
             <div class="search-icon">
-              <a href="#"
+              <a href="../search/search.php"
                 ><img src="../img-source/icon_search.png" alt="Search Icon"
               /></a>
             </div>
             <div class="profile-icon">
-              <a href="mainProfile.html"
+              <a href="mainProfile.php"
                 ><img src="../img-source/icon_profile.png" alt="Profile Icon"
               /></a>
             </div>

@@ -39,17 +39,17 @@ $conn->close();
       <nav class="navbar">
         <div class="navbar-container">
           <div class="shop-icon">
-            <a href="#"><img src="../img-source/shop_icon.png" alt="Shop Icon" /></a>
+            <a href="../index.php"><img src="../img-source/shop_icon.png" alt="Shop Icon" /></a>
           </div>
           <div class="logo">
             <a href="../index.php"><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" /></a>
           </div>
           <div class="nav-icons">
             <div class="search-icon">
-              <a href="#"><img src="../img-source/icon_search.png" alt="Search Icon" /></a>
+              <a href="../search/search.php"><img src="../img-source/icon_search.png" alt="Search Icon" /></a>
             </div>
             <div class="profile-icon">
-              <a href="mainProfile.html"><img src="../img-source/icon_profile.png" alt="Profile Icon" /></a>
+              <a href="mainProfile.php"><img src="../img-source/icon_profile.png" alt="Profile Icon" /></a>
             </div>
             <div class="menu-icon" onclick="toggleMenu()">
               <img src="../img-source/icon_menu.png" alt="Menu Icon" />

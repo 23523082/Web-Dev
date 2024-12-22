@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
         <div class="navbar-container">
           <!-- Shop Icon -->
           <div class="shop-icon">
-            <a href="#"
+            <a href="../index.php"
               ><img src="../img-source/shop_icon.png" alt="Shop Icon"
             /></a>
           </div>
@@ -52,12 +52,12 @@ if ($result->num_rows > 0) {
           <!-- Navigation Icons -->
           <div class="nav-icons">
             <div class="search-icon">
-              <a href="#"
+              <a href="../search/search.php"
                 ><img src="../img-source/icon_search.png" alt="Search Icon"
               /></a>
             </div>
             <div class="profile-icon">
-              <a href="mainProfile.html"
+              <a href="mainProfile.php"
                 ><img src="../img-source/icon_profile.png" alt="Profile Icon"
               /></a>
             </div>
