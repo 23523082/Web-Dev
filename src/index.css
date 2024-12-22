@@ -16,12 +16,41 @@ body {
 }
 
 .navbar {
-  background-color: #333;
+  background-color: transparent; /* Tetap transparan di posisi awal */
   color: #fff;
   display: flex;
   justify-content: center;
-  padding: 0; /* Remove padding */
-  height: 72px; /* Set navbar height to 72px */
+  padding: 0;
+  height: 72px;
+  position: fixed; /* Tetap di atas */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Pastikan berada di atas hero */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.transparent {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.navbar.scrolled {
+  background-color: rgb(51, 51, 51); /* Warna latar saat discroll */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+}
+.hero-title {
+  transition: opacity 0.3s ease;
+}
+
+.logo img {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.navbar.scrolled .logo img {
+  opacity: 1;
+  visibility: visible;
 }
 
 .navbar-container {
@@ -109,15 +138,16 @@ body {
   gap: 15px;
 }
 
-.menu-list li {
+.menu-list a {
   font-size: 18px;
   font-weight: bold;
   color: #333;
   cursor: pointer;
   transition: color 0.2s ease;
+  text-decoration: none;
 }
 
-.menu-list li:hover {
+.menu-list a:hover {
   color: #555;
 }
 
@@ -168,6 +198,8 @@ body {
   justify-content: flex-start;
   text-align: center;
   padding-top: 30px;
+  position: relative; /* Pastikan tidak overlap */
+  z-index: 1; /* Di bawah navbar */
 }
 
 .hero-title {
@@ -175,6 +207,14 @@ body {
   font-weight: bold;
   font-family: "Bodoni Moda", serif;
   margin-bottom: 0;
+  opacity: 1;
+  transform: translateY(0); /* Posisi awal */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi halus */
+}
+
+.hero-title.hidden {
+  opacity: 0;
+  transform: translateY(-50px); /* Bergerak ke atas saat tersembunyi */
 }
 
 .hero-content-wrapper {

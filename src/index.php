@@ -14,55 +14,65 @@ require 'dbconnections.php';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baju Bekas</title>
-
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
   </head>
-  <script>
-    function toggleMenu() {
-        var dropdown = document.getElementById("dropdown");
-        dropdown.classList.toggle("show");
-    }
-
-    const user = {
-      type: "<?php echo $_SESSION['type']; ?>" // Correctly echo the session variable
-};
-
-    function checkUsertype() {
-        const addButton = document.getElementById('addButton');
-        
-        if (user.type !== 'seller') {
-            addButton.style.display = 'none'; // Hide the Add button
-        }
-    }
-
-    // Call the function on page load 
-    window.onload = checkUsertype;
-</script>
   <body>
     <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar-left">
-        <a href="aboutUs/aboutUs.html" class="nav-btn">About Us</a>
+    <header>
+     <nav class="navbar">
+       <div class="navbar-container">
+      <!-- Shop Icon -->
+      <div class="shop-icon">
+        <a href="cart-section/maincart.html"
+          ><img src="img-source/shop_icon.png" alt="Shop Icon"
+        /></a>
       </div>
-      <div class="navbar-right">
-        <a href="cart-section/maincart.php" class="nav-btn">cart</a>
-        <a href="#" class="nav-btn">Shop</a>
-        <a href="profile section/mainProfile.php" class="nav-btn">Profile</a>
-        <a class="nav-btn" href="search/search.php">Search</a>
-        <a id="addButton" href="addcatalog/addcatalog.php" class="nav-btn">Add</a>
-        <a href ="Logout.php" class="nav-btn">Logout</a>
-        <div class="menu-wrapper">
-          <button class="nav-btn menu-btn" onclick="toggleMenu()">Menu</button>
-          <div class="dropdown-menu" id="dropdown">
-            <a href="HTML-TOBE-USED/newIn.html">New In</a>
-            <a href="HTML-TOBE-USED/menuMan.html">Man</a>
-            <a href="HTML-TOBE-USED/menuWomen.html">Women</a>
-            <a href="HTML-TOBE-USED/menuChild.html">Children</a>
-            <a href="HTML-TOBE-USED/handBags.html">Handbags</a>
+      <!-- Logo -->
+      <div class="logo">
+        <a href="index.php"
+          ><img src="img-source/Logo_Icon.png" alt="Baju Bekas Logo"
+        /></a>
+      </div>
+      <!-- Navigation Icons -->
+      <div class="nav-icons">
+        <div class="search-icon">
+          <a href="search/search.php"
+         ><img src="img-source/icon_search.png" alt="Search Icon"
+          /></a>
+        </div>
+        <div class="profile-icon">
+          <a href="profile section/mainProfile.php"
+         ><img src="img-source/icon_profile.png" alt="Profile Icon"
+          /></a>
+        </div>
+        <div class="addcatalog-icon" id="addButton">
+          <a  href="addcatalog/addcatalog.php" class="nav-btn"><img src="img-source/add-catalog.png" alt="add Icon"></a>
           </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+          <img src="img-source/icon_menu.png" alt="Menu Icon" />
         </div>
       </div>
-    </nav>
+      <!-- Add this after the <div class="nav-icons"> -->
+      <div id="menuBar" class="menu-bar hidden">
+        <button class="close-menu" onclick="toggleMenu()">X</button>
+        <ul class="menu-list">
+          <li><a href="newIn/newIn.php">New In</a></li>
+          <li><a href="menuWomen/menuWomen.php">Women</a></li>
+          <li><a href="menuMan/menuMan.php">Man</a></li>
+          <li><a href="menuChild/menuChild.php">Child</a></li>
+          <li><a href="menuBag/handBags.php">Handbags</a></li>
+          <li><a href="HTML-TOBE-USED/giftsForHim.html">Gifts For Him</a></li>
+          <li><a href="HTML-TOBE-USED/giftsForHer.html">Gifts For Her</a></li>
+          <li><a href="paymentMethod-section/mainPayment.html">Payment Methods</a></li>
+          <li><a href="aboutUs/aboutUs.html">About Us</a></li>
+          <li><a href ="Logout.php" class="nav-btn">Logout</a></li>
+        </ul>
+      </div>
+      <!-- Add this overlay element just inside the <body> -->
+      <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
+       </div>
+     </nav>
+      </header>
     <!-- Navbar -->
 
     <!-- Hero Section -->
@@ -73,12 +83,6 @@ require 'dbconnections.php';
         <button class="cta-btn" onclick="scrollToCategories()">Discover More</button>
       </div>
     </div>
-
-    <script>
-      function scrollToCategories() {
-        document.querySelector(".categories").scrollIntoView({ behavior: "smooth" });
-      }
-    </script>
     <!-- Hero Section -->
 
     <!-- Categories Section -->
@@ -200,30 +204,7 @@ require 'dbconnections.php';
       </div>
     </footer>
     <!-- Footer -->
-
-    <!-- JavaScript -->
-    <script>
-      window.addEventListener("scroll", function () {
-        const navbar = document.querySelector(".navbar");
-        if (window.scrollY > 50) {
-          navbar.classList.add("scrolled");
-          navbar.classList.remove("transparent");
-        } else {
-          navbar.classList.remove("scrolled");
-          navbar.classList.add("transparent");
-       
-
- }
-      });
-
-      // Set initial state
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbar = document.querySelector(".navbar");
-        navbar.classList.add("transparent");
-      });
-    </script>
-
-    <!-- JavaScript -->
+      <script src="index.js"></script>
   </body>
 </html>
 
