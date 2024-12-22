@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="mainPayment.css" />
+    <title>Baju Bekas - Payment</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-container">
+          <!-- Shop Icon -->
+          <div class="shop-icon">
+            <a href="#"
+              ><img src="img_profile/shop_icon.png" alt="Shop Icon"
+            /></a>
+          </div>
+          <!-- Logo -->
+          <div class="logo">
+            <a href="../index.php"
+              ><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo"
+            /></a>
+          </div>
+          <!-- Navigation Icons -->
+          <div class="nav-icons">
+            <div class="search-icon">
+              <a href="#"
+                ><img src="img_profile/icon_search.png" alt="Search Icon"
+              /></a>
+            </div>
+            <div class="profile-icon">
+              <a href="mainProfile.html"
+                ><img src="img_profile/icon_profile.png" alt="Profile Icon"
+              /></a>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+              <img src="img_profile/icon_menu.png" alt="Menu Icon" />
+            </div>
+          </div>
+          <!-- Add this after the <div class="nav-icons"> -->
+          <div id="menuBar" class="menu-bar hidden">
+            <button class="close-menu" onclick="toggleMenu()">X</button>
+            <ul class="menu-list">
+              <li>New In</li>
+              <li>Woman</li>
+              <li>Man</li>
+              <li>Child</li>
+              <li>Handbags</li>
+              <li>Gifts For Him</li>
+              <li>Gifts For Her</li>
+              <li>Payment Methods</li>
+              <li>About Us</li>
+            </ul>
+          </div>
+          <!-- Add this overlay element just inside the <body> -->
+          <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
+        </div>
+      </nav>
+    </header>
+    <!-- main section-->
+    <main>
+      <section class="payment-methods">
+        <h1>CHOOSE PAYMENT METHODS</h1>
+        <div class="content-cards">
+          <div class="content-card" id="credit-card">
+            <img src="img_profile/iconkartu-kredit.png" alt="Credit Card" />
+            <p>Add a credit or debit card</p>
+          </div>
+          <div class="content-card" id="qris">
+            <img src="img_profile/Icon-Qris.png" alt="QRIS" />
+            <p>QRIS</p>
+          </div>
+        </div>
+      </section>
+      <!-- Popup Modal -->
+      <div id="popup" class="popup hidden">
+        <div class="popup-content">
+          <button class="close-popup" onclick="closePopup()">&times;</button>
+          <h2>NEW CARD</h2>
+          <div class="icon-line">
+            <hr class="line" />
+            <img src="img_profile/icon-line.png" alt="Icon Line" class="icon" />
+            <hr class="line" />
+          </div>
+          <div class="form-section">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="credit-card-number">Credit Card Number</label>
+                <input
+                  type="text"
+                  id="credit-card-number"
+                  placeholder="xxxx - xxxx - xxxx - xxxx"
+                />
+              </div>
+              <div class="form-group">
+                <label for="security-code">Security Code</label>
+                <input
+                  type="text"
+                  id="security-code"
+                  placeholder="3 - 4 Digits"
+                />
+              </div>
+              <div class="form-group expiration-group">
+                <label for="expiration-date">Expiration Date</label>
+                <div class="expiration">
+                  <select id="month">
+                    <option value="MM">MM</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <!-- Tambahkan opsi lainnya -->
+                  </select>
+                  <select id="year">
+                    <option value="YYYY">YYYY</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <!-- Tambahkan opsi lainnya -->
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="accepted-cards">
+              <label>Accepted Credit Card</label>
+              <div class="card-icons">
+                <img src="img_profile/icon-visa.png" alt="Visa" />
+                <img src="img_profile/mastercard-icon.png" alt="MasterCard" />
+                <img src="img_profile/jcb-icon.png" alt="JCB" />
+                <img src="img_profile/amex-icon.png" alt="amex-icon" />
+              </div>
+            </div>
+          </div>
+          <div class="name-on-card-section">
+            <label for="name-on-card">Name on Card</label>
+            <input type="text" id="name-on-card" placeholder="Name on Card" />
+            <div class="primary-payment-option">
+              <input type="checkbox" id="primary-payment" />
+              <label for="primary-payment"
+                >Make this my primary payment method.</label
+              >
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="form-group">
+              <label for="contact-phone">Contact Phone Number</label>
+              <div class="phone-input">
+                <select id="country-code">
+                  <option value="+62">+62 INDONESIA</option>
+                  <!-- Tambahkan opsi lainnya -->
+                </select>
+                <input
+                  type="text"
+                  id="phone-number"
+                  placeholder="Phone Number"
+                />
+              </div>
+            </div>
+          </div>
+          <button class="save-button">SAVE</button>
+        </div>
+      </div>
+      <!-- pop up qris -->
+      <div id="popup-qris" class="popup hidden">
+        <div class="popup-content">
+          <button class="close-popup" onclick="closePopupQris()">
+            &times;
+          </button>
+          <h2>QRIS METHOD</h2>
+          <div class="icon-line">
+            <hr class="line" />
+            <img src="img_profile/icon-line.png" alt="Icon Line" class="icon" />
+            <hr class="line" />
+          </div>
+          <div class="contentQris">
+            <img src="img_profile/Icon-Qris.png" alt="qris logo" />
+            <p>Scan the QR code to pay, Please do not close this page</p>
+            <div class="qris"></div>
+            <button class="download-Qris">DOWNLOAD QR CODE</button>
+          </div>
+          <button class="pay-now">PAY NOW</button>
+        </div>
+      </div>
+    </main>
+    <!-- Footer Section -->
+    <footer class="footer-section">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <!-- Logo Section -->
+          <div class="footer-logo">
+            <img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" />
+          </div>
+          <!-- Social Media Icons -->
+          <div class="social-icons">
+            <img src="img_profile/instagram_icon.png" alt="Instagram Icon" />
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Products</h4>
+            <ul>
+              <li>Sand Stone</li>
+              <li>Stone</li>
+              <li>Cement</li>
+              <li>Soft Stone</li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li>Measurement Service</li>
+              <li>Product Advice</li>
+              <li>Interior Design</li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contact Information</h4>
+            <address>
+              3181 Al Imam Saud Ibn Abdul Aziz Branch Rd,<br />
+              An Nuzhah, Riyadh 12474,<br />
+              Saudi Arabia
+            </address>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">Copyright © 2022 | All Rights Reserved.</p>
+        <p class="footer-created">Created with love by Five_Mushketeer</p>
+      </div>
+    </footer>
+    <script src="mainPayment.js"></script>
+  </body>
+</html>
