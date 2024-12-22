@@ -22,29 +22,29 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
           <!-- Shop Icon -->
           <div class="shop-icon">
             <a href="#"
-              ><img src="img_profile/shop_icon.png" alt="Shop Icon"
+              ><img src="../img-source/shop_icon.png" alt="Shop Icon"
             /></a>
           </div>
           <!-- Logo -->
           <div class="logo">
             <a href="../index.html"
-              ><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo"
+              ><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo"
             /></a>
           </div>
           <!-- Navigation Icons -->
           <div class="nav-icons">
             <div class="search-icon">
               <a href="#"
-                ><img src="img_profile/icon_search.png" alt="Search Icon"
+                ><img src="../img-source/icon_search.png" alt="Search Icon"
               /></a>
             </div>
             <div class="profile-icon">
               <a href="mainProfile.html"
-                ><img src="img_profile/icon_profile.png" alt="Profile Icon"
+                ><img src="../img-source/icon_profile.png" alt="Profile Icon"
               /></a>
             </div>
             <div class="menu-icon" onclick="toggleMenu()">
-              <img src="img_profile/icon_menu.png" alt="Menu Icon" />
+              <img src="../img-source/icon_menu.png" alt="Menu Icon" />
             </div>
           </div>
           <!-- Add this after the <div class="nav-icons"> -->
@@ -71,7 +71,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
       <div class="user-background">
         <div class="overlay"></div>
         <img
-          src="img_profile/WhatsApp Image 2024-11-22 at 04.26.10.jpeg"
+          src="../img-source/WhatsApp Image 2024-11-22 at 04.26.10.jpeg"
           alt="User Background"
         />
       </div>
@@ -137,11 +137,11 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
         <div class="footer-brand">
           <!-- Logo Section -->
           <div class="footer-logo">
-            <img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" />
+            <img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" />
           </div>
           <!-- Social Media Icons -->
           <div class="social-icons">
-            <img src="img_profile/instagram_icon.png" alt="Instagram Icon" />
+            <img src="../img-source/instagram_icon.png" alt="Instagram Icon" />
           </div>
         </div>
         <div class="footer-links">

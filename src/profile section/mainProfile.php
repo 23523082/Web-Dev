@@ -40,29 +40,29 @@ if ($result->num_rows > 0) {
           <!-- Shop Icon -->
           <div class="shop-icon">
             <a href="#"
-              ><img src="img_profile/shop_icon.png" alt="Shop Icon"
+              ><img src="../img-source/shop_icon.png" alt="Shop Icon"
             /></a>
           </div>
           <!-- Logo -->
           <div class="logo">
             <a href="../index.php"
-              ><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo"
+              ><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo"
             /></a>
           </div>
           <!-- Navigation Icons -->
           <div class="nav-icons">
             <div class="search-icon">
               <a href="#"
-                ><img src="img_profile/icon_search.png" alt="Search Icon"
+                ><img src="../img-source/icon_search.png" alt="Search Icon"
               /></a>
             </div>
             <div class="profile-icon">
               <a href="mainProfile.html"
-                ><img src="img_profile/icon_profile.png" alt="Profile Icon"
+                ><img src="../img-source/icon_profile.png" alt="Profile Icon"
               /></a>
             </div>
             <div class="menu-icon" onclick="toggleMenu()">
-              <img src="img_profile/icon_menu.png" alt="Menu Icon" />
+              <img src="../img-source/icon_menu.png" alt="Menu Icon" />
             </div>
           </div>
           <!-- Add this after the <div class="nav-icons"> -->
@@ -89,7 +89,7 @@ if ($result->num_rows > 0) {
       <div class="user-background">
         <div class="overlay"></div>
         <img
-          src="img_profile/WhatsApp Image 2024-11-22 at 04.26.10.jpeg"
+          src="../img-source/WhatsApp Image 2024-11-22 at 04.26.10.jpeg"
           alt="User Background"
         />
       </div>
@@ -105,7 +105,7 @@ if ($result->num_rows > 0) {
           id="wishlist"
          onclick="window.location.href='addresses.php?id=<?php echo $_SESSION['id']; ?>'"
         >
-          <img src="img_profile/model_pria.jpg" alt="Wishlist" />
+          <img src="../img-source/model_pria.jpg" alt="Wishlist" />
           <button class="card-button">WISHLIST</button>
         </div>
 
@@ -117,7 +117,7 @@ if ($result->num_rows > 0) {
           id="order-history"
           onclick="window.location.href='orderHistory.php?id=<?php echo $_SESSION['id']; ?>';"
         >
-          <img src="img_profile/model_wanita.jpg" alt="Order History" />
+          <img src="../img-source/model_wanita.jpg" alt="Order History" />
           <button class="card-button">ORDER HISTORY</button>
         </div>
       </div>
@@ -131,7 +131,7 @@ if ($result->num_rows > 0) {
         >
           More Personal Details
           <img
-            src="img_profile/icon_dropdown.png"
+            src="../img-source/icon_dropdown.png"
             alt="Dropdown Icon"
             class="dropdown-icon"
           />
@@ -142,28 +142,28 @@ if ($result->num_rows > 0) {
             onclick="window.location.href='personalDetails.php?id=<?php echo $_SESSION['id']; ?>'"
           >
             Personal Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+            <img src="../img-source/icon_arrow_right.png" class="arrow-icon" />
           </button>
           <button
             class="dropdown-item"
             onclick="window.location.href='userDetails.php?id=<?php echo $_SESSION['id']; ?>';"
           >
             User Details
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+            <img src="../img-source/icon_arrow_right.png" class="arrow-icon" />
           </button>
           <button
             class="dropdown-item"
             onclick="window.location.href='addresses.php?id=<?php echo $_SESSION['id']; ?>'"
           >
             Addresses
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+            <img src="../img-source/icon_arrow_right.png" class="arrow-icon" />
           </button>
           <button
             class="dropdown-item"
             onclick="window.location.href='recommendation.php?id=<?php echo $_SESSION['id']; ?>';"
           >
             Recommendation
-            <img src="img_profile/icon_arrow_right.png" class="arrow-icon" />
+            <img src="../img-source/icon_arrow_right.png" class="arrow-icon" />
           </button>
         </div>
       </div>
@@ -175,11 +175,11 @@ if ($result->num_rows > 0) {
         <div class="footer-brand">
           <!-- Logo Section -->
           <div class="footer-logo">
-            <img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" />
+            <img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" />
           </div>
           <!-- Social Media Icons -->
           <div class="social-icons">
-            <img src="img_profile/instagram_icon.png" alt="Instagram Icon" />
+            <img src="../img-source/instagram_icon.png" alt="Instagram Icon" />
           </div>
         </div>
         <div class="footer-links">

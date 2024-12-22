@@ -61,20 +61,20 @@ $conn->close();
       <nav class="navbar">
         <div class="navbar-container">
           <div class="shop-icon">
-            <a href="#"><img src="img_profile/shop_icon.png" alt="Shop Icon" /></a>
+            <a href="#"><img src="../img-source/shop_icon.png" alt="Shop Icon" /></a>
           </div>
           <div class="logo">
-            <a href="../index.php"><img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" /></a>
+            <a href="../index.php"><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" /></a>
           </div>
           <div class="nav-icons">
             <div class="search-icon">
-              <a href="#"><img src="img_profile/icon_search.png" alt="Search Icon" /></a>
+              <a href="#"><img src="../img-source/icon_search.png" alt="Search Icon" /></a>
             </div>
             <div class="profile-icon">
-              <a href="mainProfile.html"><img src="img_profile/icon_profile.png" alt="Profile Icon" /></a>
+              <a href="mainProfile.html"><img src="../img-source/icon_profile.png" alt="Profile Icon" /></a>
             </div>
             <div class="menu-icon" onclick="toggleMenu()">
-              <img src="img_profile/icon_menu.png" alt="Menu Icon" />
+              <img src="../img-source/icon_menu.png" alt="Menu Icon" />
             </div>
           </div>
           <div id="menuBar" class="menu-bar hidden">
@@ -98,7 +98,7 @@ $conn->close();
     <div class="user-header">
       <div class="user-background">
         <div class="overlay"></div>
-        <img src="img_profile/WhatsApp Image 2024-11-22 at 04.26.10.jpeg" alt="User Background" />
+        <img src="../img-source/WhatsApp Image 2024-11-22 at 04.26.10.jpeg" alt="User Background" />
       </div>
       <h1 class="user-name">WELCOME <?php echo htmlspecialchars($userResult['FirstName'] . ' ' . $userResult['LastName']); ?></h1>
     </div>
@@ -182,10 +182,10 @@ $conn->close();
       <div class="footer-container">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="img_profile/Logo_Icon.png" alt="Baju Bekas Logo" />
+            <img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" />
           </div>
           <div class="social-icons">
-            <img src="img_profile/instagram_icon.png" alt="Instagram Icon" />
+            <img src="../img-source/instagram_icon.png" alt="Instagram Icon" />
           </div>
         </div>
       </div>
