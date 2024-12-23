@@ -23,7 +23,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
     <header>
       <nav class="navbar fixed-navbar">
         <div class="logo">
-          <a href="index.html">BAJU BEKAS</a>
+          <a href="../index.php">BAJU BEKAS</a>
         </div>
         <ul class="nav-links">
           <li><a href="../index.php">Shop</a></li>

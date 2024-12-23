@@ -40,29 +40,29 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
         </ul>
       </nav>
     </header>
-    <?php
-      require '../dbconnections.php';
+        <?php
+        require '../dbconnections.php';
 
-      $sql = "SELECT id, title, image FROM catalog WHERE type = 'women'";
-      $result = mysqli_query($conn, $sql);
+        $sql = "SELECT id, title, image FROM catalog WHERE type = 'women'";
+        $result = mysqli_query($conn, $sql);
 
-      if (mysqli_num_rows($result) > 0) {
-          // output data of each row
-          while($row = mysqli_fetch_assoc($result)) {
-              echo '<section class="baju-cowok">
-              <div class="cards-container">
-                   <a href="../viewcatalog/payMen1.php?id=' . htmlspecialchars($row['id']) . '" target="_blank" class="card">
-                       <img src="../uploads/' . $row["image"] . '" alt="' . $row["title"] . ' - Baju Cowok" />
-                  </a>
-              </div>
-          </section>';
-          }
-      } else {
-          echo "No results";
-      }
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                echo '<section class="baju-cowok">
+                <div class="cards-container">
+                    <a href="../viewcatalog/payMen1.php?id=' . htmlspecialchars($row['id']) . '" target="_blank" class="card">
+                        <img src="../uploads/' . $row["image"] . '" alt="' . $row["title"] . ' - Baju Cowok" />
+                    </a>
+                </div>
+            </section>';
+            }
+        } else {
+            echo "No results";
+        }
 
-      mysqli_close($conn);
-  ?>
+        mysqli_close($conn);
+        ?>
       </div>
     </section>
     <!-- Baju Cewek -->

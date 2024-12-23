@@ -4,104 +4,135 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
   header("Location: account-section/login.php");
   exit;
 }
+
+// Database connection
+$host = 'localhost';
+$db = 'your_database_name'; // Replace with your actual database name
+$user = 'Vibe'; // Database user
+$pass = ''; // Password if any
+
+// Create connection
+require '../dbconnections.php';
+
+// Fetch wishlist items for the current user
+$userId = $_SESSION['id'];
+$sql = "SELECT w.id, w.image, w.title, p.id FROM wishlist w 
+        JOIN catalog p ON w.productid = p.id
+        WHERE w.wishlistby = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Check if there are any wishlist items
+if ($result->num_rows > 0) {
+    $wishlistItems = $result->fetch_all(MYSQLI_ASSOC);
+} else {
+    $wishlistItems = [];
+}
+
+$stmt->close();
+$conn->close();
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="wishlistProfile.css" />
-    <title>Baju Bekas - Profile</title>
-  </head>
-  <body>
-    <!-- header section -->
-    <header>
-      <nav class="navbar">
-        <div class="navbar-container">
-          <!-- Shop Icon -->
-          <div class="shop-icon">
-            <a href="../index.php"
-              ><img src="../img-source/shop_icon.png" alt="Shop Icon"
-            /></a>
-          </div>
-          <!-- Logo -->
-          <div class="logo">
-            <a href="../index.php"
-              ><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo"
-            /></a>
-          </div>
-          <!-- Navigation Icons -->
-          <div class="nav-icons">
-            <div class="search-icon">
-              <a href="../search/search.php"
-                ><img src="../img-source/icon_search.png" alt="Search Icon"
-              /></a>
-            </div>
-            <div class="profile-icon">
-              <a href="mainProfile.php"
-                ><img src="../img-source/icon_profile.png" alt="Profile Icon"
-              /></a>
-            </div>
-            <div class="menu-icon" onclick="toggleMenu()">
-              <img src="../img-source/icon_menu.png" alt="Menu Icon" />
-            </div>
-          </div>
-          <!-- Add this after the <div class="nav-icons"> -->
-          <div id="menuBar" class="menu-bar hidden">
-            <button class="close-menu" onclick="toggleMenu()">X</button>
-            <ul class="menu-list">
-              <li>New In</li>
-              <li>Woman</li>
-              <li>Man</li>
-              <li>Child</li>
-              <li>Handbags</li>
-              <li>Gifts For Him</li>
-              <li>Gifts For Her</li>
-              <li>Payment Methods</li>
-              <li>About Us</li>
-            </ul>
-          </div>
-          <!-- Add this overlay element just inside the <body> -->
-          <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="wishlistProfile.css" />
+  <title>Baju Bekas - Profile</title>
+</head>
+<body>
+  <!-- header section -->
+  <header>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <!-- Shop Icon -->
+        <div class="shop-icon">
+          <a href="../index.php"><img src="../img-source/shop_icon.png" alt="Shop Icon" /></a>
         </div>
-      </nav>
-    </header>
-    <div class="user-header">
-      <div class="user-background">
-        <div class="overlay"></div>
-        <img
-          src="../img-source/WhatsApp Image 2024-11-22 at 04.26.10.jpeg"
-          alt="User Background"
-        />
-      </div>
-      <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
-    </div>
-    <!-- main section -->
-    <main>
-      <section class="wishlist-section">
-        <aside class="sidebar">
-          <ul class="sidebar-menu">
-            <li><a href="wishlistProfile.php">Wishlist</a></li>
-            <li><a href="orderHistory.php">Order History</a></li>
-            <li><a href="personalDetails.php?id=<?php echo $_SESSION['id']; ?>">Personal Details</a></li>
-            <li><a href="userDetails.php">User Details</a></li>
-            <li><a href="addresses.php?id=<?php echo $_SESSION['id']; ?>">Addresses</a></li>
-            <li><a href="recommendation.php">Recommendation</a></li>
-          </ul>
-        </aside>
-        <div class="wishlist-content">
-          <!-- Title and Subtitle -->
-          <div class="title-section">
-            <h2 class="section-title">YOUR WISHLIST</h2>
-            <p class="section-subtitle">
-              MR. BUDIONO SIREGAR, HERE YOU WILL FIND YOUR PRODUCTS THAT YOU
-              SAVE IN WISHLIST.
-            </p>
+        <!-- Logo -->
+        <div class="logo">
+          <a href="../index.php"><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" /></a>
+        </div>
+        <!-- Navigation Icons -->
+        <div class="nav-icons">
+          <div class="search-icon">
+            <a href="../search/search.php"><img src="../img-source/icon_search.png" alt="Search Icon" /></a>
           </div>
-          <!-- Content -->
+          <div class="profile-icon">
+            <a href="mainProfile.php"><img src="../img-source/icon_profile.png" alt="Profile Icon" /></a>
+          </div>
+          <div class="menu-icon" onclick="toggleMenu()">
+            <img src="../img-source/icon_menu.png" alt="Menu Icon" />
+          </div>
+        </div>
+        <!-- Add this after the <div class="nav-icons"> -->
+        <div id="menuBar" class="menu-bar hidden">
+          <button class="close-menu" onclick="toggleMenu()">X</button>
+          <ul class="menu-list">
+            <li>New In</li>
+            <li>Woman</li>
+            <li>Man</li>
+            <li>Child</li>
+            <li>Handbags</li>
+            <li>Gifts For Him</li>
+            <li>Gifts For Her</li>
+            <li>Payment Methods</li>
+            <li>About Us</li>
+          </ul>
+        </div>
+        <!-- Add this overlay element just inside the <body> -->
+        <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
+      </div>
+    </nav>
+  </header>
+  <div class="user-header">
+    <div class="user-background">
+      <div class="overlay"></div>
+      <img src="../img-source/WhatsApp Image 2024-11-22 at 04.26.10.jpeg" alt="User Background" />
+    </div>
+    <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
+  </div>
+  <!-- main section -->
+  <main>
+    <section class="wishlist-section">
+      <aside class="sidebar">
+        <ul class="sidebar-menu">
+          <li><a href="wishlistProfile.php">Wishlist</a></li>
+          <li><a href="orderHistory.php">Order History</a></li>
+          <li><a href="personalDetails.php?id=<?php echo $_SESSION['id']; ?>">Personal Details</a></li>
+          <li><a href="userDetails.php">User Details</a></li>
+          <li><a href="addresses.php?id=<?php echo $_SESSION['id']; ?>">Addresses</a></li>
+          <li><a href="recommendation.php">Recommendation</a></li>
+        </ul>
+      </aside>
+      <div class="wishlist-content">
+        <!-- Title and Subtitle -->
+        <div class="title-section">
+          <h2 class="section-title">YOUR WISHLIST</h2>
+          <p class="section-subtitle">
+            MR. BUDIONO SIREGAR, HERE YOU WILL FIND YOUR PRODUCTS THAT YOU
+            SAVE IN WISHLIST.
+          </p>
+        </div>
+        <!-- Content -->
+        <?php if (!empty($wishlistItems)): ?>
+          <div class="wishlist-items">
+        <?php foreach ($wishlistItems as $item): ?>
+        <div class="wishlist-item-container">
+            <div class="wishlist-card">
+                <img src="../uploads/<?php echo $item['image']; ?>" alt="<?php echo $item['title']; ?>" />
+                <h3 class="wishlist-title"><?php echo $item['title']; ?></h3>
+                <p class="wishlist-productid">Product ID: <?php echo $item['id']; ?></p>
+                <a href="../viewcatalog/payMen1.php?id=<?php echo $item['id']; ?>" class="view-product-button">View Product</a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+        </div>
+        <?php else: ?>
           <div class="wishlist-card">
             <h3 class="wishlist-empty">EMPTY WISHLIST</h3>
             <p class="wishlist-message">
@@ -110,55 +141,56 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
             </p>
             <button class="find-product-button">FIND PRODUCT NOW</button>
           </div>
+        <?php endif; ?>
+      </div>
+    </section>
+  </main>
+  <!-- Footer Section -->
+  <footer class="footer-section">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <!-- Logo Section -->
+        <div class="footer-logo">
+          <img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" />
         </div>
-      </section>
-    </main>
-    <!-- Footer Section -->
-    <footer class="footer-section">
-      <div class="footer-container">
-        <div class="footer-brand">
-          <!-- Logo Section -->
-          <div class="footer-logo">
-            <img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo" />
-          </div>
-          <!-- Social Media Icons -->
-          <div class="social-icons">
-            <img src="../img-source/instagram_icon.png" alt="Instagram Icon" />
-          </div>
-        </div>
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Products</h4>
-            <ul>
-              <li>Sand Stone</li>
-              <li>Stone</li>
-              <li>Cement</li>
-              <li>Soft Stone</li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Services</h4>
-            <ul>
-              <li>Measurement Service</li>
-              <li>Product Advice</li>
-              <li>Interior Design</li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Contact Information</h4>
-            <address>
-              3181 Al Imam Saud Ibn Abdul Aziz Branch Rd,<br />
-              An Nuzhah, Riyadh 12474,<br />
-              Saudi Arabia
-            </address>
-          </div>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+          <img src="../img-source/instagram_icon.png" alt="Instagram Icon" />
         </div>
       </div>
-      <div class="footer-bottom">
-        <p class="footer-copyright">Copyright © 2022 | All Rights Reserved.</p>
-        <p class="footer-created">Created with love by Five_Mushketeer</p>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Products</h4>
+          <ul>
+            <li>Sand Stone</li>
+            <li>Stone</li>
+            <li>Cement</li>
+            <li>Soft Stone</li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li>Measurement Service</li>
+            <li>Product Advice</li>
+            <li>Interior Design</li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact Information</h4>
+          <address>
+            3181 Al Imam Saud Ibn Abdul Aziz Branch Rd,<br />
+            An Nuzhah, Riyadh 12474,<br />
+            Saudi Arabia
+          </address>
+        </div>
       </div>
-    </footer>
-    <script src="wishlistProfile.js"></script>
-  </body>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">Copyright © 2022 | All Rights Reserved.</p>
+      <p class="footer-created">Created with love by Five_Mushketeer</p>
+    </div>
+  </footer>
+  <script src="wishlistProfile.js"></script>
+</body>
 </html>

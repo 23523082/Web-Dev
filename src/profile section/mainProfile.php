@@ -103,7 +103,7 @@ if ($result->num_rows > 0) {
         <div
           class="card"
           id="wishlist"
-         onclick="window.location.href='addresses.php?id=<?php echo $_SESSION['id']; ?>'"
+         onclick="window.location.href='wishlistProfile.php?id=<?php echo $_SESSION['id']; ?>'"
         >
           <img src="../img-source/model_pria.jpg" alt="Wishlist" />
           <button class="card-button">WISHLIST</button>

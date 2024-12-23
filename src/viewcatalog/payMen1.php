@@ -28,9 +28,9 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
           <a href="index.php">BAJU BEKAS</a>
         </div>
         <ul class="nav-links">
-          <li><a href="index.php">Shop</a></li>
-          <li><a href="profile.php">Profile</a></li>
-          <li><a href="search.php">Search</a></li>
+          <li><a href="../index.php">Shop</a></li>
+          <li><a href="../profile section/mainProfile.php">Profile</a></li>
+          <li><a href="../search/search.php">Search</a></li>
           <li class="dropdown">
             <a href="#" class="menu-link">Menu</a>
             <ul class="dropdown-menu">
@@ -68,6 +68,8 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
           <!-- Purchase Button -->
           <a href="catalogAdd.php?id=<?php echo $product['id']; ?>" class="btn-purchase">Rp <?php echo $product['price']; ?> - Add</a>
+          <p></p>
+          <a href="wishlistAdd.php?id=<?php echo $product['id']; ?>" class="btn-purchase">Add to Wishlist</a>
         </div>
       </div>
     </section>

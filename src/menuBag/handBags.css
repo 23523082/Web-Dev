@@ -89,12 +89,17 @@ body {
 .baju-cowok {
   padding: 2rem;
   background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
 }
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 card per baris */
-  gap: 0; /* Tidak ada jarak antar-card */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 1rem; /* Spacing between cards */
+  width: 100%;
+  max-width: 1200px; /* Limit the container width */
+  margin: 0 auto;
 }
 
 .card {
@@ -102,6 +107,8 @@ body {
   padding: 1rem;
   text-align: center;
   background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; /* Rounded corners */
 }
 
 .card img {
@@ -172,7 +179,7 @@ body {
 .footer-social {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 15px;  
 }
 
 .footer-social a img {

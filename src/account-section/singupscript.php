@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST['password'];
     $FirstName = trim($_POST['first-name']);
     $LastName = trim($_POST['last-name']);
-    $DOB = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'];
+    $DOB = $_POST['dob'];
     $type = $_POST['user-type'];
 
     // Validate input

@@ -14,14 +14,14 @@ body {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
-  z-index: 10; /* Tambahan untuk memastikan navbar di atas */
+  z-index: 10;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  flex: 1; /* Membuat logo berada di bagian kiri */
-  text-align: center; /* Logo ditengah */
+  flex: 1;
+  text-align: center;
 }
 
 .logo a {
@@ -36,7 +36,7 @@ body {
   margin: 0;
   padding: 0;
   flex: 2;
-  justify-content: flex-end; /* Tombol tetap di sisi kanan */
+  justify-content: flex-end;
 }
 
 .nav-links li {
@@ -57,15 +57,15 @@ body {
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 100%; /* Tepat di bawah link Menu */
-  right: 0; /* Supaya sejajar dengan tombol "Menu" */
+  top: 100%;
+  right: 0;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 0.5rem 0;
   margin: 0;
   border-radius: 4px;
-  z-index: 999; /* Tambahan untuk memastikan dropdown terlihat */
+  z-index: 999;
 }
 
 .dropdown-menu li {
@@ -83,32 +83,38 @@ body {
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block; /* Tampilkan dropdown saat hover */
+  display: block;
 }
 
 .baju-cowok {
   padding: 2rem;
   background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
 }
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 card per baris */
-  gap: 0; /* Tidak ada jarak antar-card */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust for responsiveness */
+  gap: 1rem; /* Add some spacing between cards */
+  max-width: 1200px; /* Center container */
+  margin: 0 auto;
 }
 
 .card {
-  border: 1px solid rgba(0, 0, 0, 0.2); /* Border tipis */
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1rem;
   text-align: center;
   background-color: #fff;
 }
 
 .card img {
-  width: 100%;
-  height: auto;
+  width: 200px; /* Static width */
+  height: 300px; /* Static height */
+  object-fit: cover; /* Ensures image fits nicely */
   display: block;
-  border-radius: 5px; /* Opsional: sudut melengkung */
+  margin: 0 auto;
+  border-radius: 5px;
 }
 
 .footer {

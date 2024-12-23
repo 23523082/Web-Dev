@@ -1,14 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 
-/* Header Section */
-body {
-  font-family: Arial, sans-serif;
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
   background-color: #f9f9f9;
+}
+
+/* Header Section */
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.shop-icon img,
+.nav-icons img {
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+}
+
+.logo img {
+  width: 240px;
 }
 
 .navbar {
@@ -29,40 +51,16 @@ body {
   height: 100%;
 }
 
-.shop-icon,
-.logo,
-.nav-icons div {
+.shop-icon, .logo, .nav-icons div {
   display: flex;
   align-items: center;
   height: 100%;
 }
 
-.shop-icon {
-  flex: 1;
-}
-
 .nav-icons {
   display: flex;
   gap: 20px;
-  flex: 1;
   justify-content: flex-end;
-}
-
-.logo {
-  flex: 2;
-  display: flex;
-  justify-content: center;
-}
-
-.shop-icon img,
-.nav-icons img {
-  width: 42px;
-  height: 42px;
-  cursor: pointer;
-}
-
-.logo img {
-  width: 240px;
 }
 
 .menu-bar {
@@ -87,10 +85,8 @@ body {
   background: none;
   border: none;
   font-size: 24px;
-  font-weight: bold;
   cursor: pointer;
   color: #333;
-  margin-bottom: 20px;
 }
 
 .menu-list {
@@ -118,10 +114,6 @@ body {
   transform: translateX(0);
 }
 
-.menu-bar.hidden {
-  transform: translateX(100%);
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -131,9 +123,9 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   z-index: 999;
-  transition: opacity 0.3s ease-in-out;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .overlay.show {
@@ -141,45 +133,29 @@ body {
   pointer-events: auto;
 }
 
-.overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
+/* User Header */
 .user-header {
-  position: relative;
   text-align: center;
   color: #fff;
   margin-top: -5px;
 }
 
 .user-background {
-  position: relative;
   width: 100%;
   height: 370px;
   overflow: hidden;
-  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .user-background img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 16%;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
 }
 
 .user-name {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   font-size: 48px;
@@ -190,19 +166,22 @@ body {
 }
 
 /* Main Section */
-
 .wishlist-section {
   display: flex;
-  flex-direction: row;
   gap: 20px;
   padding: 20px;
+}
+
+.wishlist-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .sidebar {
   flex: 1;
   padding: 10px;
-  margin-top: 6%;
-  background: none;
 }
 
 .sidebar-menu {
@@ -213,7 +192,6 @@ body {
 
 .sidebar-menu li {
   margin-bottom: 20px;
-  position: relative;
 }
 
 .sidebar-menu li a {
@@ -240,7 +218,6 @@ body {
 .sidebar-menu li a:hover::after {
   width: 200px;
   transform: scale(1.1);
-  transition: transform 0.3s ease;
 }
 
 .sidebar-menu li a.active {
@@ -250,25 +227,23 @@ body {
 
 /* Title Section */
 .title-section {
-  text-align: right; /* Align text to the right */
+  text-align: right;
   margin-bottom: 20px;
   padding-right: 20px;
 }
 
 .section-title {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-family: "Lato", sans-serif;
-  color: #000000;
+  color: #333;
+  margin: 10px 0;
 }
 
 .section-subtitle {
   font-size: 18px;
   color: #666;
   margin-top: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   font-family: "Poppins", sans-serif;
 }
 
@@ -277,50 +252,65 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: relative;
 }
 
 .wishlist-card {
   background: #fff;
-  padding: 40px; /* Tambahkan padding */
+  padding: 20px;
   border: 1px solid #ddd;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow lembut */
-  width: 89%; /* Atur lebar menjadi 80% dari container */
-  max-width: 1000px; /* Batas maksimum agar tidak terlalu lebar */
-  margin: 0 auto; /* Pusatkan konten */
-  border: 1px solid #000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.wishlist-productid {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.wishlist-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.wishlist-item-container img {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: contain;
 }
 
 .wishlist-empty {
   text-align: center;
-  font-size: 28px; /* Perbesar teks */
+  font-size: 28px;
   color: #888;
-  /* Tambahkan spasi antar elemen */
 }
 
 .wishlist-message {
   text-align: center;
-  font-size: 18px; /* Perbesar teks */
+  font-size: 18px;
   color: #888;
-  margin-bottom: 100px; /* Tambahkan spasi antar elemen */
+  margin-bottom: 100px;
 }
 
-.find-product-button {
-  display: block;
-  width: 100%; /* Lebar tombol mengikuti konten */
-  padding: 20px; /* Tambahkan padding pada tombol */
-  font-size: 18px; /* Perbesar ukuran teks tombol */
+.find-product-button, .view-product-button {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #fff;
   background-color: #000;
   border: none;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Perbesar shadow */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.find-product-button:hover {
+.find-product-button:hover, .view-product-button:hover {
   background-color: #333;
   transform: translateY(-2px);
 }
@@ -343,7 +333,6 @@ body {
 
 .footer-brand {
   flex: 1;
-  text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -351,20 +340,12 @@ body {
 
 .footer-logo img {
   width: 300px;
-  margin-bottom: 0px;
 }
 
 .social-icons {
   display: flex;
   gap: 10px;
   margin-top: 75px;
-  margin-bottom: 0;
-}
-
-.social-icons img {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
 }
 
 .footer-brand p {
@@ -393,7 +374,6 @@ body {
 .footer-column ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .footer-column ul li {
@@ -402,8 +382,6 @@ body {
 }
 
 .footer-column address {
-  font-style: normal;
-  line-height: 1.6;
   font-size: 16px;
 }
 
@@ -420,5 +398,4 @@ body {
 .footer-created {
   font-size: 14px;
   color: #bbb;
-  margin: 0;
 }
