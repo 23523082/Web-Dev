@@ -1,12 +1,10 @@
 <?php
 session_start();
-    if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || !isset($_SESSION['type'])) {
-        header("Location: account-section/login.php");
-        exit;
-    }
-
-    ?>
-
+if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || !isset($_SESSION['type'])) {
+    header("Location: account-section/login.php");
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,15 +12,15 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BajuBekas</title>
-    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="searchPage.css">
 </head>
 <body>
 
 <header>
-    <div>BAJU BEKAS</div>
+    <div href="../index.php">BAJU BEKAS</div>
     <nav>
         <a href="../index.php">Home</a>
-        <a href="#">Products</a>
+        <a href="../index.php">Products</a>
         <a href="../aboutUs/aboutUs.html">About</a>
     </nav>
     <div class="icons">
@@ -37,15 +35,17 @@ session_start();
         <p>Discover fashion that fits your style. Start your search now!</p>
     </div>
     <div class="search-wrapper">
-    <input type="text" id="searchInput" name="query" placeholder="Search for products..." onclick="showDropdown()">
-    <button type="submit">🔍</button>
-    <div class="category-dropdown" id="categoryDropdown">
-        <a href="../menuMan/menuMan.php">Men's Fashion</a>
-        <a href="../menuWomen/menuWomen.php">Women's Fashion</a>
-        <a href="../menuChild/menuChild.php">Children's Fashion</a>
-        <a href="../menuBag/handBags.php">Handbags</a>
+        <form method="GET" action="searchResult.php">
+            <input type="text" id="searchInput" name="query" placeholder="Search for products...">
+            <button type="submit">🔍</button>
+            <div class="category-dropdown" id="categoryDropdown">
+                <a href="../menuMan/menuMan.php">Men's Fashion</a>
+                <a href="../menuWomen/menuWomen.php">Women's Fashion</a>
+                <a href="../menuChild/menuChild.php">Children's Fashion</a>
+                <a href="../menuBag/handBags.php">Handbags</a>
+            </div>
+        </form>
     </div>
-</div>
 </div>
 
 <footer>
@@ -74,19 +74,19 @@ session_start();
 </footer>
 
 <script>
-function showDropdown() {
-    document.getElementById('categoryDropdown').style.display = 'block';
-}
-
-// Hide dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('categoryDropdown');
-    const searchInput = document.getElementById('searchInput');
-    
-    if (!searchInput.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.style.display = 'none';
+    function showDropdown() {
+        document.getElementById('categoryDropdown').style.display = 'block';
     }
-});
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('categoryDropdown');
+        const searchInput = document.getElementById('searchInput');
+        
+        if (!searchInput.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
 </script>
 
 </body>

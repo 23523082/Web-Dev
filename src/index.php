@@ -23,7 +23,7 @@ require 'dbconnections.php';
        <div class="navbar-container">
       <!-- Shop Icon -->
       <div class="shop-icon">
-        <a href="cart-section/maincart.html"
+        <a href="cart-section/maincart.php"
           ><img src="img-source/shop_icon.png" alt="Shop Icon"
         /></a>
       </div>

@@ -1,0 +1,32 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  
+      MYSQL_DA TABASE: bajubekas
+    volumes:
+      - ./bajubekas.sql:/docker-entrypoint-initdb.d/bajubekas.sql
+    ports:
+      - "3306:3306"  
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php_webserver
+    restart: always
+    environment:
+      DB_HOST: database  
+      DB_NAME: bajubekas
+      DB_USER: root
+      DB_PASSWORD: rootpassword  
+    ports:
+      - "80:80"
+    depends_on:
+      - database
+    command: /bin/sh -c "sleep 20 && php -S 0.0.0.0:80 -t /var/www/html"
+    volumes:
+      - ./src:/var/www/html
+      - ./public:/var/www/html/public

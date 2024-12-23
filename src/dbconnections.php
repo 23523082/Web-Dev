@@ -1,12 +1,6 @@
 <?php
-// Check if user is logged i
 $servername = 'localhost';
 $username = 'root';
-$password = null; // Make sure to secure this file
+$password = '';
 $dbname = 'bajubekas';
-
-// Establish a database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-?>
-
+$conn = new mysqli($servername, $username, $password, 'bajubekas');

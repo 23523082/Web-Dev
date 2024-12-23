@@ -65,7 +65,7 @@ $conn->close();
         <ul class="results-list">
             <?php foreach ($items as $item): ?>
                 <li class="result-item">
-                    <a href="viewcatalog.php?id=<?php echo $item['id']; ?>" class="result-link">
+                    <a href="../viewcatalog/payMen1.php?id=<?php echo $item['id']; ?>" class="result-link">
                         <div class="result-content">
                             <img src="../uploads/<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['title']); ?>" class="result-image">
                             <span class="result-title"><?php echo htmlspecialchars($item['title']); ?></span>
