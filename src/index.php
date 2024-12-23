@@ -24,7 +24,7 @@ require 'dbconnections.php';
       <!-- Shop Icon -->
       <div class="shop-icon">
         <a href="cart-section/maincart.php"
-          ><img src="img-source/shop_icon.png" alt="Shop Icon"
+        ><img src="img-source/shop_icon.png" alt="Shop Icon"
         /></a>
       </div>
       <!-- Logo -->
