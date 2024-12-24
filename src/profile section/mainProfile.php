@@ -33,13 +33,13 @@ if ($result->num_rows > 0) {
     <title>Baju Bekas - Profile</title>
   </head>
   <body>
-    <!-- header section -->
+    <!-- Navbar -->
     <header>
       <nav class="navbar">
         <div class="navbar-container">
           <!-- Shop Icon -->
           <div class="shop-icon">
-            <a href="../index.php"
+            <a href="../cart-section/maincart.php"
               ><img src="../img-source/shop_icon.png" alt="Shop Icon"
             /></a>
           </div>
@@ -57,8 +57,13 @@ if ($result->num_rows > 0) {
               /></a>
             </div>
             <div class="profile-icon">
-              <a href="mainProfile.php"
+              <a href="../profile section/mainProfile.php"
                 ><img src="../img-source/icon_profile.png" alt="Profile Icon"
+              /></a>
+            </div>
+            <div class="addcatalog-icon" id="addButton">
+              <a href="../addcatalog/addcatalog.php" class="nav-btn"
+                ><img src="../img-source/add-catalog.png" alt="add Icon"
               /></a>
             </div>
             <div class="menu-icon" onclick="toggleMenu()">
@@ -69,15 +74,24 @@ if ($result->num_rows > 0) {
           <div id="menuBar" class="menu-bar hidden">
             <button class="close-menu" onclick="toggleMenu()">X</button>
             <ul class="menu-list">
-              <li>New In</li>
-              <li>Woman</li>
-              <li>Man</li>
-              <li>Child</li>
-              <li>Handbags</li>
-              <li>Gifts For Him</li>
-              <li>Gifts For Her</li>
-              <li>Payment Methods</li>
-              <li>About Us</li>
+              <li><a href="../newIn/newIn.php">New In</a></li>
+              <li><a href="../menuWomen/menuWomen.php">Women</a></li>
+              <li><a href="../menuMan/menuMan.php">Man</a></li>
+              <li><a href="../menuChild/menuChild.php">Child</a></li>
+              <li><a href="../menuBag/handBags.php">Handbags</a></li>
+              <li>
+                <a href="../HTML-TOBE-USED/giftsForHim.html">Gifts For Him</a>
+              </li>
+              <li>
+                <a href="../HTML-TOBE-USED/giftsForHer.html">Gifts For Her</a>
+              </li>
+              <li>
+                <a href="../paymentMethod-section/mainPayment.html"
+                  >Payment Methods</a
+                >
+              </li>
+              <li><a href="../aboutUs/aboutUs.html">About Us</a></li>
+              <li><a href="Logout.php" class="nav-btn">Logout</a></li>
             </ul>
           </div>
           <!-- Add this overlay element just inside the <body> -->
@@ -85,6 +99,7 @@ if ($result->num_rows > 0) {
         </div>
       </nav>
     </header>
+    <!-- Navbar -->
     <div class="user-header">
       <div class="user-background">
         <div class="overlay"></div>

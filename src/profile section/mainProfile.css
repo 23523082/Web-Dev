@@ -64,7 +64,6 @@ body {
   width: 240px; /* Adjust logo width */
 }
 
-/* Menu Bar Styling */
 .menu-bar {
   position: fixed;
   top: 0;
@@ -110,9 +109,19 @@ body {
   color: #333;
   cursor: pointer;
   transition: color 0.2s ease;
+  text-decoration: none;
 }
 
-.menu-list li:hover {
+.menu-list a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.menu-list a:hover {
   color: #555;
 }
 
