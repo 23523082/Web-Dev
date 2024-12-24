@@ -19,6 +19,34 @@ body {
   height: 72px; /* Set navbar height to 72px */
 }
 
+/* orderHistory.css */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+button.find-product-btn {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button.find-product-btn:hover {
+  background-color: #0056b3;
+}
 .navbar-container {
   width: 90%;
   max-width: 1200px;

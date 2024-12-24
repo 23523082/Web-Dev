@@ -41,6 +41,7 @@ if ($result_admin->num_rows > 0) {
 <head>
 <title>Admin Dashboard</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet"  href= "adminstyle.css" />
 </head>
 <body>
 
@@ -56,13 +57,13 @@ if ($result_admin->num_rows > 0) {
     <th>id</th>
     <th>sellerid</th>
     <th>title</th>
-    <th>image</th>
     <th>description</th>
     <th>material</th>
     <th>color</th>
     <th>size</th>
     <th>design</th>
     <th>type</th>
+    <th>price</th>
     <th>Actions</th>
 </tr>
 
@@ -76,13 +77,14 @@ if ($result_querycatalog->num_rows > 0) {
         echo "<td>" . $row_querycatalog["id"] . "</td>";
         echo "<td>" . $row_querycatalog["sellerid"] . "</td>";
         echo "<td>" . $row_querycatalog["title"] . "</td>";
-        echo "<img src='uploads/".$row["image"]."' width='100'></td>"; // Display image name
+        echo "<img src='../uploads/".$row["image"]."' width='100'></td>"; // Display image name
         echo "<td>" . $row_querycatalog["description"] . "</td>";
         echo "<td>" . $row_querycatalog["material"] . "</td>";
         echo "<td>" . $row_querycatalog["color"] . "</td>";
         echo "<td>" . $row_querycatalog["size"] . "</td>";
         echo "<td>" . $row_querycatalog["design"] . "</td>";
         echo "<td>" . $row_querycatalog["type"] . "</td>";
+        echo "<td>" . $row_querycatalog["price"] . "</td>";
         echo '<td><a href="#" onclick="acceptQuery(' . $row_querycatalog["id"] . ')">Accept</a></td>';
         echo "</tr>";
     }

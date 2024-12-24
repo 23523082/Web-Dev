@@ -3,6 +3,11 @@
 
 require '../dbconnections.php';
 
+session_start();
+if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || $_SESSION['type'] !== 'seller') {
+      header("Location: ../index.php");
+       exit;
+      }
 
 
 // Get form data
@@ -17,9 +22,10 @@ $design = $_POST['design'];
 $type = $_POST['type'];
 $price = $_POST['price'];
 // Prepare and bind the SQL statement
-$sql = "INSERT INTO querycatalog (sellerid, title, image, description, material, color, size, design, type, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+$sql = "INSERT INTO querycatalog (sellerid, title, image, description, material, color, size, design, type, price) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("isssssssss",$_SESSION['id'],$title, $image, $description, $material, $color, $size, $design, $type, $price);
+$stmt->bind_param("isssssssss", $_SESSION['id'], $title, $image, $description, $material, $color, $size, $design, $type, $price);
 
 
 $target_dir = "../uploads/";

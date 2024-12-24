@@ -23,8 +23,8 @@
             $row = $result->fetch_assoc();
 
             // Step 2: Insert the retrieved data into the catalog table
-            $sql_insert = "INSERT INTO catalog (sellerid, title, image, description, material, color, size, design, type) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql_insert = "INSERT INTO catalog (sellerid, title, image, description, material, color, size, design, type, price) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql_insert);
 
             if (!$stmt) {
@@ -33,7 +33,7 @@
             }
 
             $stmt->bind_param(
-                "issssssss",
+                "isssssssss",
                 $row['sellerid'],
                 $row['title'],
                 $row['image'],
@@ -42,7 +42,8 @@
                 $row['color'],
                 $row['size'],
                 $row['design'],
-                $row['type']
+                $row['type'],
+                $row['price'] // Assuming 'price' is present in the querycatalog table
             );
             $stmt->execute();
 

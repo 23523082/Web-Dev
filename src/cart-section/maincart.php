@@ -83,47 +83,50 @@ $stmt->close();
         <!-- List of selected products -->
         <div class="cart-items">
           <?php if (count($orders) > 0): ?>
-          <?php foreach ($orders as $order): ?>
-          <div class="cart-item">
-            <input
-              type="checkbox"
-              class="select-item"
-              data-name="<?php echo htmlspecialchars($order['title']); ?>"
-              data-price="<?php echo htmlspecialchars($order['price']); ?>"
-              data-basePrice="<?php echo htmlspecialchars($order['price']); ?>"
-              checked
-            />
-            <img src="../uploads/<?php echo htmlspecialchars($order['image']); ?>" alt="catalog picture" />
-            <div class="item-details">
-              <h3><?php echo htmlspecialchars($order['title']); ?></h3>
-              <p class="price">Rp <?php echo htmlspecialchars($order['price']); ?></p>
-              <div class="item-options">
-                <div class="color">
-                  <label>Color:</label>
-                  <span><?php echo htmlspecialchars($order['color']); ?></span>
+            <?php foreach ($orders as $order): ?>
+                <div class="cart-item">
+                    <input
+                        type="checkbox"
+                        class="select-item"
+                        data-name="<?php echo htmlspecialchars($order['title']); ?>"
+                        data-price="<?php echo htmlspecialchars($order['price']); ?>"
+                        data-basePrice="<?php echo htmlspecialchars($order['price']); ?>"
+                        checked
+                    />
+                    <img src="../uploads/<?php echo htmlspecialchars($order['image']); ?>" alt="catalog picture" />
+                    <div class="item-details">
+                        <h3><?php echo htmlspecialchars($order['title']); ?></h3>
+                        <p class="price">Rp <?php echo htmlspecialchars($order['price']); ?></p>
+                        <div class="item-options">
+                            <div class="color">
+                                <label>Color:</label>
+                                <span><?php echo htmlspecialchars($order['color']); ?></span>
+                            </div>
+                            <div class="size">
+                                <label>Size:</label>
+                                <span><?php echo htmlspecialchars($order['size']); ?></span>
+                            </div>
+                            <div class="quantity">
+                                <label>Quantity:</label>
+                                <button>-</button>
+                                <span>1</span>
+                                <button>+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button 
+                        class="remove-item" 
+                        onclick="if(confirm('Are you sure you want to delete this item?')) { window.location.href = 'remove_order.php?id=<?php echo htmlspecialchars($order['id']); ?>'; }">
+                        X 
+                    </button>
                 </div>
-                <div class="size">
-                  <label>Size:</label>
-                  <span><?php echo htmlspecialchars($order['size']); ?></span>
-                </div>
-                <div class="quantity">
-                  <label>Quantity:</label>
-                  <button>-</button>
-                  <span>1</span>
-                  <button>+</button>
-                </div>
-              </div>
-            </div>
-            <button 
-               class="remove-item" 
-                onclick="if(confirm('Are you sure you want to delete this item?')) { window.location.href = 'remove_order.php?id=<?php echo htmlspecialchars($order['id']); ?>'; }">
-               X 
-            </button>
-            </div>
             <?php endforeach; ?>
-  <?php else: ?>
-    <p>No items in your cart.</p>
-  <?php endif; ?>
+          <?php else: ?>
+            <p>No items in your cart.</p>
+          <?php endif; ?>
+        </div>
+
+        <!-- Order Summary Section -->
         <div class="order-summary">
           <h3>Order Summary</h3>
           <ul id="summary-list">
@@ -141,7 +144,38 @@ $stmt->close();
               <strong>TOTAL <span id="total-price">Rp0</span></strong>
             </p>
           </div>
-          <button class="checkout-btn">PROCEED TO CHECKOUT</button>
+
+          <!-- Checkout Form (Only appears once, below the order summary) -->
+          <form action="orderhistory.php" method="POST">
+    <?php
+
+    // Assuming the user is already authenticated and has the userId in session
+    $userId = $_SESSION['id'];
+
+    // Fetch order details and the corresponding seller information from the catalog table
+    $query = "SELECT o.*, c.sellerid 
+              FROM orders o 
+              LEFT JOIN catalog c ON o.title = c.title AND o.price = c.price 
+              WHERE o.orderby = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $orders = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    foreach ($orders as $order):
+        $title = htmlspecialchars($order['title']);
+        $price = htmlspecialchars($order['price']);
+        $sellerId = htmlspecialchars($order['sellerid']); // Fetch seller ID from catalog
+    ?>
+        <input type="hidden" name="item_title[]" value="<?php echo $title; ?>">
+        <input type="hidden" name="item_price[]" value="<?php echo $price; ?>">
+        <input type="hidden" name="item_sellerid[]" value="<?php echo $sellerId; ?>"> <!-- Add the seller ID here -->
+    <?php endforeach; ?>
+
+    <button type="submit" class="checkout-btn">PROCEED TO CHECKOUT</button>
+</form>
         </div>
       </section>
     </main>
@@ -192,6 +226,5 @@ $stmt->close();
       </div>
     </footer>
     <script src="maincart.js"></script>
-    
   </body>
 </html>

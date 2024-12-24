@@ -136,7 +136,7 @@ require 'dbconnections.php';
       <h2 class="section-title">Gift Ideas</h2>
       <div class="cards-wrapper">
         <div class="card">
-          <a href="HTML-TOBE-USED/giftsForHim.html">
+          <a href="forHim/giftsForHim.php">
             <img src="https://i.pinimg.com/736x/bd/c2/b0/bdc2b0a898e27ffa0a72e2aa3993dfbd.jpg" alt="Gifts for Him" />
             <h3>Gifts for Him</h3>
           </a>
@@ -154,7 +154,7 @@ require 'dbconnections.php';
     <!-- Featured Section -->
     <section class="featured">
       <div class="featured-wrapper">
-        <a href="HTML-TOBE-USED/featured.html" class="featured-card">
+        <a href="featured/featured.php" class="featured-card">
           <img src="https://i.pinimg.com/736x/e5/6c/14/e56c14a0d4c42e81b6eac227abb9252e.jpg" alt="Featured Item" />
           <h3></h3>
         </a>
