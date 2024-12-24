@@ -25,7 +25,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
     <header>
       <nav class="navbar fixed-navbar">
         <div class="logo">
-          <a href="index.php">BAJU BEKAS</a>
+          <a href="../index.php">BAJU BEKAS</a>
         </div>
         <ul class="nav-links">
           <li><a href="../index.php">Shop</a></li>
@@ -35,8 +35,10 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
             <a href="#" class="menu-link">Menu</a>
             <ul class="dropdown-menu">
               <li><a href="../menuWomen/menuWomen.php">Women</a></li>
-              <li><a href="../menuChild/menuChild.php">Children</a></li>
-              <li><a href="../menuBag/handBags.php">Handbags</a></li>
+              <li><a href="../menuChild/menuChild.php">Children</a></li>
+              <li><a href="../menuBag/handBags.php">Handbags</a></li>
+              <li><a href="../menuMan/menuMan.php">Man</a></li>
+
             </ul>
           </li>
         </ul>
@@ -56,7 +58,13 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
         <div class="produk-info">
           <h2><?php echo htmlspecialchars($product['title']); ?></h2>
           <h3>Seller : <?php echo htmlspecialchars($product['FirstName'] . ' ' . $product['LastName']); ?></h3>
+          <h4>Likes : <?php echo htmlspecialchars($product['likes']); ?></h4>
+          <form action="likeProduct.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($product['id']); ?>">
+                <button type="submit" class="btn-like">❤️ Like this Product</button>
+            </form>
           <p class="deskripsi"><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
+
 
           <ul class="detail-produk">
             <li>✔️ Bahan: <?php echo htmlspecialchars($product['material']); ?></li>

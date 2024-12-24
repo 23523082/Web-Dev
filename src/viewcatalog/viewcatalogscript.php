@@ -13,10 +13,11 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 $product_id = intval($_GET['id']); // Sanitize input
 
-// Fetch product and seller details using a JOIN query
+// Fetch product, seller details, and likes using a JOIN query
 $sql = "
     SELECT 
         catalog.*, 
+        catalog.likes, -- Include the likes column
         users.FirstName, 
         users.LastName 
     FROM catalog 
@@ -39,8 +40,9 @@ if ($result->num_rows === 0) {
     die("Product not found.");
 }
 
-$product = $result->fetch_assoc(); // Fetch product and seller data
+$product = $result->fetch_assoc(); // Fetch product, seller data, and likes
 
+// Debugging output (optional)
 
 $stmt->close();
 $conn->close();
