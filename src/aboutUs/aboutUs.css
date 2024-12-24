@@ -1,89 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
 body {
-  font-family: "Georgia", serif;
-  min-height: 100vh;
-  color: white;
-  overflow: auto;
+  font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
 }
 
 .navbar {
+  background-color: #333;
+  color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 0; /* Remove padding */
+  height: 72px; /* Set navbar height to 72px */
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 10; /* Tambahan untuk memastikan navbar di atas */
+  justify-content: space-between;
+  height: 100%; /* Make navbar-container height same as navbar */
+}
+
+.shop-icon,
+.logo,
+.nav-icons div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.shop-icon {
+  flex: 1; /* Ensure shop icon takes up equal space */
+}
+
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  flex: 1; /* Ensure icons take up equal space on the right */
+  justify-content: flex-end; /* Align icons to the right */
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  flex: 1; /* Membuat logo berada di bagian kiri */
-  text-align: center; /* Logo ditengah */
-}
-
-.logo a {
-  text-decoration: none;
-  color: #000;
-}
-
-.nav-links {
-  list-style: none;
+  flex: 2; /* Make logo take up twice the space for centering */
   display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  flex: 2;
-  justify-content: flex-end; /* Tombol tetap di sisi kanan */
+  justify-content: center; /* Center the logo horizontally */
 }
 
-.nav-links li {
-  position: relative;
+.shop-icon img,
+.nav-icons img {
+  width: 42px; /* Set width to 42px */
+  height: 42px; /* Set height to 42px */
+  cursor: pointer;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #000;
-  font-size: 1rem;
-  transition: color 0.3s;
+.logo img {
+  width: 240px; /* Adjust logo width */
 }
 
-.nav-links a:hover {
-  color: #007bff;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%; /* Tepat di bawah link Menu */
-  right: 0; /* Supaya sejajar dengan tombol "Menu" */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px; /* Set menu width */
+  height: 100vh;
   background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* Hide menu by default */
+}
+
+/* Close Menu Button */
+.close-menu {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Menu List Styling */
+.menu-list {
   list-style: none;
-  padding: 0.5rem 0;
+  padding: 0;
   margin: 0;
-  border-radius: 4px;
-  z-index: 999; /* Tambahan untuk memastikan dropdown terlihat */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.dropdown-menu li {
-  padding: 0.5rem 1rem;
-}
-
-.dropdown-menu li a {
-  color: #000;
+.menu-list a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
   text-decoration: none;
-  display: block;
 }
 
-.dropdown-menu li a:hover {
-  background-color: #f0f0f0;
+.menu-list a:hover {
+  color: #555;
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block; /* Tampilkan dropdown saat hover */
+/* Show Menu Bar */
+.menu-bar.show {
+  transform: translateX(0); /* Slide in when shown */
+}
+
+/* Hide Menu Bar */
+.menu-bar.hidden {
+  transform: translateX(100%); /* Slide out when hidden */
+}
+
+/* Overlay Styling */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+  backdrop-filter: blur(10px); /* Add blur effect */
+  z-index: 999; /* Place above content but below the menu */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* Show Overlay */
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction when hidden */
 }
 
 .baju-cowok {

@@ -11,23 +11,67 @@
     <!-- Navbar -->
     <header>
       <nav class="navbar">
-        <div class="logo">
-          <a href="../index.php">BAJU BEKAS</a>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Search</a></li>
-          <li class="dropdown">
-            <a href="#" class="menu-link">Menu</a>
-            <ul class="dropdown-menu">
-              <li><a href="menuMan.html">Men</a></li>
-              <li><a href="menuWomen.html">Women</a></li>
-              <li><a href="menuChild.html">Children</a></li>
-              <li><a href="handBags.html">Handbags</a></li>
+        <div class="navbar-container">
+          <!-- Shop Icon -->
+          <div class="shop-icon">
+            <a href="../cart-section/maincart.php"
+              ><img src="../img-source/shop_icon.png" alt="Shop Icon"
+            /></a>
+          </div>
+          <!-- Logo -->
+          <div class="logo">
+            <a href="../index.php"
+              ><img src="../img-source/Logo_Icon.png" alt="Baju Bekas Logo"
+            /></a>
+          </div>
+          <!-- Navigation Icons -->
+          <div class="nav-icons">
+            <div class="search-icon">
+              <a href="../search/search.php"
+                ><img src="../img-source/icon_search.png" alt="Search Icon"
+              /></a>
+            </div>
+            <div class="profile-icon">
+              <a href="../profile section/mainProfile.php"
+                ><img src="../img-source/icon_profile.png" alt="Profile Icon"
+              /></a>
+            </div>
+            <div class="addcatalog-icon" id="addButton">
+              <a href="../addcatalog/addcatalog.php" class="nav-btn"
+                ><img src="../img-source/add-catalog.png" alt="add Icon"
+              /></a>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+              <img src="../img-source/icon_menu.png" alt="Menu Icon" />
+            </div>
+          </div>
+          <!-- Add this after the <div class="nav-icons"> -->
+          <div id="menuBar" class="menu-bar hidden">
+            <button class="close-menu" onclick="toggleMenu()">X</button>
+            <ul class="menu-list">
+              <li><a href="../newIn/newIn.php">New In</a></li>
+              <li><a href="../menuWomen/menuWomen.php">Women</a></li>
+              <li><a href="../menuMan/menuMan.php">Man</a></li>
+              <li><a href="../menuChild/menuChild.php">Child</a></li>
+              <li><a href="../menuBag/handBags.php">Handbags</a></li>
+              <li>
+                <a href="../HTML-TOBE-USED/giftsForHim.html">Gifts For Him</a>
+              </li>
+              <li>
+                <a href="../HTML-TOBE-USED/giftsForHer.html">Gifts For Her</a>
+              </li>
+              <li>
+                <a href="../paymentMethod-section/mainPayment.html"
+                  >Payment Methods</a
+                >
+              </li>
+              <li><a href="../aboutUs/aboutUs.html">About Us</a></li>
+              <li><a href="Logout.php" class="nav-btn">Logout</a></li>
             </ul>
-          </li>
-        </ul>
+          </div>
+          <!-- Add this overlay element just inside the <body> -->
+          <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
+        </div>
       </nav>
     </header>
     <!-- Navbar -->
@@ -41,13 +85,18 @@
         <div class="about-us-description">
           <h2>Discover Elegance in Sustainability</h2>
           <p>
-            At Baju Bekas by Five Musketeers, we blend timeless fashion with eco-conscious values, offering curated pieces that redefine luxury. Each item tells a story, inviting you to embrace style with purpose and make a meaningful
-            impact.
+            At Baju Bekas by Five Musketeers, we blend timeless fashion with
+            eco-conscious values, offering curated pieces that redefine luxury.
+            Each item tells a story, inviting you to embrace style with purpose
+            and make a meaningful impact.
           </p>
 
           <p>
-            Join us in redefining luxury through mindful choices. Whether you're seeking a rare gem or simply refreshing your wardrobe, our collection offers something exceptional for every taste. Step into a world where fashion meets
-            purpose, and let your style inspire change.
+            Join us in redefining luxury through mindful choices. Whether you're
+            seeking a rare gem or simply refreshing your wardrobe, our
+            collection offers something exceptional for every taste. Step into a
+            world where fashion meets purpose, and let your style inspire
+            change.
           </p>
 
           <p><b>-Baju Bekas by Five Musketeers</b></p>
@@ -83,11 +132,15 @@
           </div>
           <div class="footer-column">
             <h3>Contact Information</h3>
-            <p>Kaliurang St No.Km. 14,5, Krawitan, Umbulmartani, Ngemplak, Sleman Regency, Special Region of Yogyakarta 55584</p>
+            <p>
+              Kaliurang St No.Km. 14,5, Krawitan, Umbulmartani, Ngemplak, Sleman
+              Regency, Special Region of Yogyakarta 55584
+            </p>
           </div>
         </div>
       </div>
     </footer>
     <!-- Footer -->
+    <script src="aboutUs.js"></script>
   </body>
 </html>
