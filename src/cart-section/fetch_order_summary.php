@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../dbconnections.php'; // Replace with your database connection file
+include '../dbconnections.php'; 
 
 header('Content-Type: application/json'); // Return JSON response
 

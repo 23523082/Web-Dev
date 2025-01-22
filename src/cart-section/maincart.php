@@ -5,6 +5,7 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['id']) || !isset($_SESSION['t
     header("Location: ../account-section/login.php");
     exit;
 }
+
 require '../dbconnections.php';
 
 // Fetch orders for the logged-in user
@@ -17,6 +18,15 @@ $result = $stmt->get_result();
 $orders = $result->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
 ?>
+
+<?php
+if (isset($_SESSION['payment_message'])) {
+    echo "<script>alert('".$_SESSION['payment_message']."');</script>";
+    unset($_SESSION['payment_message']);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +34,25 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="maincart.css" />
     <title>Baju Bekas - CartSection</title>
+    <script>
+        function toggleMenu() {
+            const menuBar = document.getElementById("menuBar");
+            const overlay = document.getElementById("overlay");
+            menuBar.classList.toggle("hidden");
+            overlay.classList.toggle("hidden");
+        }
+
+        function openCardPayment() {
+            console.log("Opening card payment popup");
+            const popup = document.getElementById('popup-card');
+            popup.classList.remove('hidden');
+        }
+
+        function closeCardPayment() {
+            const popup = document.getElementById('popup-card');
+            popup.classList.add('hidden');
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -143,9 +172,9 @@ $stmt->close();
                     $price = htmlspecialchars($order['price']);
                     $sellerId = htmlspecialchars($order['sellerid']);
                 ?>
-                    <input type="hidden" name="item_title[]" value="<?php echo $title; ?>">
-                    <input type="hidden" name="item_price[]" value="<?php echo $price; ?>">
-                    <input type="hidden" name="item_sellerid[]" value="<?php echo $sellerId; ?>">
+                    <input type="hidden" name="item_title" value="<?php echo $title; ?>">
+                    <input type="hidden" name="item_price" value="<?php echo $price; ?>">
+                    <input type="hidden" name="item_sellerid" value="<?php echo $sellerId; ?>">
                 <?php endforeach; ?>
                 <button type="submit" class="checkout-btn">PROCEED TO CHECKOUT</button>
             </form>

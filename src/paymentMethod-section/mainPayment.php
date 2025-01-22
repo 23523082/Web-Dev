@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sellerIds = $_POST['item_sellerid'];
 
     $_SESSION['checkout_items'] = [
-        'titles' => $items,
-        'prices' => $prices,
-        'sellerIds' => $sellerIds,
+        'titles' => (array)$items,
+        'prices' => (array)$prices,
+        'sellerIds' => (array)$sellerIds,
     ];
 } elseif (!isset($_SESSION['checkout_items'])) {
     header("Location: maincart.php");
@@ -121,7 +121,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img src="img_profile/Icon-Qris.png" alt="QRIS Logo" />
                 <p>Scan the QR code to pay. Please do not close this page.</p>
                 <img src="path/to/generated-qr-code.png" alt="QR Code" class="qris" />
-                <a href="finalizingPayment.php?method=qris" class="pay-now">Confirm Payment</a>
+                
+                <!-- Form to trigger POST request -->
+                <form action="finalizingPayment.php" method="POST">
+                    <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
+                    <?php
+                    if (isset($_SESSION['checkout_items'])):
+                        foreach ($_SESSION['checkout_items']['titles'] as $index => $title):
+                    ?>
+                        <input type="hidden" name="item_title[]" value="<?= htmlspecialchars($title) ?>">
+                        <input type="hidden" name="item_price[]" value="<?= htmlspecialchars($_SESSION['checkout_items']['prices'][$index]) ?>">
+                        <input type="hidden" name="item_sellerid[]" value="<?= htmlspecialchars($_SESSION['checkout_items']['sellerIds'][$index]) ?>">
+                    <?php endforeach; endif; ?>
+                    <button type="submit" class="pay-now">Confirm Payment</button>
+                </form>
             </div>
         </div>
     </div>
@@ -170,17 +183,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p>Created with love by Five_Mushketeer</p>
     </div>
 </footer>
+
 <script src="mainPayment.js"></script>
 <script>
-function openCardPayment() {
-    document.getElementById('popup-card').classList.remove('hidden');
-}
-function openQrisPayment() {
-    document.getElementById('popup-qris').classList.remove('hidden');
-}
-function closePopup(popupId) {
-    document.getElementById(popupId).classList.add('hidden');
-}
+    function openCardPayment() {
+        document.getElementById('popup-card').classList.remove('hidden');
+    }
+
+    function openQrisPayment() {
+        document.getElementById('popup-qris').classList.remove('hidden');
+    }
+
+    function closePopup(popupId) {
+        document.getElementById(popupId).classList.add('hidden');
+    }
+
+    function confirmPayment() {
+        // You can add further confirmation logic here, such as displaying a success message.
+    }
 </script>
 </body>
 </html>

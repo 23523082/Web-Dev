@@ -50,3 +50,28 @@ document.getElementById("credit-card").addEventListener("click", function () {
 document.getElementById("qris").addEventListener("click", function () {
   openPopupQris(); // Contoh aksi jika QRIS diklik
 });
+
+function confirmPayment() {
+  // Create FormData object to send the data
+  const data = new FormData();
+  data.append('user_id', '<?php echo $userId; ?>'); // Include user ID or other data
+  data.append('item_title[]', 'Item 1'); // Add item data
+  data.append('item_price[]', '100.00');
+  data.append('item_sellerid[]', '123');
+
+  // Send POST request using Fetch API
+  fetch('finalizingPayment.php', {
+      method: 'POST',
+      body: data
+  })
+  .then(response => response.text())
+  .then(data => {
+      console.log(data);  // Handle the response from PHP
+      // Optionally, redirect or display success message
+      window.location.href = 'payment_success.php';  // Redirect after successful payment
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+}
+
