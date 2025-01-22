@@ -21,13 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    try {
-        // Debugging: Confirm database connection
-        if (!$conn) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        echo "Database connection successful.<br>";
-
         // Check if email exists
         $checkEmailSQL = "SELECT email FROM users WHERE email = ?";
         if ($checkStmt = $conn->prepare($checkEmailSQL)) {
@@ -67,12 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             } else {
                 die("Error executing insert query: " . $stmt->error);
             }
-            $stmt->close();
         } else {
             die("Error preparing insert query: " . $conn->error);
         }
-    } catch (Exception $e) {
-        die("Error: " . $e->getMessage());
+   
     }
-}
+
 ?>

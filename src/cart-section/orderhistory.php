@@ -71,6 +71,6 @@ try {
 }
 
 // Redirect back to the same page to display the success/error message
-header("Location: " . $_SERVER['PHP_SELF']);
+header("Location: ../profiles section/orderHistory.php");
 exit;
-?>
+

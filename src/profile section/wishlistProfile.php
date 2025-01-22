@@ -94,7 +94,7 @@ $conn->close();
       <div class="overlay"></div>
       <img src="../img-source/WhatsApp Image 2024-11-22 at 04.26.10.jpeg" alt="User Background" />
     </div>
-    <h1 class="user-name">WELCOME BUDIONO SIREGAR</h1>
+    <h1 class="user-name"></h1>
   </div>
   <!-- main section -->
   <main>
@@ -113,10 +113,6 @@ $conn->close();
         <!-- Title and Subtitle -->
         <div class="title-section">
           <h2 class="section-title">YOUR WISHLIST</h2>
-          <p class="section-subtitle">
-            MR. BUDIONO SIREGAR, HERE YOU WILL FIND YOUR PRODUCTS THAT YOU
-            SAVE IN WISHLIST.
-          </p>
         </div>
         <!-- Content -->
         <?php if (!empty($wishlistItems)): ?>

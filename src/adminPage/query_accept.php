@@ -42,7 +42,7 @@
                 $row['color'],
                 $row['size'],
                 $row['design'],
-                $row['type'],
+                $row['type'],   
                 $row['price'] // Assuming 'price' is present in the querycatalog table
             );
             $stmt->execute();

@@ -49,8 +49,7 @@ if ($result_admin->num_rows > 0) {
 <p>Welcome, <?php echo $row_admin['FirstName'] . ' ' . $row_admin['LastName']; ?></p>
 <a href="../Logout.php">Logout</a>
 
-<h3>User List</h3>
-<h3>Catalog List</h3>
+
 <h3>Catalog Query List</h3>
 <table border="1">
 <tr>
@@ -85,7 +84,7 @@ if ($result_querycatalog->num_rows > 0) {
         echo "<td>" . $row_querycatalog["design"] . "</td>";
         echo "<td>" . $row_querycatalog["type"] . "</td>";
         echo "<td>" . $row_querycatalog["price"] . "</td>";
-        echo '<td><a href="#" onclick="acceptQuery(' . $row_querycatalog["id"] . ')">Accept</a></td>';
+            
         echo "</tr>";
     }
 } else {

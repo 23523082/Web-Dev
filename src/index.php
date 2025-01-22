@@ -142,7 +142,7 @@ require 'dbconnections.php';
           </a>
         </div>
         <div class="card">
-          <a href="HTML-TOBE-USED/giftsForHer.html">
+          <a href="forher/giftsForHer.php">
             <img src="https://i.pinimg.com/736x/e6/2a/ef/e62aef565ea268066a649f4a819ac779.jpg" alt="Gifts for Her" />
             <h3>Gifts for Her</h3>
           </a>
